@@ -1,4 +1,4 @@
-package com.appocalypse.naturenav.ui.dashboard;
+package com.appocalypse.naturenav.ui.map;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,23 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.appocalypse.naturenav.databinding.FragmentDashboardBinding;
+import com.appocalypse.naturenav.databinding.FragmentMapBinding;
 
-public class DashboardFragment extends Fragment {
+public class MapFragment extends Fragment {
 
-    private FragmentDashboardBinding binding;
+    private FragmentMapBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+        MapViewModel mapViewModel =
+                new ViewModelProvider(this).get(MapViewModel.class);
 
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        binding = FragmentMapBinding
+                .inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textDashboard;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textMap;
+        mapViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

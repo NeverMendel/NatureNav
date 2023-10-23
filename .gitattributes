@@ -1,0 +1,72 @@
+* text eol=lf
+
+# source code
+*.java text
+*.kts text
+*.pro text
+*.properties text
+*.php text
+*.css text
+*.sass text
+*.scss text
+*.less text
+*.styl text
+*.js text
+*.coffee text
+*.json text
+*.htm text
+*.html text
+*.xml text
+*.svg text
+*.txt text
+*.ini text
+*.inc text
+*.pl text
+*.rb text
+*.py text
+*.scm text
+*.sql text
+*.sh text
+*.bat text eol=crlf
+
+# git config
+.gitattributes text
+.gitignore text
+.gitconfig text
+
+# gradle
+gradlew text
+gradlew.bat text eol=crlf
+
+# misc config
+*.yaml text
+*.yml text
+.editorconfig text
+
+# Documentation
+*.md text
+LICENSE text
+AUTHORS text
+CODEOWNERS text
+
+# Binary
+# (binary is a macro for -text -diff)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.mov binary
+*.mp4 binary
+*.mp3 binary
+*.flv binary
+*.fla binary
+*.swf binary
+*.gz binary
+*.zip binary
+*.7z binary
+*.ttf binary
+*.eot binary
+*.woff binary
+*.pyc binary
+*.pdf binary

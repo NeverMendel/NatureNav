@@ -9,7 +9,6 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_activity_fragment"
-        android:name="com.appocalypse.naturenav.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -24,17 +23,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+        <ImageButton
+            android:id="@+id/action_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:src="@drawable/arrow_backward_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/search_text_view" />
+
+        <EditText
             android:id="@+id/search_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:elevation="10dp"
+            android:layout_marginStart="24dp"
+            android:background="@null"
             android:fontFamily="sans-serif"
-            android:text="@string/search_hint"
+            android:gravity="center_vertical"
+            android:hint="@string/search_hint"
+            android:maxLines="1"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/search_icon" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <ImageView
             android:id="@+id/search_icon"
@@ -42,11 +51,10 @@
             android:layout_height="30dp"
             android:layout_marginStart="-30dp"
             android:contentDescription="@string/profile_image"
-            android:elevation="10dp"
             android:src="@drawable/ic_profile_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/search_text_view" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

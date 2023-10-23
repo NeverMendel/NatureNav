@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">NatureNav</string>
+    <string name="app_name" translatable="false">NatureNav</string>
+    <string name="search_hint">Search…</string>
+    <string name="profile_image">Profile image</string>
 </resources>

@@ -2,11 +2,13 @@ package com.appocalypse.naturenav;
 
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -24,6 +26,7 @@ import com.appocalypse.naturenav.databinding.FragmentMapBinding;
 public class MapFragment extends Fragment {
 
     private FragmentMapBinding binding;
+    private GeoPoint myLocation;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -48,21 +51,35 @@ public class MapFragment extends Fragment {
 
         MyLocationNewOverlay mMyLocationOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(requireContext()), mapView);
 
-        mapView.setExpectedCenter(mMyLocationOverlay.getMyLocation());
+        if (savedInstanceState != null) {
+            myLocation = (GeoPoint) savedInstanceState.getSerializable("location");
+            Log.i("NatureNav", "loaded location from savedInstanceState");
+        } else {
+            myLocation = mMyLocationOverlay.getMyLocation();
+            Log.i("NatureNav", "not loaded location from savedInstanceState");
+        }
+
+        mapView.setExpectedCenter(myLocation);
 
         mMyLocationOverlay.enableMyLocation();
         mMyLocationOverlay.enableFollowLocation();
         mMyLocationOverlay.setDrawAccuracyEnabled(true);
         mMyLocationOverlay.runOnFirstFix(() -> {
             requireActivity().runOnUiThread(() -> {
-                controller.setCenter(mMyLocationOverlay.getMyLocation());
-                controller.animateTo(mMyLocationOverlay.getMyLocation());
+                controller.setCenter(myLocation);
+                controller.animateTo(myLocation);
             });
         });
 
         mapView.getOverlays().add(mMyLocationOverlay);
 
         return root;
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("location", myLocation);
     }
 
     @Override

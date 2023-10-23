@@ -1,37 +1,51 @@
 package com.appocalypse.naturenav;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Rect;
 import android.os.Bundle;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.appocalypse.naturenav.databinding.ActivityMainBinding;
+import org.osmdroid.api.IMapController;
+import org.osmdroid.config.Configuration;
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.CustomZoomButtonsController;
+import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
+import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Configuration.getInstance().setUserAgentValue(getString(R.string.app_name));
+
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        MapView mapView = findViewById(R.id.osmmap);
+        IMapController controller = mapView.getController();
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_map, R.id.navigation_leaderboard, R.id.navigation_profile)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.navView, navController);
+        mapView.getZoomController().setVisibility(CustomZoomButtonsController.Visibility.NEVER);
+        mapView.setTileSource(TileSourceFactory.MAPNIK);
+        mapView.setMultiTouchControls(true);
+        mapView.getLocalVisibleRect(new Rect());
+        mapView.setMinZoomLevel(4.0);
+        mapView.setMaxZoomLevel(20.0);
+        controller.setZoom(10.0);
+
+        MyLocationNewOverlay mMyLocationOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(getApplicationContext()), mapView);
+
+        mapView.setExpectedCenter(mMyLocationOverlay.getMyLocation());
+
+        mMyLocationOverlay.enableMyLocation();
+        mMyLocationOverlay.enableFollowLocation();
+        mMyLocationOverlay.setDrawAccuracyEnabled(true);
+        mMyLocationOverlay.runOnFirstFix(() -> runOnUiThread(() -> {
+            controller.setCenter(mMyLocationOverlay.getMyLocation());
+            controller.animateTo(mMyLocationOverlay.getMyLocation());
+        }));
+
+        mapView.getOverlays().add(mMyLocationOverlay);
     }
-
 }

@@ -1,6 +1,3 @@
 <resources>
     <string name="app_name">NatureNav</string>
-    <string name="title_map">Map</string>
-    <string name="title_leaderboard">Leaderboard</string>
-    <string name="title_profile">Profile</string>
 </resources>

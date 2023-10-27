@@ -21,28 +21,28 @@ public class AppIntroduction extends AppIntro {
 
         addSlide(AppIntroFragment.createInstance("Welcome!",
                 "This is a demo example in java of AppIntro library, with a custom background on each slide!",
-                R.drawable.ic_android_24,
+                R.drawable.icon,
                 com.github.appintro.R.color.appintro_background_color
         ));
 
         addSlide(AppIntroFragment.createInstance(
                 "Clean App Intros",
                 "This library offers developers the ability to add clean app intros at the start of their apps.",
-                R.drawable.ic_android_24,
+                R.drawable.icon,
                 com.github.appintro.R.color.appintro_background_color
         ));
 
         addSlide(AppIntroFragment.createInstance(
                 "Simple, yet Customizable",
                 "The library offers a lot of customization, while keeping it simple for those that like simple.",
-                R.drawable.ic_android_24,
+                R.drawable.icon,
                 com.github.appintro.R.color.appintro_background_color
         ));
 
         addSlide(AppIntroFragment.createInstance(
                 "Location permission",
                 "NatureNav requires access to your location to function",
-                R.drawable.ic_android_24,
+                R.drawable.icon,
                 com.github.appintro.R.color.appintro_background_color
         ));
 

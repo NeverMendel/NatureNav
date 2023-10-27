@@ -1,4 +1,4 @@
-package com.appocalypse.naturenav;
+package com.appocalypse.naturenav.map;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

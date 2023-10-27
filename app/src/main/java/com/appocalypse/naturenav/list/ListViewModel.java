@@ -1,4 +1,4 @@
-package com.appocalypse.naturenav;
+package com.appocalypse.naturenav.list;
 
 import androidx.lifecycle.ViewModel;
 

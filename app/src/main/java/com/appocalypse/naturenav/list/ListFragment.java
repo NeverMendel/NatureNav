@@ -1,4 +1,4 @@
-package com.appocalypse.naturenav;
+package com.appocalypse.naturenav.list;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,9 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.appocalypse.naturenav.R;
 import com.appocalypse.naturenav.databinding.FragmentListBinding;
-
-import java.util.Objects;
 
 public class ListFragment extends Fragment {
 

@@ -1,4 +1,4 @@
-package com.appocalypse.naturenav;
+package com.appocalypse.naturenav.map;
 
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -20,7 +19,6 @@ import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
-import com.appocalypse.naturenav.MapViewModel;
 import com.appocalypse.naturenav.databinding.FragmentMapBinding;
 
 public class MapFragment extends Fragment {

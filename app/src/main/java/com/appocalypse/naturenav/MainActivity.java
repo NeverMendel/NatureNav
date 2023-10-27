@@ -1,6 +1,5 @@
 package com.appocalypse.naturenav;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
@@ -9,16 +8,15 @@ import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
 import org.osmdroid.config.Configuration;
 
-import com.appocalypse.naturenav.MapFragment;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.appocalypse.naturenav.list.ListFragment;
+import com.appocalypse.naturenav.list.ListViewModel;
+import com.appocalypse.naturenav.map.MapFragment;
+import com.appocalypse.naturenav.map.MapViewModel;
 
 public class MainActivity extends AppCompatActivity {
 

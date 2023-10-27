@@ -14,6 +14,14 @@
         android:text="@string/profile" />
 
     <Button
+        android:id="@+id/app_intro_menu_button"
+        style="@style/Theme.NatureNav.MenuButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_android_24"
+        android:text="@string/app_introduction" />
+
+    <Button
         android:id="@+id/setting_menu_button"
         style="@style/Theme.NatureNav.MenuButton"
         android:layout_width="match_parent"

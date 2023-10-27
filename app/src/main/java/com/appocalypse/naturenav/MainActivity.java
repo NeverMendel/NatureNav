@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -31,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        showAppIntroduction();
 
         mapFragment = new MapFragment();
         listFragment = new ListFragment();
@@ -96,5 +101,16 @@ public class MainActivity extends AppCompatActivity {
                 fragment.show(getSupportFragmentManager(), "dialog");
             }
         });
+    }
+
+    void showAppIntroduction() {
+        SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        boolean app_intro_played = sharedPref.getBoolean(getString(R.string.app_intro_played_key), false);
+        if(!app_intro_played) {
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(getString(R.string.app_intro_played_key), true);
+            editor.apply();
+            startActivity(new Intent(getApplicationContext(), AppIntroduction.class));
+        }
     }
 }

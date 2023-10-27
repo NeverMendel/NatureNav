@@ -22,6 +22,10 @@ public class MenuDialogFragment extends DialogFragment {
             startActivity(new Intent(getContext(), ProfileActivity.class));
             dismiss();
         });
+        view.findViewById(R.id.app_intro_menu_button).setOnClickListener(v -> {
+            startActivity(new Intent(getContext(), AppIntroduction.class));
+            dismiss();
+        });
         view.findViewById(R.id.about_us_menu_button).setOnClickListener(v -> {
             startActivity(new Intent(getContext(), AboutUsActivity.class));
             dismiss();

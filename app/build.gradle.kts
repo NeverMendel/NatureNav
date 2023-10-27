@@ -46,4 +46,5 @@ dependencies {
 
     implementation("org.osmdroid:osmdroid-android:6.1.17")
     implementation("com.google.android.gms:play-services-oss-licenses:17.0.1")
+    implementation("com.github.AppIntro:AppIntro:6.3.1")
 }

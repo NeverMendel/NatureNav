@@ -3,6 +3,8 @@ package com.appocalypse.naturenav;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -21,6 +23,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     Fragment mapFragment, listFragment;
+    ViewModel mapViewModel, listViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,17 +32,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (savedInstanceState == null) {
-            mapFragment = new MapFragment();
-            listFragment = new ListFragment();
-            getSupportFragmentManager().beginTransaction()
-                    .setReorderingAllowed(true)
-                    .add(R.id.main_activity_fragment, mapFragment)
-                    .add(R.id.main_activity_fragment, listFragment)
-                    .show(mapFragment)
-                    .hide(listFragment)
-                    .commit();
-        }
+        mapFragment = new MapFragment();
+        listFragment = new ListFragment();
+        getSupportFragmentManager().beginTransaction()
+                .setReorderingAllowed(true)
+                .add(R.id.main_activity_fragment, mapFragment)
+                .add(R.id.main_activity_fragment, listFragment)
+                .show(mapFragment)
+                .hide(listFragment)
+                .commit();
+
+        mapViewModel = new ViewModelProvider(this).get(MapViewModel.class);
+        listViewModel = new ViewModelProvider(this).get(ListViewModel.class);
 
         EditText searchEditText = findViewById(R.id.search_edit_text);
         searchEditText.addTextChangedListener(new TextWatcher() {

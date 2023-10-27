@@ -28,7 +28,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@null"
-            android:src="@drawable/ic_arrow_back_24"
+            android:src="@drawable/ic_search_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             />

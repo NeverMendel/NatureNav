@@ -1,6 +1,7 @@
 package com.appocalypse.naturenav;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
@@ -10,6 +11,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import org.osmdroid.config.Configuration;
 
@@ -44,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         listViewModel = new ViewModelProvider(this).get(ListViewModel.class);
 
         EditText searchEditText = findViewById(R.id.search_edit_text);
+        ImageButton actionIcon = findViewById(R.id.action_icon);
+
         searchEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -64,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                             .hide(listFragment)
                             .show(mapFragment)
                             .commit();
+                    actionIcon.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_search_24));
                 } else {
                     // show list fragment
                     getSupportFragmentManager().beginTransaction()
@@ -71,11 +76,12 @@ public class MainActivity extends AppCompatActivity {
                             .hide(mapFragment)
                             .show(listFragment)
                             .commit();
+                    actionIcon.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_arrow_back_24));
                 }
             }
         });
 
-        findViewById(R.id.action_icon).setOnClickListener(new View.OnClickListener() {
+        actionIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 searchEditText.getText().clear();

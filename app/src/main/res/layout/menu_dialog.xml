@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gray_rounded"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/profile_menu_button"
+        style="@style/Theme.NatureNav.MenuButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_person_outline_24"
+        android:text="@string/profile" />
+
+    <Button
+        android:id="@+id/setting_menu_button"
+        style="@style/Theme.NatureNav.MenuButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_settings_24"
+        android:text="@string/settings" />
+
+    <Button
+        android:id="@+id/about_us_menu_button"
+        style="@style/Theme.NatureNav.MenuButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_groups_24"
+        android:text="@string/about_us" />
+
+    <Button
+        android:id="@+id/help_menu_button"
+        style="@style/Theme.NatureNav.MenuButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_help_outline_24"
+        android:text="@string/help" />
+
+    <Button
+        android:id="@+id/privacy_policy_menu_button"
+        style="@style/Theme.NatureNav.MenuButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_privacy_tip_24"
+        android:text="@string/privacy_policy" />
+
+    <Button
+        android:id="@+id/open_source_menu_button"
+        style="@style/Theme.NatureNav.MenuButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_code_24"
+        android:text="@string/open_source_licenses" />
+
+</LinearLayout>

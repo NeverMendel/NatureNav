@@ -2,4 +2,10 @@
 <resources>
     <string name="search_hint">Cerca…</string>
     <string name="profile_image">Immagine profilo</string>
+    <string name="profile">Profilo</string>
+    <string name="about_us">Chi siamo</string>
+    <string name="settings">Impostazioni</string>
+    <string name="help">Aiuto</string>
+    <string name="open_source_licenses">Licenze Open Source</string>
+    <string name="privacy_policy">Informativa sulla Privacy</string>
 </resources>

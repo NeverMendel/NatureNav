@@ -84,5 +84,13 @@ public class MainActivity extends AppCompatActivity {
                 searchEditText.clearFocus();
             }
         });
+
+        findViewById(R.id.profile_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MenuDialogFragment fragment = new MenuDialogFragment();
+                fragment.show(getSupportFragmentManager(), "dialog");
+            }
+        });
     }
 }

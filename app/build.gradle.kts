@@ -1,5 +1,6 @@
 plugins {
     id("com.android.application")
+    id("com.google.android.gms.oss-licenses-plugin")
 }
 
 android {
@@ -44,4 +45,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     implementation("org.osmdroid:osmdroid-android:6.1.17")
+    implementation("com.google.android.gms:play-services-oss-licenses:17.0.1")
 }

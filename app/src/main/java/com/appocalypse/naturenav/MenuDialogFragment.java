@@ -10,6 +10,8 @@ import android.view.Window;
 
 import androidx.fragment.app.DialogFragment;
 
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity;
+
 public class MenuDialogFragment extends DialogFragment {
 
     @Override
@@ -17,8 +19,11 @@ public class MenuDialogFragment extends DialogFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.menu_dialog, container, false);
         view.findViewById(R.id.about_us_menu_button).setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), AboutUsActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(getContext(), AboutUsActivity.class));
+            dismiss();
+        });
+        view.findViewById(R.id.open_source_menu_button).setOnClickListener(v -> {
+            startActivity(new Intent(getContext(), OssLicensesMenuActivity.class));
             dismiss();
         });
         return view;

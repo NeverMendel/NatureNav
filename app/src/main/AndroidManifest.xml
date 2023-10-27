@@ -18,6 +18,14 @@
         android:theme="@style/Theme.NatureNav"
         tools:targetApi="31">
         <activity
+            android:name=".ProfileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.NatureNav.Activity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
             android:name=".AboutUsActivity"
             android:exported="false"
             android:theme="@style/Theme.NatureNav.Activity">

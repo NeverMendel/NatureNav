@@ -18,6 +18,10 @@ public class MenuDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.menu_dialog, container, false);
+        view.findViewById(R.id.profile_menu_button).setOnClickListener(v -> {
+            startActivity(new Intent(getContext(), ProfileActivity.class));
+            dismiss();
+        });
         view.findViewById(R.id.about_us_menu_button).setOnClickListener(v -> {
             startActivity(new Intent(getContext(), AboutUsActivity.class));
             dismiss();

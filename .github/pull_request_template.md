@@ -6,9 +6,9 @@
 
 <!-- Please describe how you tested your changes. -->
 
-[ ] Manually
-[ ] Unit tests
-[ ] Integration tests
+- [ ] Manually
+- [ ] Unit tests
+- [ ] Integration tests
 
 # Screenshots / Videos
 

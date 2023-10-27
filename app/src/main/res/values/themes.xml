@@ -9,6 +9,17 @@
 
     <style name="Theme.NatureNav" parent="Base.Theme.NatureNav" />
 
+    <style name="Theme.NatureNav.Activity" parent="Theme.Material3.DayNight">
+        <item name="android:statusBarColor">@android:color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+<!--    <style name="Theme.NatureNav.Toolbar" parent="Theme.NatureNav">-->
+<!--        <item name="android:theme">@style/ThemeOverlay.MaterialComponents.Toolbar.Primary</item>-->
+<!--        <item name="popupTheme">@style/ThemeOverlay.MaterialComponents.Toolbar.Popup.Primary</item>-->
+<!--        <item name="android:background">@color/primary</item>-->
+<!--    </style>-->
+
     <style name="Theme.NatureNav.MenuButton" parent="Theme.NatureNav">
         <item name="android:backgroundTint">@color/white</item>
         <item name="android:textColor">@color/black</item>

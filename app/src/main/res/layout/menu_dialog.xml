@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_groups_24"
-        android:text="@string/about_us" />
+        android:text="@string/about_us"/>
 
     <Button
         android:id="@+id/help_menu_button"

@@ -15,6 +15,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 
 import org.osmdroid.config.Configuration;
 
@@ -25,8 +26,10 @@ import com.appocalypse.naturenav.map.MapViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
-    Fragment mapFragment, listFragment;
-    ViewModel mapViewModel, listViewModel;
+    private MapFragment mapFragment;
+    private ListFragment listFragment;
+    private MapViewModel mapViewModel;
+    private ListViewModel listViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                             .show(listFragment)
                             .commit();
                     actionIcon.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_arrow_back_24));
+                    listViewModel.search(mapViewModel.getLocation(), s.toString());
                 }
             }
         });

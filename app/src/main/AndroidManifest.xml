@@ -10,12 +10,13 @@
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.NatureNav"
-        tools:targetApi="31">
+        tools:targetApi="tiramisu">
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -28,8 +29,8 @@
         <activity
             android:name=".ProfileActivity"
             android:exported="false"
-            android:theme="@style/Theme.NatureNav.Activity"
-            android:label="Profile page">
+            android:label="Profile page"
+            android:theme="@style/Theme.NatureNav.Activity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -37,8 +38,8 @@
         <activity
             android:name=".AboutUsActivity"
             android:exported="false"
-            android:theme="@style/Theme.NatureNav.Activity"
-            android:label="About Us page">
+            android:label="About Us page"
+            android:theme="@style/Theme.NatureNav.Activity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />

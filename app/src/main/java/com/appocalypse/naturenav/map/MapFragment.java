@@ -57,6 +57,8 @@ public class MapFragment extends Fragment {
             Log.i("NatureNav", "not loaded location from savedInstanceState");
         }
 
+        mapViewModel.setLocation(myLocation);
+
         mapView.setExpectedCenter(myLocation);
 
         mMyLocationOverlay.enableMyLocation();

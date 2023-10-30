@@ -19,30 +19,44 @@ public class AppIntroduction extends AppIntro {
         super.onCreate(savedInstanceState);
 
 
-        addSlide(AppIntroFragment.createInstance(getString(R.string.welcome_to_nature_nav),
-                "This is a demo example in java of AppIntro library, with a custom background on each slide!",
+        addSlide(AppIntroFragment.createInstance(
+                "Your Adventure Starts Here",
+                "Explore the beauty of the great outdoors with NatureNav. Discover parks, trails, and more.",
                 R.drawable.icon,
                 com.github.appintro.R.color.appintro_background_color
         ));
 
         addSlide(AppIntroFragment.createInstance(
-                "Clean App Intros",
-                "This library offers developers the ability to add clean app intros at the start of their apps.",
-                R.drawable.icon,
+                "Effortless Search",
+                "NatureNav makes finding points of interest easy with a powerful search feature. Just enter your query, and we'll do the rest.",
+                R.drawable.baseline_query_stats_24,
                 com.github.appintro.R.color.appintro_background_color
         ));
 
         addSlide(AppIntroFragment.createInstance(
-                "Simple, yet Customizable",
-                "The library offers a lot of customization, while keeping it simple for those that like simple.",
-                R.drawable.icon,
+                "Explore Points of Interest",
+                "View a wide range of points of interest on our app, from parks to outdoor gyms. You'll never run out of options.",
+                R.drawable.baseline_travel_explore_24,
+                com.github.appintro.R.color.appintro_background_color
+        ));
+
+        addSlide(AppIntroFragment.createInstance(
+                "Rank and Rate",
+                "Give feedback and rate the places you visit. Help build a community of adventurers and enhance their experiences.",
+                R.drawable.baseline_stars_24,
                 com.github.appintro.R.color.appintro_background_color
         ));
 
         addSlide(AppIntroFragment.createInstance(
                 "Location permission",
-                "NatureNav requires access to your location to function",
-                R.drawable.icon,
+                "To unlock the full potential of NatureNav, grant us access to your location. Discover nearby nature spots effortlessly.",
+                R.drawable.baseline_my_location_24,
+                com.github.appintro.R.color.appintro_background_color
+        ));
+        addSlide(AppIntroFragment.createInstance(
+                "Get Ready!",
+                "Are you ready to start your adventure with NatureNav? Discover, explore, rate, and connect with fellow nature enthusiasts today!",
+                R.drawable.baseline_ads_click_24,
                 com.github.appintro.R.color.appintro_background_color
         ));
 

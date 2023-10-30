@@ -12,4 +12,16 @@
     <string name="preference_file_key" translatable="false">com.appocalypse.naturenav.PREFERENCE_FILE_KEY</string>
     <string name="app_intro_played_key" translatable="false">app_intro_played_key</string>
     <string name="welcome_to_nature_nav">Welcome to NatureNav!</string>
-</resources>
+    <string name="slide1_title">Your Adventure Starts Here</string>
+    <string name="slide1_description">Explore the beauty of the great outdoors with NatureNav. Discover parks, trails, and more.</string>
+    <string name="slide2_title">Effortless Search</string>
+    <string name="slide2_description">NatureNav makes finding points of interest easy with a powerful search feature. Just enter your query, and we\'ll do the rest.</string>
+    <string name="slide3_title">Explore Points of Interest</string>
+    <string name="slide3_description">View a wide range of points of interest on our app, from parks to outdoor gyms. You\'ll never run out of options.</string>
+    <string name="slide4_title">Rank and Rate</string>
+    <string name="slide4_description">Give feedback and rate the places you visit. Help build a community of adventurers and enhance their experiences.</string>
+    <string name="slide5_title">Location Permission</string>
+    <string name="slide5_description">To unlock the full potential of NatureNav, grant us access to your location. Discover nearby nature spots effortlessly.</string>
+    <string name="slide6_title">Get Ready!</string>
+    <string name="slide6_description">Are you ready to start your adventure with NatureNav? Discover, explore, rate, and connect with fellow nature enthusiasts today!</string>
+    </resources>

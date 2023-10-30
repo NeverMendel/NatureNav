@@ -19,7 +19,7 @@ public class AppIntroduction extends AppIntro {
         super.onCreate(savedInstanceState);
 
 
-        addSlide(AppIntroFragment.createInstance("Welcome!",
+        addSlide(AppIntroFragment.createInstance(getString(R.string.welcome_to_nature_nav),
                 "This is a demo example in java of AppIntro library, with a custom background on each slide!",
                 R.drawable.icon,
                 com.github.appintro.R.color.appintro_background_color

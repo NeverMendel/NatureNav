@@ -9,5 +9,16 @@
     <string name="open_source_licenses">Licenze Open Source</string>
     <string name="privacy_policy">Informativa sulla Privacy</string>
     <string name="app_introduction">Guida App</string>
-    <string name="welcome_to_nature_nav">Benvenuto in NatureNav!</string>
-</resources>
+    <string name="slide1_title">Benvenuto in NatureNav!</string>
+    <string name="slide1_description">Esplora la bellezza della natura con NatureNav. Scopri parchi, sentieri e molto altro.</string>
+    <string name="slide2_title">Ricerca senza sforzo</string>
+    <string name="slide2_description">NatureNav semplifica la scoperta dei luoghi d\'interesse grazie alla sua potente funzione di ricerca. Cerca un sito di interesse e noi penseremo al resto.</string>
+    <string name="slide3_title">Esplora punti di interesse</string>
+    <string name="slide3_description">Visualizza una vasta gamma di punti di interesse nella nostra app, dai parchi alle palestre all\'aperto. Non ti finiranno mai le opzioni.</string>
+    <string name="slide4_title">Classifica e valuta</string>
+    <string name="slide4_description">Fornisci feedback e valuta i luoghi che visiti. Aiuta a creare una comunità di avventurieri e a migliorare le loro esperienze.</string>
+    <string name="slide5_title">Permesso di posizione</string>
+    <string name="slide5_description">Per sbloccare il pieno potenziale di NatureNav, concedici l\'accesso alla tua posizione. Scopri facilmente i luoghi nelle vicinanze.</string>
+    <string name="slide6_title">Preparati!</string>
+    <string name="slide6_description">Sei pronto a iniziare la tua avventura con NatureNav? Scopri, esplora, valuta e connettiti con gli appassionati della natura oggi stesso!</string>
+    </resources>

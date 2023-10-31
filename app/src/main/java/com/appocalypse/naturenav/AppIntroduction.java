@@ -18,35 +18,48 @@ public class AppIntroduction extends AppIntro {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-        addSlide(AppIntroFragment.createInstance(getString(R.string.welcome_to_nature_nav),
-                "This is a demo example in java of AppIntro library, with a custom background on each slide!",
+        addSlide(AppIntroFragment.createInstance(
+                getString(R.string.slide1_title),
+                getString(R.string.slide1_description),
                 R.drawable.icon,
                 com.github.appintro.R.color.appintro_background_color
         ));
 
         addSlide(AppIntroFragment.createInstance(
-                "Clean App Intros",
-                "This library offers developers the ability to add clean app intros at the start of their apps.",
-                R.drawable.icon,
+                getString(R.string.slide2_title),
+                getString(R.string.slide2_description),
+                R.drawable.ic_query_stats,
                 com.github.appintro.R.color.appintro_background_color
         ));
 
         addSlide(AppIntroFragment.createInstance(
-                "Simple, yet Customizable",
-                "The library offers a lot of customization, while keeping it simple for those that like simple.",
-                R.drawable.icon,
+                getString(R.string.slide3_title),
+                getString(R.string.slide3_description),
+                R.drawable.ic_travel_explore,
                 com.github.appintro.R.color.appintro_background_color
         ));
 
         addSlide(AppIntroFragment.createInstance(
-                "Location permission",
-                "NatureNav requires access to your location to function",
-                R.drawable.icon,
+                getString(R.string.slide4_title),
+                getString(R.string.slide4_description),
+                R.drawable.ic_stars,
                 com.github.appintro.R.color.appintro_background_color
         ));
 
-        askForPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 3, true);
+        addSlide(AppIntroFragment.createInstance(
+                getString(R.string.slide5_title),
+                getString(R.string.slide5_description),
+                R.drawable.ic_my_location,
+                com.github.appintro.R.color.appintro_background_color
+        ));
+        addSlide(AppIntroFragment.createInstance(
+                getString(R.string.slide6_title),
+                getString(R.string.slide6_description),
+                R.drawable.ic_ads_click,
+                com.github.appintro.R.color.appintro_background_color
+        ));
+
+        askForPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 5, true);
 
         setTransformer(AppIntroPageTransformerType.Fade.INSTANCE);
         showStatusBar(true);

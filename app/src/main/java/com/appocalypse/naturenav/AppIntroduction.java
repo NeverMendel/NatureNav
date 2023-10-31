@@ -18,7 +18,6 @@ public class AppIntroduction extends AppIntro {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         addSlide(AppIntroFragment.createInstance(
                 getString(R.string.slide1_title),
                 getString(R.string.slide1_description),
@@ -60,7 +59,7 @@ public class AppIntroduction extends AppIntro {
                 com.github.appintro.R.color.appintro_background_color
         ));
 
-        askForPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 3, true);
+        askForPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 5, true);
 
         setTransformer(AppIntroPageTransformerType.Fade.INSTANCE);
         showStatusBar(true);

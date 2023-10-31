@@ -28,34 +28,34 @@ public class AppIntroduction extends AppIntro {
         addSlide(AppIntroFragment.createInstance(
                 getString(R.string.slide2_title),
                 getString(R.string.slide2_description),
-                R.drawable.baseline_query_stats_24,
+                R.drawable.ic_query_stats,
                 com.github.appintro.R.color.appintro_background_color
         ));
 
         addSlide(AppIntroFragment.createInstance(
                 getString(R.string.slide3_title),
                 getString(R.string.slide3_description),
-                R.drawable.baseline_travel_explore_24,
+                R.drawable.ic_travel_explore,
                 com.github.appintro.R.color.appintro_background_color
         ));
 
         addSlide(AppIntroFragment.createInstance(
                 getString(R.string.slide4_title),
                 getString(R.string.slide4_description),
-                R.drawable.baseline_stars_24,
+                R.drawable.ic_stars,
                 com.github.appintro.R.color.appintro_background_color
         ));
 
         addSlide(AppIntroFragment.createInstance(
                 getString(R.string.slide5_title),
                 getString(R.string.slide5_description),
-                R.drawable.baseline_my_location_24,
+                R.drawable.ic_my_location,
                 com.github.appintro.R.color.appintro_background_color
         ));
         addSlide(AppIntroFragment.createInstance(
                 getString(R.string.slide6_title),
                 getString(R.string.slide6_description),
-                R.drawable.baseline_ads_click_24,
+                R.drawable.ic_ads_click,
                 com.github.appintro.R.color.appintro_background_color
         ));
 

@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("com.google.android.gms.oss-licenses-plugin")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -15,6 +16,21 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        getByName("debug") {
+            keyAlias = "debug"
+            keyPassword = "kfh2958@atyhAVP"
+            storeFile = file("../keystore/debug.jks")
+            storePassword = "kfh2958@atyhAVP"
+        }
+        create("release") {
+            keyAlias = "release"
+            keyPassword = "sjd32MLY#!ALP?;56Rf"
+            storeFile = file("../keystore/release.jks")
+            storePassword = "sjd32MLY#!ALP?;56Rf"
+        }
     }
 
     buildTypes {
@@ -48,4 +64,6 @@ dependencies {
     implementation("com.google.android.gms:play-services-oss-licenses:17.0.1")
     implementation("com.github.AppIntro:AppIntro:6.3.1")
     implementation("com.github.MKergall:osmbonuspack:6.9.0")
+
+    implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
 }

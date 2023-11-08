@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "709356760756",
+    "project_id": "naturenav-61e4c",
+    "storage_bucket": "naturenav-61e4c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709356760756:android:ff710df38c2489c826b1e1",
+        "android_client_info": {
+          "package_name": "com.appocalypse.naturenav"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMVaudrWq1WUx9x21EpmACYILXbGvIK_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

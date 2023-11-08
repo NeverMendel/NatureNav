@@ -66,4 +66,5 @@ dependencies {
     implementation("com.github.MKergall:osmbonuspack:6.9.0")
 
     implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
+    implementation("com.firebaseui:firebase-ui-auth:7.2.0")
 }

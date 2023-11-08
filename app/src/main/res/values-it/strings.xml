@@ -21,4 +21,5 @@
     <string name="slide5_description">Per sbloccare il pieno potenziale di NatureNav, concedici l\'accesso alla tua posizione. Scopri facilmente i luoghi nelle vicinanze.</string>
     <string name="slide6_title">Preparati!</string>
     <string name="slide6_description">Sei pronto a iniziare la tua avventura con NatureNav? Scopri, esplora, valuta e connettiti con gli appassionati della natura oggi stesso!</string>
-    </resources>
+    <string name="sign_in_to_unlock_extra_functionalities">Fai il login per sbloccare funzionalità extra</string>
+</resources>

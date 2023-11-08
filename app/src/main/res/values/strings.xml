@@ -23,4 +23,5 @@
     <string name="slide5_description">To unlock the full potential of NatureNav, grant us access to your location. Discover nearby nature spots effortlessly.</string>
     <string name="slide6_title">Get Ready!</string>
     <string name="slide6_description">Are you ready to start your adventure with NatureNav? Discover, explore, rate, and connect with fellow nature enthusiasts today!</string>
-    </resources>
+    <string name="sign_in_to_unlock_extra_functionalities">Sign-in to unlock extra functionalities</string>
+</resources>

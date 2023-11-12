@@ -41,10 +41,9 @@ public class SignInFragment extends Fragment {
         View root = binding.getRoot();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
                 .requestId()
+                .requestEmail()
                 .requestProfile()
-                .requestIdToken("709356760756-ils02o79ecd3i6orib0993a2qhhuusiv.apps.googleusercontent.com")
                 .build();
 
         googleSignInClient = GoogleSignIn.getClient(requireContext(), gso);

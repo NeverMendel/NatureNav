@@ -28,10 +28,10 @@ public class ListViewModel extends ViewModel {
             try {
                 ArrayList<POI> poiArrayList = poiProvider.getPOICloseTo(location, query, 50, 5);
                 pois.postValue(poiArrayList);
+                Log.i(TAG, "search: " + poiArrayList.toString());
             } catch (Exception e) {
                 Log.e(TAG, e.toString());
             }
-            Log.i(TAG, "search: " + Objects.requireNonNull(pois.getValue()).toString());
         });
     }
 

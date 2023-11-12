@@ -38,8 +38,10 @@ public class ListFragment extends Fragment {
         Log.i(TAG, "onCreateView: " + getViewLifecycleOwner().getLifecycle().getCurrentState());
 
         listViewModel.getData().observe(getViewLifecycleOwner(), data -> {
-            adapter.setItems(data);
-            Log.i(TAG, "onCreateView: " + data.toString());
+            if(data != null){
+                adapter.setItems(data);
+                Log.i(TAG, "onCreateView: " + data.toString());
+            }
         });
 
         binding.listView.setAdapter(adapter);

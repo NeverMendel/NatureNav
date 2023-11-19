@@ -41,6 +41,10 @@ public class MenuDialogFragment extends DialogFragment {
             startActivity(new Intent(getContext(), AboutUsActivity.class));
             dismiss();
         });
+        view.findViewById(R.id.privacy_policy_menu_button).setOnClickListener(v -> {
+            startActivity(new Intent(getContext(), PrivacyPolicyActivity.class));
+            dismiss();
+        });
         view.findViewById(R.id.open_source_menu_button).setOnClickListener(v -> {
             startActivity(new Intent(getContext(), OssLicensesMenuActivity.class));
             dismiss();

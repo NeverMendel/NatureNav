@@ -4,6 +4,9 @@
     <string name="profile_image">Immagine profilo</string>
     <string name="profile">Profilo</string>
     <string name="about_us">Chi siamo</string>
+    <string name="about_us_1" >Siamo un gruppo di studenti dell\'Università Ca\' Foscari al terzo anno della facoltà di Informatica.</string>
+    <string name="about_us_2" >Abbiamo una passione condivisa per la tecnologia e un obiettivo comune: sviluppare un\'applicazione innovativa e utile per i nostri clienti.</string>
+    <string name="about_us_3" >Il nostro progetto è frutto di mesi di duro lavoro, ricerche approfondite e sforzi congiunti per portare a termine il corso di Ingegneria del Software.</string>
     <string name="settings">Impostazioni</string>
     <string name="help">Aiuto</string>
     <string name="open_source_licenses">Licenze Open Source</string>

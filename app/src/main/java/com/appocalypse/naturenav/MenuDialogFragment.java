@@ -2,12 +2,15 @@ package com.appocalypse.naturenav;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity;
@@ -18,6 +21,7 @@ public class MenuDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.menu_dialog, container, false);
+
         view.findViewById(R.id.profile_menu_button).setOnClickListener(v -> {
             startActivity(new Intent(getContext(), ProfileActivity.class));
             dismiss();
@@ -34,14 +38,28 @@ public class MenuDialogFragment extends DialogFragment {
             startActivity(new Intent(getContext(), OssLicensesMenuActivity.class));
             dismiss();
         });
+
+        view.findViewById(R.id.menu_close_button).setOnClickListener(v -> dismiss());
+
         return view;
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+//        WindowManager.LayoutParams params = getDialog().getWindow().getAttributes();
+//        params.width = ConstraintLayout.LayoutParams.MATCH_PARENT;
+//        params.height = ConstraintLayout.LayoutParams.WRAP_CONTENT;
+//        getDialog().getWindow().setAttributes(params);
+    }
+
+    @NonNull
+    @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        setStyle(DialogFragment.STYLE_NO_FRAME, R.style.Theme_NatureNav);
+        if(dialog.getWindow() != null)
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         return dialog;
     }
 

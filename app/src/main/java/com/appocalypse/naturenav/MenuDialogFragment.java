@@ -1,6 +1,7 @@
 package com.appocalypse.naturenav;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -16,6 +17,12 @@ import androidx.fragment.app.DialogFragment;
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity;
 
 public class MenuDialogFragment extends DialogFragment {
+
+    interface DismissEventListener {
+        void onDismiss();
+    }
+
+    private DismissEventListener dismissEventListener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,12 +52,18 @@ public class MenuDialogFragment extends DialogFragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-//        WindowManager.LayoutParams params = getDialog().getWindow().getAttributes();
-//        params.width = ConstraintLayout.LayoutParams.MATCH_PARENT;
-//        params.height = ConstraintLayout.LayoutParams.WRAP_CONTENT;
-//        getDialog().getWindow().setAttributes(params);
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onDismiss(@NonNull DialogInterface dialog) {
+        super.onDismiss(dialog);
+        dismissEventListener.onDismiss();
+    }
+
+    public void setDismissEventListener(DismissEventListener dismissEventListener) {
+        this.dismissEventListener = dismissEventListener;
     }
 
     @NonNull
@@ -58,8 +71,12 @@ public class MenuDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        if(dialog.getWindow() != null)
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        if(dialog.getWindow() != null){
+            Window window = dialog.getWindow();
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
         return dialog;
     }
 

@@ -35,4 +35,20 @@ Vestibulum non mollis libero. Proin eu vulputate erat, fermentum tincidunt ante.
 Nulla facilisi. Proin venenatis, dolor sed vestibulum porttitor, odio enim molestie odio, vitae lobortis augue sapien a augue. Nulla id enim blandit ante facilisis lobortis eget id arcu. Morbi tempor libero scelerisque molestie pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc venenatis fermentum eros, in convallis tellus tincidunt eget. Vestibulum ac rutrum mauris. Ut eget sollicitudin est. Vestibulum placerat, orci ac bibendum tincidunt, purus orci dignissim mi, mattis efficitur dolor risus ac sem. Curabitur lobortis semper leo eleifend volutpat. Morbi quis libero justo.
 
 Vestibulum dapibus blandit magna id elementum. Integer dapibus eu felis ac cursus. Sed a hendrerit ipsum. Suspendisse mattis facilisis urna vitae euismod. Nulla facilisi. Suspendisse libero libero, dapibus sit amet augue vitae, sollicitudin aliquet nisl. Cras dictum accumsan justo vitae ornare. Fusce consectetur vehicula pretium. Suspendisse nec posuere ipsum, sed tincidunt ante. Nullam ut felis risus. Duis venenatis, purus eget tristique ornare, dolor nulla hendrerit lorem, quis semper tellus sapien quis risus. Ut luctus tortor luctus libero vulputate hendrerit.</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>

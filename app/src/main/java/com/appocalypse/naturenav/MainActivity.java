@@ -100,11 +100,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        View blackView = findViewById(R.id.main_activity_black_view);
+        blackView.bringToFront();
+
         findViewById(R.id.more_icon).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MenuDialogFragment fragment = new MenuDialogFragment();
                 fragment.show(getSupportFragmentManager(), "dialog");
+                blackView.setAlpha(0.3f);
+                fragment.setDismissEventListener(() -> {
+                    blackView.setAlpha(0f);
+                });
             }
         });
     }
@@ -112,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
     private void showAppIntroduction() {
         SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         boolean app_intro_played = sharedPref.getBoolean(getString(R.string.app_intro_played_key), false);
-        if(!app_intro_played) {
+        if (!app_intro_played) {
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putBoolean(getString(R.string.app_intro_played_key), true);
             editor.apply();

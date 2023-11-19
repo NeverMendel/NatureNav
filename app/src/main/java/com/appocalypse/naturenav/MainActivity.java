@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -94,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 searchEditText.getText().clear();
                 searchEditText.clearFocus();
+                hideKeyboard();
             }
         });
 
@@ -106,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    void showAppIntroduction() {
+    private void showAppIntroduction() {
         SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         boolean app_intro_played = sharedPref.getBoolean(getString(R.string.app_intro_played_key), false);
         if(!app_intro_played) {
@@ -114,6 +117,15 @@ public class MainActivity extends AppCompatActivity {
             editor.putBoolean(getString(R.string.app_intro_played_key), true);
             editor.apply();
             startActivity(new Intent(getApplicationContext(), AppIntroduction.class));
+        }
+    }
+
+    private void hideKeyboard() {
+        Activity activity = mapFragment.getActivity();
+        View view = mapFragment.getView();
+        if (activity != null && view != null) {
+            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 }

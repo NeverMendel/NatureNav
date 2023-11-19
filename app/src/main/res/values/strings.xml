@@ -24,4 +24,5 @@
     <string name="slide6_title">Get Ready!</string>
     <string name="slide6_description">Are you ready to start your adventure with NatureNav? Discover, explore, rate, and connect with fellow nature enthusiasts today!</string>
     <string name="sign_in_to_unlock_extra_functionalities">Sign-in to unlock extra functionalities</string>
+    <string name="display_menu">Display menu</string>
 </resources>

@@ -13,7 +13,6 @@
         android:layout_height="match_parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
@@ -21,41 +20,48 @@
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="8dp"
+        android:translationZ="8dp"
+        android:layout_marginBottom="-8dp">
 
         <ImageButton
             android:id="@+id/action_icon"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@null"
+            android:clickable="false"
             android:src="@drawable/ic_search_24"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/search_edit_text"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
             android:background="@null"
             android:fontFamily="sans-serif"
             android:hint="@string/search_hint"
+            android:inputType="text"
             android:maxLines="1"
             android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/profile_icon"/>
+            app:layout_constraintEnd_toStartOf="@id/more_icon"
+            app:layout_constraintStart_toEndOf="@id/action_icon"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/profile_icon"
+            android:id="@+id/more_icon"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:contentDescription="@string/profile_image"
-            android:src="@drawable/ic_profile_24"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/ic_more_vert_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/display_menu" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

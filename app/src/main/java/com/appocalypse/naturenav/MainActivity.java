@@ -2,8 +2,6 @@ package com.appocalypse.naturenav;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
@@ -15,7 +13,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListView;
 
 import org.osmdroid.config.Configuration;
 
@@ -77,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                             .show(mapFragment)
                             .commit();
                     actionIcon.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_search_24));
+                    actionIcon.setClickable(false);
                 } else {
                     // show list fragment
                     getSupportFragmentManager().beginTransaction()
@@ -85,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
                             .show(listFragment)
                             .commit();
                     actionIcon.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_arrow_back_24));
+                    actionIcon.setClickable(true);
                     listViewModel.search(mapViewModel.getLocation(), s.toString());
                 }
             }
@@ -98,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.profile_icon).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.more_icon).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MenuDialogFragment fragment = new MenuDialogFragment();

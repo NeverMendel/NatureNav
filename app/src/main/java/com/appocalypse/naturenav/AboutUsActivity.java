@@ -16,5 +16,6 @@ public class AboutUsActivity extends AppCompatActivity {
 
         ActionBar actionBar = Objects.requireNonNull(getSupportActionBar());
         actionBar.setTitle(getString(R.string.about_us));
+
     }
 }

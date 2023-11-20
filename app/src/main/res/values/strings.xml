@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name" translatable="false">NatureNav</string>
-    <string name="search_hint">Search…</string>
+    <string name="search_hint">Search ...</string>
     <string name="profile_image">Profile image</string>
     <string name="profile">Profile</string>
     <string name="about_us">About Us</string>
@@ -37,18 +37,10 @@ Nulla facilisi. Proin venenatis, dolor sed vestibulum porttitor, odio enim moles
 Vestibulum dapibus blandit magna id elementum. Integer dapibus eu felis ac cursus. Sed a hendrerit ipsum. Suspendisse mattis facilisis urna vitae euismod. Nulla facilisi. Suspendisse libero libero, dapibus sit amet augue vitae, sollicitudin aliquet nisl. Cras dictum accumsan justo vitae ornare. Fusce consectetur vehicula pretium. Suspendisse nec posuere ipsum, sed tincidunt ante. Nullam ut felis risus. Duis venenatis, purus eget tristique ornare, dolor nulla hendrerit lorem, quis semper tellus sapien quis risus. Ut luctus tortor luctus libero vulputate hendrerit.</string>
     <string name="title_activity_settings" translatable="false">SettingsActivity</string>
 
-    <!-- Preference Titles -->
-    <string name="messages_header" translatable="false">Messages</string>
-    <string name="sync_header" translatable="false">Sync</string>
-
-    <!-- Messages Preferences -->
-    <string name="signature_title" translatable="false">Your signature</string>
-    <string name="reply_title" translatable="false">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title" translatable="false">Sync email periodically</string>
-    <string name="attachment_title" translatable="false">Download incoming attachments</string>
-    <string name="attachment_summary_on" translatable="false">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off" translatable="false">Only download attachments when manually requested</string>
+    <!-- Settings -->
+    <string name="general_header">General</string>
+    <string name="choose_your_preferred_language">Choose your preferred language</string>
+    <string name="app_theme">App Theme</string>
+    <string name="choose_application_theme">Choose application theme</string>
+    <string name="select_application_theme">Select application theme</string>
 </resources>

@@ -13,8 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0"
-        android:foreground="@color/black"
-        android:elevation="60dp"/>
+        android:elevation="60dp"
+        android:foreground="@color/black" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_activity_fragment"
@@ -24,11 +24,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_margin="16dp"
         android:layout_marginBottom="-8dp"
-        android:background="@drawable/bg_white_border_rounded"
+        android:background="@drawable/bg_rounded_16"
         android:elevation="8dp"
-        android:padding="10dp"
+        android:padding="8dp"
         android:translationZ="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,8 @@
             android:clickable="false"
             android:src="@drawable/ic_search_24"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="?colorOnBackground" />
 
         <EditText
             android:id="@+id/search_edit_text"
@@ -70,7 +71,8 @@
             android:src="@drawable/ic_more_vert_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="?colorOnBackground" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

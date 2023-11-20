@@ -3,6 +3,7 @@ package com.appocalypse.naturenav;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.preference.PreferenceManager;
 
 import android.app.Activity;
 import android.content.Context;
@@ -22,6 +23,7 @@ import com.appocalypse.naturenav.list.ListFragment;
 import com.appocalypse.naturenav.list.ListViewModel;
 import com.appocalypse.naturenav.map.MapFragment;
 import com.appocalypse.naturenav.map.MapViewModel;
+import com.appocalypse.naturenav.utility.Theme;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Configuration.getInstance().setUserAgentValue(getString(R.string.app_name));
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        String theme = sharedPreferences.getString("app_theme","light");
+        Theme.setTheme(theme);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="search_hint">Cerca ...</string>
+    <string name="search_hint">Cerca...</string>
     <string name="profile_image">Immagine profilo</string>
     <string name="profile">Profilo</string>
     <string name="about_us">Chi siamo</string>

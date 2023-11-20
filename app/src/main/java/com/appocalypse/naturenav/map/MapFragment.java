@@ -17,11 +17,13 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.CustomZoomButtonsController;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
+import org.osmdroid.views.overlay.mylocation.IMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import com.appocalypse.naturenav.databinding.FragmentMapBinding;
 
 public class MapFragment extends Fragment {
+    private static final String TAG = "MapFragment";
 
     private FragmentMapBinding binding;
     private GeoPoint myLocation;
@@ -51,13 +53,14 @@ public class MapFragment extends Fragment {
 
         if (savedInstanceState != null) {
             myLocation = (GeoPoint) savedInstanceState.getSerializable("location");
-            Log.i("NatureNav", "loaded location from savedInstanceState");
+            Log.i(TAG, "loaded location from savedInstanceState");
         } else {
             myLocation = mMyLocationOverlay.getMyLocation();
-            Log.i("NatureNav", "not loaded location from savedInstanceState");
+            Log.i(TAG, "not loaded location from savedInstanceState");
+            if(myLocation != null) {
+                Log.i(TAG, "location latitude: " + myLocation.getLatitude() + ", location longitude: " + myLocation.getLongitude());
+            }
         }
-
-        mapViewModel.setLocation(myLocation);
 
         mapView.setExpectedCenter(myLocation);
 

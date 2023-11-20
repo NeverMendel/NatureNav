@@ -92,7 +92,8 @@ public class MainActivity extends AppCompatActivity {
                             .commit();
                     actionIcon.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_arrow_back_24));
                     actionIcon.setClickable(true);
-                    listViewModel.search(mapViewModel.getLocation(), s.toString());
+                    listViewModel.setContext(listFragment.requireContext());
+                    listViewModel.search(s.toString());
                 }
             }
         });

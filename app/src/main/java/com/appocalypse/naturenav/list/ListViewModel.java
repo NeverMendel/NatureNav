@@ -8,8 +8,10 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import org.osmdroid.bonuspack.location.NominatimPOIProvider;
-import org.osmdroid.bonuspack.location.POI;
+import com.appocalypse.naturenav.api.OverpassTurboPOIProvider;
+import com.appocalypse.naturenav.api.POI;
+
+
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.IMyLocationConsumer;
@@ -34,10 +36,10 @@ public class ListViewModel extends ViewModel implements IMyLocationConsumer {
             return;
         }
         Executors.newSingleThreadExecutor().execute(() -> {
-            NominatimPOIProvider poiProvider = new NominatimPOIProvider("NatureNav");
+            OverpassTurboPOIProvider poiProvider = new OverpassTurboPOIProvider();
             Log.i(TAG, "location latitude: " + location.getLatitude() + ", location longitude: " + location.getLongitude());
             try {
-                ArrayList<POI> poiArrayList = poiProvider.getPOICloseTo(location, query, 25, 0.025);
+                ArrayList<POI> poiArrayList = poiProvider.getPOICloseTo(location, query, 25, 5000);
                 pois.postValue(poiArrayList);
                 Log.i(TAG, "search: " + poiArrayList.toString());
             } catch (Exception e) {

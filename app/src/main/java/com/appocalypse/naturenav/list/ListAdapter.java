@@ -11,8 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appocalypse.naturenav.R;
+import com.appocalypse.naturenav.api.POI;
 
-import org.osmdroid.bonuspack.location.POI;
 
 import java.util.ArrayList;
 
@@ -41,8 +41,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         POI item = getItem(position);
-        holder.title.setText(item.mType);
-        holder.subtitle.setText(item.mDescription);
+        holder.title.setText(item.tags.get("amenity"));
+        holder.subtitle.setText(item.tags.get("description"));
         holder.imageView.setImageBitmap(item.mThumbnail);
     }
 

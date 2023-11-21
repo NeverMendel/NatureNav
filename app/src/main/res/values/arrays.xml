@@ -1,0 +1,35 @@
+<resources>
+    <string-array name="language_entries">
+        <item>Use system language</item>
+        <item>English</item>
+        <item>Italian</item>
+    </string-array>
+
+    <string-array name="language_values">
+        <item>system</item>
+        <item>en</item>
+        <item>it</item>
+    </string-array>
+
+    <string-array name="unit_system_entries">
+        <item>Metric</item>
+        <item>Imperial</item>
+    </string-array>
+
+    <string-array name="unit_system_values">
+        <item>metric</item>
+        <item>imperial</item>
+    </string-array>
+
+    <string-array name="app_theme_entries">
+        <item>Follow system settings</item>
+        <item>Light</item>
+        <item>Dark</item>
+    </string-array>
+
+    <string-array name="app_theme_values">
+        <item>auto</item>
+        <item>light</item>
+        <item>dark</item>
+    </string-array>
+</resources>

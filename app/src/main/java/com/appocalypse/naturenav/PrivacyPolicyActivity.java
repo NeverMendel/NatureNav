@@ -4,20 +4,17 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 import java.util.Objects;
 
-public class AboutUsActivity extends AppCompatActivity {
+public class PrivacyPolicyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about_us);
+        setContentView(R.layout.activity_privacy_policy);
 
         ActionBar actionBar = Objects.requireNonNull(getSupportActionBar());
-        actionBar.setTitle(getString(R.string.about_us));
-
+        actionBar.setTitle(getString(R.string.privacy_policy));
     }
 }

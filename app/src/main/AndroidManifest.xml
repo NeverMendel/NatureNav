@@ -19,7 +19,8 @@
         tools:targetApi="tiramisu">
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.NatureNav">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +30,16 @@
         <activity
             android:name=".ProfileActivity"
             android:exported="false"
-            android:label="Profile page"
+            android:label="Profile"
+            android:theme="@style/Theme.NatureNav.Activity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_settings"
             android:theme="@style/Theme.NatureNav.Activity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -38,7 +48,16 @@
         <activity
             android:name=".AboutUsActivity"
             android:exported="false"
-            android:label="About Us page"
+            android:label="About Us"
+            android:theme="@style/Theme.NatureNav.Activity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".PrivacyPolicyActivity"
+            android:exported="false"
+            android:label="Privacy Policy"
             android:theme="@style/Theme.NatureNav.Activity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

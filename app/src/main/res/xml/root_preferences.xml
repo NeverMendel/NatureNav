@@ -1,0 +1,36 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/general_header">
+
+<!--        <ListPreference-->
+<!--            app:defaultValue="en"-->
+<!--            app:dialogTitle="Select Language"-->
+<!--            app:entries="@array/language_entries"-->
+<!--            app:entryValues="@array/language_values"-->
+<!--            app:key="language_key"-->
+<!--            app:summary="@string/choose_your_preferred_language"-->
+<!--            app:title="Select Language" />-->
+
+        <ListPreference
+            app:defaultValue="metric"
+            app:entries="@array/unit_system_entries"
+            app:entryValues="@array/unit_system_values"
+            app:key="unit_system_key"
+            app:summary="Select the preferred unit system"
+            app:title="Unit System"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="auto"
+            app:dialogTitle="@string/select_application_theme"
+            app:entries="@array/app_theme_entries"
+            app:entryValues="@array/app_theme_values"
+            app:summary="@string/choose_application_theme"
+            app:key="app_theme"
+            app:title="@string/app_theme"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

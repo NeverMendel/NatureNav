@@ -30,4 +30,6 @@
     <string name="app_theme">Tema App</string>
     <string name="choose_application_theme">Scegli il tema dell\'applicazione</string>
     <string name="select_application_theme">Seleziona il tema dell\'applicazione</string>
+    <string name="drinking_water_amenity">Fontanella</string>
+    <string name="restaurant_amenity">Ristorante</string>
 </resources>

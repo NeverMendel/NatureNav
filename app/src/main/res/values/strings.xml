@@ -43,4 +43,6 @@ Vestibulum dapibus blandit magna id elementum. Integer dapibus eu felis ac cursu
     <string name="app_theme">App Theme</string>
     <string name="choose_application_theme">Choose application theme</string>
     <string name="select_application_theme">Select application theme</string>
+    <string name="drinking_water_amenity">Drinking fountain</string>
+    <string name="restaurant_amenity">Restaurant</string>
 </resources>

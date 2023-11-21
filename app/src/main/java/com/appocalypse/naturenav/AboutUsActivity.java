@@ -4,6 +4,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.Objects;
 
@@ -21,5 +23,6 @@ public class AboutUsActivity extends AppCompatActivity {
 //      actionBar.setCustomView(R.layout.custom_action_bar);
 
         actionBar.setTitle(getString(R.string.about_us));
+
     }
 }

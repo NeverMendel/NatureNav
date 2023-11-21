@@ -4,6 +4,9 @@
     <string name="profile_image">Immagine profilo</string>
     <string name="profile">Profilo</string>
     <string name="about_us">Chi siamo</string>
+    <string name="about_us_1" >Siamo un gruppo affiatato di studenti dell\'Università Ca\' Foscari al terzo anno della facoltà di Informatica.</string>
+    <string name="about_us_2" >Abbiamo una passione condivisa per la tecnologia e un obiettivo comune: sviluppare un\'applicazione innovativa e utile per i nostri clienti.</string>
+    <string name="about_us_3" >Il nostro progetto è frutto di mesi di duro lavoro, ricerche approfondite e sforzi congiunti per portare a termine il corso di Ingegneria del Software.</string>
     <string name="settings">Impostazioni</string>
     <string name="help">Aiuto</string>
     <string name="open_source_licenses">Licenze Open Source</string>
@@ -21,5 +24,4 @@
     <string name="slide5_description">Per sbloccare il pieno potenziale di NatureNav, concedici l\'accesso alla tua posizione. Scopri facilmente i luoghi nelle vicinanze.</string>
     <string name="slide6_title">Preparati!</string>
     <string name="slide6_description">Sei pronto a iniziare la tua avventura con NatureNav? Scopri, esplora, valuta e connettiti con gli appassionati della natura oggi stesso!</string>
-    <string name="sign_in_to_unlock_extra_functionalities">Fai il login per sbloccare funzionalità extra</string>
-</resources>
+    </resources>

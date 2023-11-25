@@ -20,15 +20,15 @@ android {
 
     signingConfigs {
         getByName("debug") {
-            keyAlias = "debug"
-            keyPassword = "kfh2958@atyhAVP"
-            storeFile = file("../keystore/debug.jks")
-            storePassword = "kfh2958@atyhAVP"
+            keyAlias = "keystore"
+            keyPassword = "sjd32MLY#!ALP?;56Rf"
+            storeFile = file("../keystore/keystore.jks")
+            storePassword = "sjd32MLY#!ALP?;56Rf"
         }
         create("release") {
-            keyAlias = "release"
+            keyAlias = "keystore"
             keyPassword = "sjd32MLY#!ALP?;56Rf"
-            storeFile = file("../keystore/release.jks")
+            storeFile = file("../keystore/keystore.jks")
             storePassword = "sjd32MLY#!ALP?;56Rf"
         }
     }

@@ -37,10 +37,10 @@ public class OverpassTurboPOIProvider {
             connection.setRequestMethod("POST");
             connection.setDoOutput(true);
 
-            // Invia la query al server
+            // send the query to the server
             connection.getOutputStream().write(("data=" + query).getBytes());
 
-            // Legge la risposta
+            // read the result from the server
             Scanner scanner = new Scanner(connection.getInputStream());
             StringBuilder response = new StringBuilder();
             while (scanner.hasNextLine()) {

@@ -20,9 +20,8 @@ public class POI {
     public GeoPoint location;
     public Map<String, String> tags;
 
-    // Aggiungi un costruttore che accetta latitudine e longitudine
+    // TODO: change this class as we need
 
-    //fai diversi costruttori a matriosca
     public POI(long id, double lat, double lon) {
         this.id = id;
         this.location = new GeoPoint(lat, lon);

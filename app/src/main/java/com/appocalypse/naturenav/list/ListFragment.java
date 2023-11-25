@@ -40,6 +40,7 @@ public class ListFragment extends Fragment {
         listViewModel.getData().observe(getViewLifecycleOwner(), data -> {
             if(data != null){
                 adapter.setItems(data);
+                adapter.setCurrentLocation(listViewModel.getLocation());
                 Log.i(TAG, "onCreateView: " + data.toString());
             }
         });

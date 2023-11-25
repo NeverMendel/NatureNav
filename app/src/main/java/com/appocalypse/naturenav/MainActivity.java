@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         Configuration.getInstance().setUserAgentValue(getString(R.string.app_name));
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-        String theme = sharedPreferences.getString("app_theme","light");
+        String theme = sharedPreferences.getString("app_theme","auto");
         Theme.setTheme(theme);
 
         super.onCreate(savedInstanceState);

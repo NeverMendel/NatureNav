@@ -15,8 +15,6 @@ import java.util.Map;
 
 public class POI {
     public long id;
-    public double lat; // Modificato il tipo da long a double per corrispondere ai dati JSON
-    public double lon; // Modificato il tipo da long a double per corrispondere ai dati JSON
     public String type = "Null";
     public Bitmap mThumbnail;
     public GeoPoint location;
@@ -27,8 +25,6 @@ public class POI {
     //fai diversi costruttori a matriosca
     public POI(long id, double lat, double lon) {
         this.id = id;
-        this.lat = lat;
-        this.lon = lon;
         this.location = new GeoPoint(lat, lon);
     }
     public POI(long id, double lat, double lon, String type){
@@ -43,7 +39,7 @@ public class POI {
         Geocoder geocoder = new Geocoder(context, Locale.getDefault());
 
         try {
-            List<Address> addresses = geocoder.getFromLocation(lat, lon, 1);
+            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
 
             if (addresses != null && addresses.size() > 0) {
                 Address address = addresses.get(0);
@@ -70,8 +66,8 @@ public class POI {
     public String toString() {
         return "POI{" +
                 "id=" + id +
-                ", lat=" + lat +
-                ", lon=" + lon +
+                ", lat=" + location.getLatitude() +
+                ", lon=" + location.getLongitude() +
                 ", type='" + type + '\'' +
                 ", description='" + tags.get("description") + '\'' +
                 ", mThumbnail=" + mThumbnail +

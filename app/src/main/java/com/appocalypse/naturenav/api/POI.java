@@ -27,14 +27,16 @@ public class POI {
         this.id = id;
         this.location = new GeoPoint(lat, lon);
     }
-    public POI(long id, double lat, double lon, String type){
-        this(id,lat,lon);
+
+    public POI(long id, double lat, double lon, String type) {
+        this(id, lat, lon);
         this.type = type;
     }
 
     public void setTags(Map<String, String> tags) {
         this.tags = tags;
     }
+
     public String getAddress(Context context) {
         Geocoder geocoder = new Geocoder(context, Locale.getDefault());
 
@@ -62,17 +64,9 @@ public class POI {
 
         return "Indirizzo non disponibile";
     }
+
     @Override
     public String toString() {
-        return "POI{" +
-                "id=" + id +
-                ", lat=" + location.getLatitude() +
-                ", lon=" + location.getLongitude() +
-                ", type='" + type + '\'' +
-                ", description='" + tags.get("description") + '\'' +
-                ", mThumbnail=" + mThumbnail +
-                ", location=" + location +
-                ", tags=" + tags +
-                '}';
+        return "POI{" + "id=" + id + ", lat=" + location.getLatitude() + ", lon=" + location.getLongitude() + ", type='" + type + '\'' + ", description='" + tags.get("description") + '\'' + ", mThumbnail=" + mThumbnail + ", location=" + location + ", tags=" + tags + '}';
     }
 }

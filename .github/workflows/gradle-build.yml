@@ -27,3 +27,11 @@ jobs:
 
     - name: Build with Gradle
       run: ./gradlew build
+
+    - name: Export generated APKs as artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: NatureNav-apk
+        path: | 
+          app/build/outputs/apk/debug/*.apk
+          app/build/outputs/apk/release/*.apk

@@ -15,8 +15,7 @@ import java.util.Map;
 
 public class POI {
     public long id;
-    public String type = "Null";
-    public Bitmap mThumbnail;
+    public String type = "N/A";
     public GeoPoint location;
     public Map<String, String> tags;
 
@@ -77,7 +76,6 @@ public class POI {
                 ", lon=" + (location != null ? location.getLongitude() : "N/A") +
                 ", type='" + type + '\'' +
                 ", description='" + tags.get("description") + '\'' +
-                ", mThumbnail=" + mThumbnail +
                 ", location=" + location +
                 ", tags=" + tags +
                 '}';

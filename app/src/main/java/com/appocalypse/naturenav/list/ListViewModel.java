@@ -63,4 +63,8 @@ public class ListViewModel extends ViewModel implements IMyLocationConsumer {
     public void onLocationChanged(Location location, IMyLocationProvider source) {
         this.location = new GeoPoint(location.getLatitude(), location.getLongitude());
     }
+
+    public GeoPoint getLocation() {
+        return location;
+    }
 }

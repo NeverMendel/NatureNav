@@ -32,4 +32,10 @@
     <string name="select_application_theme">Seleziona il tema dell\'applicazione</string>
     <string name="drinking_water_amenity">Fontanella</string>
     <string name="restaurant_amenity">Ristorante</string>
+    <string name="cycleway_amenity">Pista ciclabile</string>
+    <string name="bicycle_parking_amenity">Parchieggio Bici</string>
+    <string name="hospital_amenity">Ospedale</string>
+    <string name="car_wash_amenity">Lavaggio auto</string>
+    <string name="bicycle_repair_station_amenity">Stazione di riparazione bici</string>
+    <string name="bar_amenity">Bar</string>
 </resources>

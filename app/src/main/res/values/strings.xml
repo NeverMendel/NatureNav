@@ -43,6 +43,13 @@ Vestibulum dapibus blandit magna id elementum. Integer dapibus eu felis ac cursu
     <string name="app_theme">App Theme</string>
     <string name="choose_application_theme">Choose application theme</string>
     <string name="select_application_theme">Select application theme</string>
+
     <string name="drinking_water_amenity">Drinking fountain</string>
     <string name="restaurant_amenity">Restaurant</string>
+    <string name="cycleway_amenity">Cycleway</string>
+    <string name="bicycle_parking_amenity">Bicycle Parking</string>
+    <string name="hospital_amenity">Hospital</string>
+    <string name="car_wash_amenity">Car Wash</string>
+    <string name="bicycle_repair_station_amenity">Bycicle Repair Station</string>
+    <string name="bar_amenity">Bar</string>
 </resources>

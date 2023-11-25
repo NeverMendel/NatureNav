@@ -37,35 +37,51 @@ public class POI {
     }
 
     public String getAddress(Context context) {
-        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+        if (location != null) {
+            Geocoder geocoder = new Geocoder(context, Locale.getDefault());
 
-        try {
-            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+            try {
+                List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
 
-            if (addresses != null && addresses.size() > 0) {
-                Address address = addresses.get(0);
+                if (addresses != null && addresses.size() > 0) {
+                    Address address = addresses.get(0);
 
-                // Costruisci l'indirizzo utilizzando gli elementi disponibili (nome della via, città, paese, ecc.)
-                StringBuilder addressBuilder = new StringBuilder();
+                    // Construct the address string
+                    StringBuilder addressBuilder = new StringBuilder();
 
-                for (int i = 0; i <= address.getMaxAddressLineIndex(); i++) {
-                    addressBuilder.append(address.getAddressLine(i));
-                    if (i < address.getMaxAddressLineIndex()) {
-                        addressBuilder.append(", ");
+                    for (int i = 0; i <= address.getMaxAddressLineIndex(); i++) {
+                        addressBuilder.append(address.getAddressLine(i));
+                        if (i < address.getMaxAddressLineIndex()) {
+                            addressBuilder.append(", ");
+                        }
                     }
+
+                    return addressBuilder.toString();
                 }
-
-                return addressBuilder.toString();
+            } catch (IOException e) {
+                Log.e("POI", "Errore durante la reverse geocoding", e);
             }
-        } catch (IOException e) {
-            Log.e("POI", "Errore durante la reverse geocoding", e);
-        }
 
-        return "Indirizzo non disponibile";
+            return "Indirizzo non disponibile";
+        } else {
+            return "Posizione non disponibile";
+        }
     }
+
 
     @Override
     public String toString() {
-        return "POI{" + "id=" + id + ", lat=" + location.getLatitude() + ", lon=" + location.getLongitude() + ", type='" + type + '\'' + ", description='" + tags.get("description") + '\'' + ", mThumbnail=" + mThumbnail + ", location=" + location + ", tags=" + tags + '}';
+        return "POI{" +
+                "id=" + id +
+                ", lat=" + (location != null ? location.getLatitude() : "N/A") +
+                ", lon=" + (location != null ? location.getLongitude() : "N/A") +
+                ", type='" + type + '\'' +
+                ", description='" + tags.get("description") + '\'' +
+                ", mThumbnail=" + mThumbnail +
+                ", location=" + location +
+                ", tags=" + tags +
+                '}';
     }
+
+
 }

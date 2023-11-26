@@ -42,4 +42,6 @@
     <string name="edit_profile">Edit profile</string>
     <string name="export_profile_data">Export profile data</string>
     <string name="delete_profile">Delete profile</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
 </resources>

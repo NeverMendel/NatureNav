@@ -37,4 +37,6 @@
     <string name="edit_profile">Modifica profilo</string>
     <string name="export_profile_data">Esporta dati profilo</string>
     <string name="delete_profile">Cancella profilo</string>
+    <string name="confirm">Conferma</string>
+    <string name="cancel">Cancella</string>
 </resources>

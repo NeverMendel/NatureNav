@@ -2,18 +2,24 @@ package com.appocalypse.naturenav.auth;
 
 import androidx.annotation.NonNull;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class User {
-    public final String uid;
-    public final String name;
-    public final String email;
+    public String uid;
+    public String name;
+    public String username;
+    public Date memberSince;
 
-    public User(String uid, String name, String email) {
+    public User() {
+    }
+
+    public User(String uid, String name, String username, Date memberSince) {
         this.uid = uid;
         this.name = name;
-        this.email = email;
+        this.username = username;
+        this.memberSince = memberSince;
     }
 
     @NonNull
@@ -22,15 +28,17 @@ public class User {
         return "User{" +
                 "uid='" + uid + '\'' +
                 ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", memberSince=" + memberSince +
                 '}';
     }
 
-    public Map<String, Object> toMap(){
+    public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("uid", uid);
         result.put("name", name);
-        result.put("email", email);
+        result.put("username", username);
+        result.put("memberSince", memberSince);
 
         return result;
     }

@@ -82,4 +82,6 @@ dependencies {
 
     implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
     implementation("com.firebaseui:firebase-ui-auth:7.2.0")
+
+    implementation("io.noties.markwon:core:4.6.2");
 }

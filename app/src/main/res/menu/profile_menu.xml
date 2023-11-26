@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/modify_profile"
+        android:icon="@drawable/ic_mode_edit_outline_24"
+        android:title="@string/edit_profile"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/export_profile_data"
+        android:title="@string/export_profile_data" />
+    <item
+        android:id="@+id/delete_profile"
+        android:title="@string/delete_profile" />
+    <item
+        android:id="@+id/logout"
+        android:title="@string/logout" />
+</menu>

@@ -38,4 +38,8 @@
     <string name="restaurant_amenity">Restaurant</string>
     <string name="terms_and_conditions">Terms &amp; Conditions</string>
     <string name="log_in_disclaimer">By logging in you agree to NatureNav\'s Terms &amp; Conditions</string>
+    <string name="logout">Logout</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="export_profile_data">Export profile data</string>
+    <string name="delete_profile">Delete profile</string>
 </resources>

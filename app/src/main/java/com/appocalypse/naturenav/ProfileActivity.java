@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 
 import com.appocalypse.naturenav.auth.AuthViewModel;
 import com.appocalypse.naturenav.profile.ProfileFragment;

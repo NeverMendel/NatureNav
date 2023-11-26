@@ -2,7 +2,11 @@ package com.appocalypse.naturenav.profile;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -23,22 +27,23 @@ public class ProfileFragment extends Fragment {
 
     private FragmentProfileBinding binding;
 
-    TextView nameTextView, emailTextView;
-    Button signOutButton;
+    private AuthViewModel authViewModel;
+
+    private TextView nameTextView, emailTextView;
+    private Button signOutButton;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        AuthViewModel authViewModel = new ViewModelProvider(requireActivity()).get(AuthViewModel.class);
+        setHasOptionsMenu(true);
+
+        authViewModel = new ViewModelProvider(requireActivity()).get(AuthViewModel.class);
 
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         nameTextView = root.findViewById(R.id.profile_name_text_view);
         emailTextView = root.findViewById(R.id.profile_email_text_view);
-        signOutButton = root.findViewById(R.id.profile_sign_out_button);
-
-        signOutButton.setOnClickListener(l -> authViewModel.signOut());
 
         authViewModel.getUser().observe(getViewLifecycleOwner(), this::onUserChange);
 
@@ -55,5 +60,21 @@ public class ProfileFragment extends Fragment {
         } else {
             Log.i(TAG, "onUserChange: user is null");
         }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.profile_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.logout){
+            authViewModel.signOut();
+            return true;
+        }
+        return false;
     }
 }

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
     <string name="app_name" translatable="false">NatureNav</string>
     <string name="search_hint">Search...</string>
     <string name="profile_image">Profile image</string>

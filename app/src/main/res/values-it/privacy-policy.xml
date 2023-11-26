@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="it">
     <string name="privacy_policy_text">
 # Informativa sulla Privacy\n\n
 APPocalypse ha sviluppato l\'app NatureNav come un\'app gratuita. Questo SERVIZIO è fornito da APPocalypse gratuitamente ed è destinato all\'uso così com\'è.\n\n
@@ -25,7 +25,7 @@ Potremmo avvalerci di aziende e individui di terze parti per i seguenti motivi:\
 *   Per aiutarci nell\'analisi di come viene utilizzato il nostro Servizio.\n\n
 Vogliamo informare gli utenti di questo Servizio che queste terze parti hanno accesso alle loro Informazioni Personali. Il motivo è svolgere i compiti loro assegnati per nostro conto. Tuttavia, sono obbligate a non divulgare o utilizzare le informazioni per altri scopi.\n\n
 ## Sicurezza\n\n
-Apprezziamo la fiducia che riponi nel fornirci le tue Informazioni Personali, quindi stiamo cercando di utilizzare mezzi commercialmente accettabili per proteggerle. Ma ricorda che nessun metodo di trasmissione su Internet o di archiviazione elettronica è al 100% sicuro e affidabile e non possiamo garantirne la sicurezza assoluta.\n\n
+Apprezziamo la fiducia che riponi nel fornirci le tue Informazioni Personali, quindi stiamo cercando di utilizzare mezzi commercialmente accettabili per proteggerle. Ma ricorda che nessun metodo di trasmissione su Internet o di archiviazione elettronica è al 100%% sicuro e affidabile e non possiamo garantirne la sicurezza assoluta.\n\n
 ## Collegamenti ad Altri Siti\n\n
 Questo Servizio può contenere collegamenti ad altri siti. Se fai clic su un collegamento di terze parti, verrai indirizzato a quel sito. Nota che questi siti esterni non sono gestiti da noi. Pertanto, ti consigliamo vivamente di esaminare l\'Informativa sulla Privacy di questi siti web. Non abbiamo alcun controllo e non assumiamo responsabilità per i contenuti, le politiche sulla privacy o le pratiche di qualsiasi sito o servizio di terze parti.\n\n
 ## Privacy dei Minori\n\n

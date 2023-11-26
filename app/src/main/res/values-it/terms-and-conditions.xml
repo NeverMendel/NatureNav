@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="it">
     <string name="terms_and_conditions_text">
 # Termini e Condizioni\n\n
 Scaricando o utilizzando l\'app, questi termini si applicheranno automaticamente a te; assicurati quindi di leggerli attentamente prima di utilizzare l\'app. Non ti è consentito copiare o modificare l\'app, alcuna parte dell\'app o i nostri marchi in alcun modo. Non è consentito tentare di estrarre il codice sorgente dell\'app, e non dovresti neanche cercare di tradurre l\'app in altre lingue o crearne versioni derivate. L\'app stessa e tutti i marchi, i diritti d\'autore, i diritti del database e gli altri diritti di proprietà intellettuale ad esso correlati appartengono ancora a APPocalypse.\n\n

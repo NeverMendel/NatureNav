@@ -64,6 +64,15 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
+            android:name=".TermsAndConditionsActivity"
+            android:exported="false"
+            android:label="Terms and Conditions"
+            android:theme="@style/Theme.NatureNav.Activity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
             android:name=".AppIntroduction"
             android:label="App Introduction" />
         <activity

@@ -31,4 +31,5 @@
     <string name="select_application_theme">Seleziona il tema dell\'applicazione</string>
     <string name="drinking_water_amenity">Fontanella</string>
     <string name="restaurant_amenity">Ristorante</string>
+    <string name="terms_and_conditions">Termini e Condizioni</string>
 </resources>

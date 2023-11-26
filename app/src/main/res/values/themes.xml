@@ -6,6 +6,7 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/black</item>
         <item name="android:fontFamily">@font/roboto</item>
+        <item name="subtitleColor">#7d7d7d</item>
     </style>
 
     <style name="Theme.NatureNav" parent="Base.Theme.NatureNav" />

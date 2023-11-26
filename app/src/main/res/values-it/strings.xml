@@ -32,4 +32,5 @@
     <string name="drinking_water_amenity">Fontanella</string>
     <string name="restaurant_amenity">Ristorante</string>
     <string name="terms_and_conditions">Termini e Condizioni</string>
+    <string name="log_in_disclaimer">Effettuando il login accetti i termini e condizioni di NatureNav</string>
 </resources>

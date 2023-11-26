@@ -37,4 +37,5 @@
     <string name="drinking_water_amenity">Drinking fountain</string>
     <string name="restaurant_amenity">Restaurant</string>
     <string name="terms_and_conditions">Terms &amp; Conditions</string>
+    <string name="log_in_disclaimer">By logging in you agree to NatureNav\'s Terms &amp; Conditions</string>
 </resources>

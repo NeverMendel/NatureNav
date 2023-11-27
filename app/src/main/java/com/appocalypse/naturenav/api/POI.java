@@ -1,10 +1,11 @@
 package com.appocalypse.naturenav.api;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.location.Address;
 import android.location.Geocoder;
 import android.util.Log;
+
+import com.appocalypse.naturenav.R;
 
 import org.osmdroid.util.GeoPoint;
 
@@ -20,7 +21,6 @@ public class POI {
     public Map<String, String> tags;
 
     // TODO: change this class as we need
-
     public POI(long id, double lat, double lon) {
         this.id = id;
         this.location = new GeoPoint(lat, lon);
@@ -29,10 +29,6 @@ public class POI {
     public POI(long id, double lat, double lon, String type) {
         this(id, lat, lon);
         this.type = type;
-    }
-
-    public void setTags(Map<String, String> tags) {
-        this.tags = tags;
     }
 
     public String getAddress(Context context) {
@@ -58,12 +54,12 @@ public class POI {
                     return addressBuilder.toString();
                 }
             } catch (IOException e) {
-                Log.e("POI", "Errore durante la reverse geocoding", e);
+                Log.e("POI", "Geocoding error: ", e);
             }
 
-            return "Indirizzo non disponibile";
+            return context.getString(R.string.address_not_available);
         } else {
-            return "Posizione non disponibile";
+            return context.getString(R.string.position_not_available);
         }
     }
 

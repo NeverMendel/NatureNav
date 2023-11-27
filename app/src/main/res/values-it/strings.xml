@@ -38,4 +38,6 @@
     <string name="car_wash_amenity">Lavaggio auto</string>
     <string name="bicycle_repair_station_amenity">Stazione di riparazione bici</string>
     <string name="bar_amenity">Bar</string>
+    <string name="position_not_available">Posizione non disponibile</string>
+    <string name="address_not_available">Indirizzo non disponibile</string>
 </resources>

@@ -52,4 +52,8 @@ Vestibulum dapibus blandit magna id elementum. Integer dapibus eu felis ac cursu
     <string name="car_wash_amenity">Car Wash</string>
     <string name="bicycle_repair_station_amenity">Bycicle Repair Station</string>
     <string name="bar_amenity">Bar</string>
+    <string name="position_not_available">Position not available</string>
+    <string name="address_not_available">Address not available</string>
+
+    <string name="distance_km_format" translatable="false">%.2f km</string>
 </resources>

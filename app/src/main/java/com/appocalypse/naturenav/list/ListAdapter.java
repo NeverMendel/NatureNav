@@ -1,11 +1,10 @@
 package com.appocalypse.naturenav.list;
 
-import android.location.Location;
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -31,6 +30,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         this.items = items;
         notifyDataSetChanged();
     }
+
     public void setCurrentLocation(GeoPoint location) {
         this.location = location;
         notifyDataSetChanged();
@@ -52,48 +52,32 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         POI item = getItem(position);
-        holder.title.setText(POITypes.amenityToStringId.get(item.tags.get("amenity")));
+        Context context = holder.itemView.getContext();
+
+        String amenity = item.tags.get("amenity");
+        int amenityStringId = POITypes.amenityToStringId.getOrDefault(amenity, -1);
+
+        holder.title.setText(amenityStringId != -1 ? context.getString(amenityStringId) : amenity);
 
         Executor executor = Executors.newSingleThreadExecutor();
         executor.execute(() -> {
-            final String address = item.getAddress(holder.itemView.getContext());
+            final String address = item.getAddress(context);
 
             // Ensure to update UI on the main thread
             holder.itemView.post(() -> {
-                holder.subtitle.setText(address != null ? address : "Indirizzo non disponibile");
+                holder.subtitle.setText(address != null ? address : context.getString(R.string.address_not_available));
             });
         });
 
         if (location != null && item.location != null) {
-            double currentLatitude = location.getLatitude();
-            double currentLongitude = location.getLongitude();
-            float distance = new DistanceCalculator().distance(currentLatitude, currentLongitude, item.location.getLatitude(), item.location.getLongitude());
-            holder.distance.setText(String.format("%.2f", distance) + " km");
+            double distanceKm = location.distanceToAsDouble(item.location) / 1000;
+            holder.distance.setText(String.format(context.getString(R.string.distance_km_format), distanceKm));
         } else {
-            holder.distance.setText("Distanza non disponibile");
+            holder.distance.setText("N/A");
         }
 
 
     }
-    public class DistanceCalculator {
-
-        // Perform the calculation of the distance between two points
-        public float distance(double lat1, double lon1, double lat2, double lon2) {
-            Location location1 = new Location("Point A");
-            location1.setLatitude(lat1);
-            location1.setLongitude(lon1);
-
-            Location location2 = new Location("Point B");
-            location2.setLatitude(lat2);
-            location2.setLongitude(lon2);
-
-            // Calculate the distance in meters between the two points
-            float distance = location1.distanceTo(location2);
-
-            return distance / 1000; // Conversion from meters to kilometers
-        }
-    }
-
 
     @Override
     public int getItemCount() {
@@ -102,8 +86,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView title, subtitle, distance;
-
-
 
         public ViewHolder(View v) {
             super(v);
@@ -116,7 +98,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             title = v.findViewById(R.id.list_item_title);
             subtitle = v.findViewById(R.id.list_item_subtitle);
             distance = v.findViewById(R.id.list_item_distance);
-
         }
     }
 }

@@ -1,6 +1,9 @@
 package com.appocalypse.naturenav.api;
 
 
+import android.location.Address;
+
+import com.appocalypse.naturenav.utility.AddressFinder;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -66,6 +69,7 @@ public class OverpassTurboPOIProvider {
             for (JsonElement element : elements) {
                 JsonObject poiObject = element.getAsJsonObject();
                 POI poi = gson.fromJson(poiObject, POI.class);
+                poi.address = AddressFinder.getAddress(poi.lat, poi.lon);
                 poiList.add(poi);
             }
         }

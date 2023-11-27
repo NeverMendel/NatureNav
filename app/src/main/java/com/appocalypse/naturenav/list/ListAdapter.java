@@ -58,16 +58,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         int amenityStringId = POITypes.amenityToStringId.getOrDefault(amenity, -1);
 
         holder.title.setText(amenityStringId != -1 ? context.getString(amenityStringId) : amenity);
-
-        Executor executor = Executors.newSingleThreadExecutor();
-        executor.execute(() -> {
-            final String address = item.getAddress(context);
-
-            // Ensure to update UI on the main thread
-            holder.itemView.post(() -> {
-                holder.subtitle.setText(address != null ? address : context.getString(R.string.address_not_available));
-            });
-        });
+        holder.subtitle.setText(item.address != null ? item.address : context.getString(R.string.address_not_available));
 
         if (location != null) {
             double distanceKm = location.distanceToAsDouble(item.getGeopoint()) / 1000;
@@ -75,7 +66,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         } else {
             holder.distance.setText("N/A");
         }
-
 
     }
 

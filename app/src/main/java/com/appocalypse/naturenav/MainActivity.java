@@ -23,6 +23,7 @@ import com.appocalypse.naturenav.list.ListFragment;
 import com.appocalypse.naturenav.list.ListViewModel;
 import com.appocalypse.naturenav.map.MapFragment;
 import com.appocalypse.naturenav.map.MapViewModel;
+import com.appocalypse.naturenav.utility.GeocoderSingleton;
 import com.appocalypse.naturenav.utility.Theme;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
         String theme = sharedPreferences.getString("app_theme","auto");
         Theme.setTheme(theme);
+        GeocoderSingleton.getInstance(getApplicationContext());
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

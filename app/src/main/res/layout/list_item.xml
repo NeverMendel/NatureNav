@@ -10,6 +10,8 @@
         android:id="@+id/list_item_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="12dp"
         android:maxLines="1"
         android:text="Title"
         app:layout_constraintEnd_toStartOf="@+id/list_item_distance"
@@ -17,38 +19,34 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/list_item_subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="12dp"
+        android:maxLines="1"
+        android:text="Subtitle"
+        android:textColor="?subtitleColor"
+        app:layout_constraintEnd_toStartOf="@+id/list_item_distance"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_item_title" />
+
+    <TextView
         android:id="@+id/list_item_distance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxLines="1"
         android:text="Distance"
+        android:textColor="?subtitleColor"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/list_item_separator"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="?colorOnBackground"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_item_title" />
-
-    <TextView
-        android:id="@+id/list_item_subtitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:text="Subtitle"
-        app:layout_constraintEnd_toStartOf="@+id/list_item_distance"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_item_separator" />
-
-    <View
+    <com.google.android.material.divider.MaterialDivider
         android:id="@+id/list_item_bottom_separator"
         android:layout_width="0dp"
-        android:layout_height="3dp"
-        android:background="?colorOnBackground"
+        android:layout_height="1dp"
+        android:layout_marginTop="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/list_item_subtitle" />

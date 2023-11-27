@@ -22,36 +22,7 @@ public class POI {
     public double lat;
     public double lon;
     public Map<String, String> tags;
-
-    // TODO: change this class as we need
-
-    public String getAddress(Context context) {
-        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
-
-        try {
-            List<Address> addresses = geocoder.getFromLocation(lat, lon, 1);
-
-            if (addresses != null && addresses.size() > 0) {
-                Address address = addresses.get(0);
-
-                // Construct the address string
-                StringBuilder addressBuilder = new StringBuilder();
-
-                for (int i = 0; i <= address.getMaxAddressLineIndex(); i++) {
-                    addressBuilder.append(address.getAddressLine(i));
-                    if (i < address.getMaxAddressLineIndex()) {
-                        addressBuilder.append(", ");
-                    }
-                }
-
-                return addressBuilder.toString();
-            }
-        } catch (IOException e) {
-            Log.e("POI", "Geocoding error: ", e);
-        }
-
-        return context.getString(R.string.address_not_available);
-    }
+    public String address;
 
     public GeoPoint getGeopoint() {
         return new GeoPoint(lat, lon);

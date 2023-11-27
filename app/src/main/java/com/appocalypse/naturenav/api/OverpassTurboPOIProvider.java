@@ -81,9 +81,7 @@ public class OverpassTurboPOIProvider {
         String customQuery = String.format("[amenity=%s]", facility);
         String query = buildOverpassQuery(position, maxResults, maxDistance, customQuery);
         String result = executeOverpassQuery(query);
-        ArrayList<POI> l = extractPOIsFromResult(result);
-
-        return l;
+        return extractPOIsFromResult(result);
     }
 
 

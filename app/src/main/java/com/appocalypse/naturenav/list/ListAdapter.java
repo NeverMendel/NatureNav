@@ -69,8 +69,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             });
         });
 
-        if (location != null && item.location != null) {
-            double distanceKm = location.distanceToAsDouble(item.location) / 1000;
+        if (location != null) {
+            double distanceKm = location.distanceToAsDouble(item.getGeopoint()) / 1000;
             holder.distance.setText(String.format(context.getString(R.string.distance_km_format), distanceKm));
         } else {
             holder.distance.setText("N/A");

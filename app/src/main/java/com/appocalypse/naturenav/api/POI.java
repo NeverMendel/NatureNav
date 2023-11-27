@@ -5,6 +5,8 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.appocalypse.naturenav.R;
 
 import org.osmdroid.util.GeoPoint;
@@ -17,65 +19,53 @@ import java.util.Map;
 public class POI {
     public long id;
     public String type = "N/A";
-    public GeoPoint location;
+    public double lat;
+    public double lon;
     public Map<String, String> tags;
 
     // TODO: change this class as we need
-    public POI(long id, double lat, double lon) {
-        this.id = id;
-        this.location = new GeoPoint(lat, lon);
-    }
-
-    public POI(long id, double lat, double lon, String type) {
-        this(id, lat, lon);
-        this.type = type;
-    }
 
     public String getAddress(Context context) {
-        if (location != null) {
-            Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
 
-            try {
-                List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+        try {
+            List<Address> addresses = geocoder.getFromLocation(lat, lon, 1);
 
-                if (addresses != null && addresses.size() > 0) {
-                    Address address = addresses.get(0);
+            if (addresses != null && addresses.size() > 0) {
+                Address address = addresses.get(0);
 
-                    // Construct the address string
-                    StringBuilder addressBuilder = new StringBuilder();
+                // Construct the address string
+                StringBuilder addressBuilder = new StringBuilder();
 
-                    for (int i = 0; i <= address.getMaxAddressLineIndex(); i++) {
-                        addressBuilder.append(address.getAddressLine(i));
-                        if (i < address.getMaxAddressLineIndex()) {
-                            addressBuilder.append(", ");
-                        }
+                for (int i = 0; i <= address.getMaxAddressLineIndex(); i++) {
+                    addressBuilder.append(address.getAddressLine(i));
+                    if (i < address.getMaxAddressLineIndex()) {
+                        addressBuilder.append(", ");
                     }
-
-                    return addressBuilder.toString();
                 }
-            } catch (IOException e) {
-                Log.e("POI", "Geocoding error: ", e);
-            }
 
-            return context.getString(R.string.address_not_available);
-        } else {
-            return context.getString(R.string.position_not_available);
+                return addressBuilder.toString();
+            }
+        } catch (IOException e) {
+            Log.e("POI", "Geocoding error: ", e);
         }
+
+        return context.getString(R.string.address_not_available);
     }
 
+    public GeoPoint getGeopoint() {
+        return new GeoPoint(lat, lon);
+    }
 
+    @NonNull
     @Override
     public String toString() {
         return "POI{" +
                 "id=" + id +
-                ", lat=" + (location != null ? location.getLatitude() : "N/A") +
-                ", lon=" + (location != null ? location.getLongitude() : "N/A") +
                 ", type='" + type + '\'' +
-                ", description='" + tags.get("description") + '\'' +
-                ", location=" + location +
+                ", lat=" + lat +
+                ", lon=" + lon +
                 ", tags=" + tags +
                 '}';
     }
-
-
 }

@@ -1,10 +1,10 @@
 package com.appocalypse.naturenav.list;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,16 +12,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.appocalypse.naturenav.R;
 import com.appocalypse.naturenav.api.POI;
+import com.appocalypse.naturenav.utility.POITypes;
 
+
+import org.osmdroid.util.GeoPoint;
 
 import java.util.ArrayList;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     private ArrayList<POI> items = new ArrayList<>();
+    private GeoPoint location;
 
     public void setItems(ArrayList<POI> items) {
         this.items = items;
+        notifyDataSetChanged();
+    }
+
+    public void setCurrentLocation(GeoPoint location) {
+        this.location = location;
         notifyDataSetChanged();
     }
 
@@ -41,9 +52,31 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         POI item = getItem(position);
-        holder.title.setText(item.tags.get("amenity"));
-        holder.subtitle.setText(item.tags.get("description"));
-        holder.imageView.setImageBitmap(item.mThumbnail);
+        Context context = holder.itemView.getContext();
+
+        String amenity = item.tags.get("amenity");
+        int amenityStringId = POITypes.amenityToStringId.getOrDefault(amenity, -1);
+
+        holder.title.setText(amenityStringId != -1 ? context.getString(amenityStringId) : amenity);
+
+        Executor executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
+            final String address = item.getAddress(context);
+
+            // Ensure to update UI on the main thread
+            holder.itemView.post(() -> {
+                holder.subtitle.setText(address != null ? address : context.getString(R.string.address_not_available));
+            });
+        });
+
+        if (location != null) {
+            double distanceKm = location.distanceToAsDouble(item.getGeopoint()) / 1000;
+            holder.distance.setText(String.format(context.getString(R.string.distance_km_format), distanceKm));
+        } else {
+            holder.distance.setText("N/A");
+        }
+
+
     }
 
     @Override
@@ -52,9 +85,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView title, subtitle;
-        private final ImageView imageView;
-
+        private final TextView title, subtitle, distance;
 
         public ViewHolder(View v) {
             super(v);
@@ -66,7 +97,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             });
             title = v.findViewById(R.id.list_item_title);
             subtitle = v.findViewById(R.id.list_item_subtitle);
-            imageView = v.findViewById(R.id.list_item_image);
+            distance = v.findViewById(R.id.list_item_distance);
         }
     }
 }

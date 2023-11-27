@@ -1,5 +1,7 @@
 package com.appocalypse.naturenav.auth;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -8,9 +10,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 public class AuthViewModel extends ViewModel {
+    public static final String TAG = "AuthViewModel";
 
     private GoogleSignInClient googleSignInClient;
-    private final MutableLiveData<User> userMutableLiveData = new MutableLiveData<>();
 
     public AuthViewModel() {
 
@@ -20,18 +22,15 @@ public class AuthViewModel extends ViewModel {
         this.googleSignInClient = googleSignInClient;
     }
 
-    public LiveData<User> getUser(){
-        return userMutableLiveData;
+    public void signIn(GoogleSignInAccount account) {
+        AuthenticationUser authenticationUser = new AuthenticationUser(account.getId(), account.getDisplayName());
+        Users.getInstance().setAuthenticationUser(authenticationUser);
+        Log.i(TAG, "signIn: logged user id " + account.getId());
     }
 
-    public void signIn(GoogleSignInAccount account){
-        User user = new User(account.getId(), account.getDisplayName(), account.getEmail());
-        userMutableLiveData.setValue(user);
-    }
-
-    public void signOut(){
-        if(googleSignInClient != null)
+    public void signOut() {
+        if (googleSignInClient != null)
             googleSignInClient.signOut();
-        userMutableLiveData.setValue(null);
+        Users.getInstance().setAuthenticationUser(null);
     }
 }

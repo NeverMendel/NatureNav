@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 
 import com.appocalypse.naturenav.auth.AuthViewModel;
+import com.appocalypse.naturenav.auth.Users;
 import com.appocalypse.naturenav.profile.ProfileFragment;
 import com.appocalypse.naturenav.signin.SignInFragment;
 
@@ -39,8 +41,7 @@ public class ProfileActivity extends AppCompatActivity {
                 .hide(profileFragment)
                 .commit();
 
-        authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
-        authViewModel.getUser().observe(this, user -> {
+        Users.getInstance().getAuthenticationUserLiveData().observe(this, user -> {
             Log.i(TAG, "ProfileActivity fragment change");
             if(user == null) {
                 getSupportFragmentManager().beginTransaction()

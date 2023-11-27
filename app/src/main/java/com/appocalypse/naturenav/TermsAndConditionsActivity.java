@@ -10,19 +10,19 @@ import java.util.Objects;
 
 import io.noties.markwon.Markwon;
 
-public class PrivacyPolicyActivity extends AppCompatActivity {
+public class TermsAndConditionsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_privacy_policy);
+        setContentView(R.layout.activity_terms_and_conditions);
 
         ActionBar actionBar = Objects.requireNonNull(getSupportActionBar());
-        actionBar.setTitle(getString(R.string.privacy_policy));
+        actionBar.setTitle(getString(R.string.terms_and_conditions));
 
-        TextView privacyPolicyTextView = findViewById(R.id.privacy_policy_text_view);
+        TextView termsAndConditionsTextView = findViewById(R.id.terms_and_conditions_text_view);
 
         Markwon markwon = Markwon.create(getApplicationContext());
-        markwon.setMarkdown(privacyPolicyTextView, getString(R.string.privacy_policy_text));
+        markwon.setMarkdown(termsAndConditionsTextView, getString(R.string.terms_and_conditions_text));
     }
 }

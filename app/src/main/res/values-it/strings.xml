@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="it">
     <string name="search_hint">Cerca...</string>
     <string name="profile_image">Immagine profilo</string>
     <string name="profile">Profilo</string>
@@ -24,7 +24,6 @@
     <string name="sign_in_to_unlock_extra_functionalities">Fai il login per sbloccare funzionalità extra</string>
     <string name="display_menu">Mostra menu</string>
     <string name="close_button">Pulsante di chiusura</string>
-    <string name="privacy_policy_text">Privacy Policy very long text</string>
     <string name="general_header">Generale</string>
     <string name="choose_your_preferred_language">Choose your preferred language</string>
     <string name="app_theme">Tema App</string>
@@ -40,4 +39,12 @@
     <string name="bar_amenity">Bar</string>
     <string name="position_not_available">Posizione non disponibile</string>
     <string name="address_not_available">Indirizzo non disponibile</string>
+    <string name="terms_and_conditions">Termini e Condizioni</string>
+    <string name="log_in_disclaimer">Effettuando il login accetti i termini e condizioni di NatureNav</string>
+    <string name="logout">Logout</string>
+    <string name="edit_profile">Modifica profilo</string>
+    <string name="export_profile_data">Esporta dati profilo</string>
+    <string name="delete_profile">Cancella profilo</string>
+    <string name="confirm">Conferma</string>
+    <string name="cancel">Cancella</string>
 </resources>

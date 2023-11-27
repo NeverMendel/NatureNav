@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="it">
+    <string name="privacy_policy_text">
+# Informativa sulla Privacy\n\n
+APPocalypse ha sviluppato l\'app NatureNav come un\'app gratuita. Questo SERVIZIO è fornito da APPocalypse gratuitamente ed è destinato all\'uso così com\'è.\n\n
+Questa pagina è utilizzata per informare i visitatori riguardo alle nostre politiche di raccolta, utilizzo e divulgazione delle Informazioni Personali nel caso in cui qualcuno decida di utilizzare il nostro Servizio.\n\n
+Se scegli di utilizzare il nostro Servizio, accetti la raccolta e l\'uso delle informazioni in relazione a questa politica. Le Informazioni Personali che raccogliamo sono utilizzate per fornire e migliorare il Servizio. Non utilizzeremo né condivideremo le tue informazioni con nessuno tranne che come descritto in questa Informativa sulla Privacy.\n\n
+I termini utilizzati in questa Informativa sulla Privacy hanno lo stesso significato di quelli delle nostre Condizioni d\'uso, accessibili su NatureNav a meno che non siano diversamente definiti in questa Informativa sulla Privacy.\n\n
+## Raccolta e Utilizzo delle Informazioni\n\n
+Per un\'esperienza migliore durante l\'utilizzo del nostro Servizio, potremmo richiederti di fornirci determinate informazioni personali identificabili, tra cui, a titolo esemplificativo, Nome utente, Data di iscrizione, Feedback sui Punti di Interesse. Le informazioni che richiediamo saranno conservate da noi e utilizzate come descritto in questa politica sulla privacy.\n\n
+L\'app utilizza servizi di terze parti che potrebbero raccogliere informazioni utilizzate per identificarti.\n\n
+Link all\'informativa sulla privacy dei fornitori di servizi di terze parti utilizzati dall\'app\n\n
+*   [Firebase](www.google.com/analytics/terms/it.html)\n\n
+*   [Google Play Services](https://www.google.com/policies/privacy/)\n\n
+## Dati di Registro\n\n
+Vogliamo informarti che ogni volta che utilizzi il nostro Servizio, in caso di errore nell\'app, raccogliamo dati e informazioni (tramite prodotti di terze parti) sul tuo telefono chiamati Dati di Registro. Questi Dati di Registro possono includere informazioni come l\'indirizzo Internet Protocol ("IP") del tuo dispositivo, il nome del dispositivo, la versione del sistema operativo, la configurazione dell\'app durante l\'utilizzo del nostro Servizio, l\'ora e la data del tuo utilizzo del Servizio e altre statistiche.\n\n
+## Cookie\n\n
+I cookie sono file con una piccola quantità di dati comunemente utilizzati come identificatori univoci anonimi. Questi vengono inviati al tuo browser dai siti web che visiti e vengono memorizzati nella memoria interna del tuo dispositivo.\n\n
+Questo Servizio non utilizza esplicitamente questi "cookie". Tuttavia, l\'app potrebbe utilizzare codici e librerie di terze parti che utilizzano "cookie" per raccogliere informazioni e migliorare i loro servizi. Hai la possibilità di accettare o rifiutare questi cookie e di sapere quando un cookie viene inviato al tuo dispositivo. Se scegli di rifiutare i nostri cookie, potresti non essere in grado di utilizzare alcune parti di questo Servizio.\n\n
+## Fornitori di Servizi\n\n
+Potremmo avvalerci di aziende e individui di terze parti per i seguenti motivi:\n\n
+*   Per facilitare il nostro Servizio;\n\n
+*   Per fornire il Servizio per nostro conto;\n\n
+*   Per svolgere servizi correlati al Servizio; o\n\n
+*   Per aiutarci nell\'analisi di come viene utilizzato il nostro Servizio.\n\n
+Vogliamo informare gli utenti di questo Servizio che queste terze parti hanno accesso alle loro Informazioni Personali. Il motivo è svolgere i compiti loro assegnati per nostro conto. Tuttavia, sono obbligate a non divulgare o utilizzare le informazioni per altri scopi.\n\n
+## Sicurezza\n\n
+Apprezziamo la fiducia che riponi nel fornirci le tue Informazioni Personali, quindi stiamo cercando di utilizzare mezzi commercialmente accettabili per proteggerle. Ma ricorda che nessun metodo di trasmissione su Internet o di archiviazione elettronica è al 100%% sicuro e affidabile e non possiamo garantirne la sicurezza assoluta.\n\n
+## Collegamenti ad Altri Siti\n\n
+Questo Servizio può contenere collegamenti ad altri siti. Se fai clic su un collegamento di terze parti, verrai indirizzato a quel sito. Nota che questi siti esterni non sono gestiti da noi. Pertanto, ti consigliamo vivamente di esaminare l\'Informativa sulla Privacy di questi siti web. Non abbiamo alcun controllo e non assumiamo responsabilità per i contenuti, le politiche sulla privacy o le pratiche di qualsiasi sito o servizio di terze parti.\n\n
+## Privacy dei Minori\n\n
+Questi Servizi non sono destinati a persone di età inferiore a 13 anni. Non raccogliamo consapevolmente informazioni personali identificabili da bambini di età inferiore a 13 anni. Nel caso in cui scopriamo che un bambino di età inferiore a 13 anni ci ha fornito informazioni personali, eliminiamo immediatamente tali informazioni dai nostri server. Se sei un genitore o un tutore e sei consapevole che tuo figlio ci ha fornito informazioni personali, ti preghiamo di contattarci in modo che potremo adottare le azioni necessarie.\n\n
+## Modifiche a Questa Informativa sulla Privacy\n\n
+Potremmo aggiornare la nostra Informativa sulla Privacy di volta in volta. Pertanto, ti consigliamo di rivedere periodicamente questa pagina per eventuali modifiche. Ti informeremo di eventuali modifiche pubblicando la nuova Informativa sulla Privacy su questa pagina.\n\n
+Questa politica è efficace dal 2023-11-26\n\n
+## Contattaci\n\n
+Se hai domande o suggerimenti sulla nostra Informativa sulla Privacy, non esitare a contattarci all\'indirizzo appocalypsedev@gmail.com.\n\n
+    </string>
+</resources>

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
     <string name="app_name" translatable="false">NatureNav</string>
     <string name="search_hint">Search...</string>
     <string name="profile_image">Profile image</string>
@@ -26,15 +26,6 @@
     <string name="sign_in_to_unlock_extra_functionalities">Sign-in to unlock extra functionalities</string>
     <string name="display_menu">Display menu</string>
     <string name="close_button">Close button</string>
-    <string name="privacy_policy_text">Privacy Policy very long text \nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin erat in mauris blandit, a mattis massa eleifend. Curabitur dapibus ante in auctor dapibus. Nam ullamcorper et felis nec luctus. Nullam scelerisque felis in finibus rhoncus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut vitae odio laoreet, maximus ex quis, iaculis massa. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nunc pellentesque facilisis enim, dapibus laoreet lorem pulvinar ut. Nam pharetra convallis nibh pharetra ullamcorper. In tempor orci at quam efficitur interdum sed id tortor. Vestibulum ligula tortor, posuere eu lectus at, bibendum consequat justo. Mauris venenatis metus aliquet nibh dignissim, ut dignissim dolor interdum. Nunc ac eros quis mauris fermentum pretium.
-
-Morbi aliquam ipsum ligula, eget rhoncus erat hendrerit aliquet. Vivamus tortor mauris, feugiat vitae ullamcorper at, imperdiet ut orci. Quisque a augue a diam maximus dapibus id nec enim. Praesent euismod neque at libero pellentesque, id lobortis diam facilisis. Ut id ornare enim. Nunc neque neque, pellentesque non tincidunt ac, cursus mollis velit. Integer egestas placerat orci, at gravida felis egestas in. Donec venenatis, est at maximus convallis, urna lorem suscipit dui, vitae ultricies tortor nulla in massa. Nam pellentesque congue mi eu malesuada. Sed suscipit egestas urna quis bibendum. Donec tempor libero ut ligula rutrum vestibulum.
-
-Vestibulum non mollis libero. Proin eu vulputate erat, fermentum tincidunt ante. Curabitur auctor scelerisque dignissim. Nulla a urna sem. Fusce eleifend euismod felis et tincidunt. Quisque consectetur rhoncus egestas. Sed nec justo fringilla, cursus ligula quis, mollis augue. Nunc eleifend eu ipsum non mollis. Sed sodales erat vitae lorem porttitor, a rhoncus diam vehicula. Pellentesque ornare felis quis interdum ornare. Aliquam erat volutpat. Etiam ultrices, libero at fermentum accumsan, magna felis ullamcorper mauris, vel fermentum nibh lacus non justo.
-
-Nulla facilisi. Proin venenatis, dolor sed vestibulum porttitor, odio enim molestie odio, vitae lobortis augue sapien a augue. Nulla id enim blandit ante facilisis lobortis eget id arcu. Morbi tempor libero scelerisque molestie pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc venenatis fermentum eros, in convallis tellus tincidunt eget. Vestibulum ac rutrum mauris. Ut eget sollicitudin est. Vestibulum placerat, orci ac bibendum tincidunt, purus orci dignissim mi, mattis efficitur dolor risus ac sem. Curabitur lobortis semper leo eleifend volutpat. Morbi quis libero justo.
-
-Vestibulum dapibus blandit magna id elementum. Integer dapibus eu felis ac cursus. Sed a hendrerit ipsum. Suspendisse mattis facilisis urna vitae euismod. Nulla facilisi. Suspendisse libero libero, dapibus sit amet augue vitae, sollicitudin aliquet nisl. Cras dictum accumsan justo vitae ornare. Fusce consectetur vehicula pretium. Suspendisse nec posuere ipsum, sed tincidunt ante. Nullam ut felis risus. Duis venenatis, purus eget tristique ornare, dolor nulla hendrerit lorem, quis semper tellus sapien quis risus. Ut luctus tortor luctus libero vulputate hendrerit.</string>
     <string name="title_activity_settings" translatable="false">SettingsActivity</string>
 
     <!-- Settings -->
@@ -46,6 +37,7 @@ Vestibulum dapibus blandit magna id elementum. Integer dapibus eu felis ac cursu
 
     <string name="drinking_water_amenity">Drinking fountain</string>
     <string name="restaurant_amenity">Restaurant</string>
+
     <string name="cycleway_amenity">Cycleway</string>
     <string name="bicycle_parking_amenity">Bicycle Parking</string>
     <string name="hospital_amenity">Hospital</string>
@@ -56,4 +48,14 @@ Vestibulum dapibus blandit magna id elementum. Integer dapibus eu felis ac cursu
     <string name="address_not_available">Address not available</string>
 
     <string name="distance_km_format" translatable="false">%.2f km</string>
+
+    <string name="terms_and_conditions">Terms &amp; Conditions</string>
+    <string name="log_in_disclaimer">By logging in you agree to NatureNav\'s Terms &amp; Conditions</string>
+    <string name="logout">Logout</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="export_profile_data">Export profile data</string>
+    <string name="delete_profile">Delete profile</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+
 </resources>

@@ -1,8 +1,12 @@
 package com.appocalypse.naturenav.utility;
 
+import android.content.Context;
+
 import com.appocalypse.naturenav.R;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class POITypes {
@@ -18,4 +22,17 @@ public class POITypes {
                     "bicycle_repair_station", R.string.bicycle_repair_station_amenity,
                     "bar", R.string.bar_amenity
             ));
+    public final static Integer[] amenityStringIds = {R.string.drinking_water_amenity, R.string.restaurant_amenity,
+            R.string.bicycle_parking_amenity, R.string.hospital_amenity, R.string.car_wash_amenity,
+            R.string.bicycle_repair_station_amenity, R.string.bar_amenity};
+
+    public static List<String> getAmenityStrings(Context context) {
+        Integer[] stringIds = new Integer[amenityToStringId.size()];
+        stringIds = amenityToStringId.values().toArray(stringIds);
+        ArrayList<String> amenities = new ArrayList<>(stringIds.length);
+        for (int i = 0; i < stringIds.length; i++) {
+            amenities.add(context.getString(stringIds[i]));
+        }
+        return amenities;
+    }
 }

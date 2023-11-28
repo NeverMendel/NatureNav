@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -23,15 +24,18 @@ import com.appocalypse.naturenav.list.ListFragment;
 import com.appocalypse.naturenav.list.ListViewModel;
 import com.appocalypse.naturenav.map.MapFragment;
 import com.appocalypse.naturenav.map.MapViewModel;
+import com.appocalypse.naturenav.suggestionlist.SuggestionListFragment;
+import com.appocalypse.naturenav.suggestionlist.SuggestionListViewModel;
 import com.appocalypse.naturenav.utility.GeocoderSingleton;
 import com.appocalypse.naturenav.utility.Theme;
 
 public class MainActivity extends AppCompatActivity {
+    private final static String TAG = "MainActivity";
 
     private MapFragment mapFragment;
-    private ListFragment listFragment;
+    private SuggestionListFragment suggestionListFragment;
     private MapViewModel mapViewModel;
-    private ListViewModel listViewModel;
+    private SuggestionListViewModel suggestionListViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,17 +52,17 @@ public class MainActivity extends AppCompatActivity {
         showAppIntroduction();
 
         mapFragment = new MapFragment();
-        listFragment = new ListFragment();
+        suggestionListFragment = new SuggestionListFragment();
         getSupportFragmentManager().beginTransaction()
                 .setReorderingAllowed(true)
                 .add(R.id.main_activity_fragment, mapFragment)
-                .add(R.id.main_activity_fragment, listFragment)
+                .add(R.id.main_activity_fragment, suggestionListFragment)
                 .show(mapFragment)
-                .hide(listFragment)
+                .hide(suggestionListFragment)
                 .commit();
 
         mapViewModel = new ViewModelProvider(this).get(MapViewModel.class);
-        listViewModel = new ViewModelProvider(this).get(ListViewModel.class);
+        suggestionListViewModel = new ViewModelProvider(this).get(SuggestionListViewModel.class);
 
         EditText searchEditText = findViewById(R.id.search_edit_text);
         ImageButton actionIcon = findViewById(R.id.action_icon);
@@ -80,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     // show map fragment
                     getSupportFragmentManager().beginTransaction()
                             .setReorderingAllowed(true)
-                            .hide(listFragment)
+                            .hide(suggestionListFragment)
                             .show(mapFragment)
                             .commit();
                     actionIcon.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_search_24));
@@ -90,12 +94,13 @@ public class MainActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction()
                             .setReorderingAllowed(true)
                             .hide(mapFragment)
-                            .show(listFragment)
+                            .show(suggestionListFragment)
                             .commit();
                     actionIcon.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_arrow_back_24));
                     actionIcon.setClickable(true);
-                    listViewModel.setContext(listFragment.requireContext());
-                    listViewModel.search(s.toString());
+//                    suggestionListViewModel.setContext(suggestionListFragment.requireContext());
+                    suggestionListViewModel.setSearchString(s.toString());
+                    Log.i(TAG, "afterTextChanged: searchString is " + s.toString());
                 }
             }
         });

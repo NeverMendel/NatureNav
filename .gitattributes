@@ -70,3 +70,4 @@ CODEOWNERS text
 *.woff binary
 *.pyc binary
 *.pdf binary
+*.webp binary

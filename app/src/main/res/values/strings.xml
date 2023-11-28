@@ -5,8 +5,8 @@
     <string name="profile">Profile</string>
     <string name="about_us">About Us</string>
 
-    <string name="about_us_1" >We are a group of third-year students at Ca\' Foscari University, studying in the Computer Science department.</string>
-    <string name="about_us_2" >We share a passion for technology and a common goal: to develop an innovative and useful application for our clients.</string>
+    <string name="about_us_1" >We are a group of third-year students at Ca\' Foscari University, studying Computer Science.</string>
+    <string name="about_us_2" >We share a passion for technology and a common goal: to develop an innovative and useful application for our users.</string>
     <string name="about_us_3" >Our project is the result of months of hard work, in-depth research, and collaborative efforts to complete the Software Engineering course.</string>
 
     <string name="settings">Settings</string>

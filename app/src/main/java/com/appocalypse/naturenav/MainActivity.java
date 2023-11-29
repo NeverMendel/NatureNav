@@ -20,10 +20,10 @@ import android.widget.ImageButton;
 
 import org.osmdroid.config.Configuration;
 
-import com.appocalypse.naturenav.list.ListFragment;
-import com.appocalypse.naturenav.list.ListViewModel;
 import com.appocalypse.naturenav.map.MapFragment;
 import com.appocalypse.naturenav.map.MapViewModel;
+import com.appocalypse.naturenav.poilist.PoiListFragment;
+import com.appocalypse.naturenav.poilist.PoiListViewModel;
 import com.appocalypse.naturenav.suggestionlist.SuggestionListFragment;
 import com.appocalypse.naturenav.suggestionlist.SuggestionListViewModel;
 import com.appocalypse.naturenav.utility.GeocoderSingleton;
@@ -36,13 +36,18 @@ public class MainActivity extends AppCompatActivity {
     private SuggestionListFragment suggestionListFragment;
     private MapViewModel mapViewModel;
     private SuggestionListViewModel suggestionListViewModel;
+    private PoiListFragment poiListFragment;
+    private PoiListViewModel poiListViewModel;
+
+    EditText searchEditText;
+    ImageButton actionIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Configuration.getInstance().setUserAgentValue(getString(R.string.app_name));
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-        String theme = sharedPreferences.getString("app_theme","auto");
+        String theme = sharedPreferences.getString("app_theme", "auto");
         Theme.setTheme(theme);
         GeocoderSingleton.getInstance(getApplicationContext());
 
@@ -61,11 +66,24 @@ public class MainActivity extends AppCompatActivity {
                 .hide(suggestionListFragment)
                 .commit();
 
+        poiListFragment = new PoiListFragment();
+
         mapViewModel = new ViewModelProvider(this).get(MapViewModel.class);
         suggestionListViewModel = new ViewModelProvider(this).get(SuggestionListViewModel.class);
+        poiListViewModel = new ViewModelProvider(this).get(PoiListViewModel.class);
 
-        EditText searchEditText = findViewById(R.id.search_edit_text);
-        ImageButton actionIcon = findViewById(R.id.action_icon);
+        poiListViewModel.setContext(this);
+
+        searchEditText = findViewById(R.id.search_edit_text);
+        actionIcon = findViewById(R.id.action_icon);
+
+        suggestionListViewModel.setOnSuggestionClick(suggestion -> {
+            hideKeyboard();
+            poiListViewModel.search(getApplicationContext(), suggestion);
+            poiListFragment.show(getSupportFragmentManager(), PoiListFragment.TAG);
+            searchEditText.setText(suggestion);
+            showMap();
+        });
 
         searchEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -81,53 +99,52 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.toString().trim().isEmpty()) {
-                    // show map fragment
-                    getSupportFragmentManager().beginTransaction()
-                            .setReorderingAllowed(true)
-                            .hide(suggestionListFragment)
-                            .show(mapFragment)
-                            .commit();
+                    showMap();
                     actionIcon.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_search_24));
                     actionIcon.setClickable(false);
                 } else {
-                    // show list fragment
-                    getSupportFragmentManager().beginTransaction()
-                            .setReorderingAllowed(true)
-                            .hide(mapFragment)
-                            .show(suggestionListFragment)
-                            .commit();
+                    showSuggestionList();
                     actionIcon.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_arrow_back_24));
                     actionIcon.setClickable(true);
-//                    suggestionListViewModel.setContext(suggestionListFragment.requireContext());
                     suggestionListViewModel.setSearchString(s.toString());
-                    Log.i(TAG, "afterTextChanged: searchString is " + s.toString());
                 }
             }
         });
 
-        actionIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchEditText.getText().clear();
-                searchEditText.clearFocus();
-                hideKeyboard();
+        searchEditText.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) {
+                if (poiListFragment.isVisible()) poiListFragment.dismiss();
+                showSuggestionList();
             }
         });
 
-        View blackView = findViewById(R.id.main_activity_black_view);
-        blackView.bringToFront();
-
-        findViewById(R.id.more_icon).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MenuDialogFragment fragment = new MenuDialogFragment();
-                fragment.show(getSupportFragmentManager(), "dialog");
-                blackView.setAlpha(0.3f);
-                fragment.setDismissEventListener(() -> {
-                    blackView.setAlpha(0f);
-                });
-            }
+        actionIcon.setOnClickListener(v -> {
+            searchEditText.getText().clear();
+            searchEditText.clearFocus();
+            hideKeyboard();
         });
+
+        findViewById(R.id.more_icon).setOnClickListener(v -> {
+            MenuDialogFragment fragment = new MenuDialogFragment();
+            fragment.show(getSupportFragmentManager(), MenuDialogFragment.TAG);
+        });
+    }
+
+    private void showMap() {
+        searchEditText.clearFocus();
+        getSupportFragmentManager().beginTransaction()
+                .setReorderingAllowed(true)
+                .hide(suggestionListFragment)
+                .show(mapFragment)
+                .commit();
+    }
+
+    private void showSuggestionList() {
+        getSupportFragmentManager().beginTransaction()
+                .setReorderingAllowed(true)
+                .hide(mapFragment)
+                .show(suggestionListFragment)
+                .commit();
     }
 
     private void showAppIntroduction() {

@@ -1,4 +1,4 @@
-package com.appocalypse.naturenav.list;
+package com.appocalypse.naturenav.poilist;
 
 import android.content.Context;
 import android.util.Log;
@@ -19,7 +19,7 @@ import org.osmdroid.util.GeoPoint;
 
 import java.util.ArrayList;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
+public class PoiListAdapter extends RecyclerView.Adapter<PoiListAdapter.ViewHolder> {
 
     private ArrayList<POI> items = new ArrayList<>();
     private GeoPoint location;

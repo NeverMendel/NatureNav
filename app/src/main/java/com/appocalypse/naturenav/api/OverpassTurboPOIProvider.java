@@ -1,9 +1,11 @@
 package com.appocalypse.naturenav.api;
 
 
+import android.content.Context;
 import android.location.Address;
 
 import com.appocalypse.naturenav.utility.AddressFinder;
+import com.appocalypse.naturenav.utility.POITypes;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -16,6 +18,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Scanner;
 
 public class OverpassTurboPOIProvider {
@@ -81,12 +84,19 @@ public class OverpassTurboPOIProvider {
         mService = serviceUrl;
     }
 
-    public ArrayList<POI> getPOICloseTo(GeoPoint position, String facility, int maxResults, double maxDistance) {
+    public ArrayList<POI> getPOICloseTo(Context context, GeoPoint position, String query, int maxResults, double maxDistance) {
+        String facility = query;
+        for(Map.Entry<String, Integer> entry : POITypes.amenityToStringId.entrySet()){
+            String value = context.getString(entry.getValue());
+            if(value.equalsIgnoreCase(query)){
+                facility = entry.getKey();
+                break;
+            }
+        }
         String customQuery = String.format("[amenity=%s]", facility);
-        String query = buildOverpassQuery(position, maxResults, maxDistance, customQuery);
-        String result = executeOverpassQuery(query);
+        String overpassQuery = buildOverpassQuery(position, maxResults, maxDistance, customQuery);
+        String result = executeOverpassQuery(overpassQuery);
         return extractPOIsFromResult(result);
     }
-
 
 }

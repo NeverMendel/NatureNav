@@ -1,4 +1,4 @@
-package com.appocalypse.naturenav.list;
+package com.appocalypse.naturenav.poilist;
 
 import android.content.Context;
 import android.location.Location;
@@ -20,17 +20,17 @@ import org.osmdroid.views.overlay.mylocation.IMyLocationProvider;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
 
-public class ListViewModel extends ViewModel implements IMyLocationConsumer {
+public class PoiListViewModel extends ViewModel implements IMyLocationConsumer {
     private static final String TAG = "ListViewModel";
 
     private final MutableLiveData<ArrayList<POI>> pois = new MutableLiveData<>(new ArrayList<>());
     GpsMyLocationProvider locationProvider;
     GeoPoint location;
 
-    public ListViewModel() {
+    public PoiListViewModel() {
     }
 
-    public void search(String query) {
+    public void search(Context context, String query) {
         if(location == null) {
             Log.e(TAG, "error: location is null");
             return;
@@ -39,7 +39,7 @@ public class ListViewModel extends ViewModel implements IMyLocationConsumer {
             OverpassTurboPOIProvider poiProvider = new OverpassTurboPOIProvider();
             Log.i(TAG, "location latitude: " + location.getLatitude() + ", location longitude: " + location.getLongitude());
             try {
-                ArrayList<POI> poiArrayList = poiProvider.getPOICloseTo(location, query, 25, 5000);
+                ArrayList<POI> poiArrayList = poiProvider.getPOICloseTo(context, location, query, 25, 5000);
                 pois.postValue(poiArrayList);
                 Log.i(TAG, "search: " + poiArrayList.toString());
             } catch (Exception e) {

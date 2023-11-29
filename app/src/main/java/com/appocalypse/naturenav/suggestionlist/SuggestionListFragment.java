@@ -14,13 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.appocalypse.naturenav.R;
-import com.appocalypse.naturenav.databinding.FragmentListBinding;
 import com.appocalypse.naturenav.databinding.FragmentSuggestionListBinding;
 import com.appocalypse.naturenav.utility.POITypes;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 import me.xdrop.fuzzywuzzy.FuzzySearch;

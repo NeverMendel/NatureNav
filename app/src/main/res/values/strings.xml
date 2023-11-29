@@ -57,5 +57,6 @@
     <string name="delete_profile">Delete profile</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
+    <string name="results">Results</string>
 
 </resources>

@@ -8,13 +8,12 @@ import androidx.lifecycle.ViewModel;
 
 public class SuggestionListViewModel extends ViewModel {
 
-    private MutableLiveData<String> searchStringMutableLiveData = new MutableLiveData<>("");
+    private final MutableLiveData<String> searchStringMutableLiveData = new MutableLiveData<>("");
     private OnSuggestionClick onSuggestionClick;
 
-    interface OnSuggestionClick {
+    public interface OnSuggestionClick {
         void onClick(String suggestion);
     }
-
 
     SuggestionListViewModel(){
 

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -17,6 +18,7 @@ import androidx.fragment.app.DialogFragment;
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity;
 
 public class MenuDialogFragment extends DialogFragment {
+    public static final String TAG = "MenuDialogFragment";
 
     interface DismissEventListener {
         void onDismiss();
@@ -66,12 +68,18 @@ public class MenuDialogFragment extends DialogFragment {
     @Override
     public void onStart() {
         super.onStart();
+
+        Window window = getDialog().getWindow();
+        window.setFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND,
+                WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        window.setDimAmount(0.5f);
     }
 
     @Override
     public void onDismiss(@NonNull DialogInterface dialog) {
         super.onDismiss(dialog);
-        dismissEventListener.onDismiss();
+        if(dismissEventListener != null)
+            dismissEventListener.onDismiss();
     }
 
     public void setDismissEventListener(DismissEventListener dismissEventListener) {

@@ -23,6 +23,7 @@ public class PoiListAdapter extends RecyclerView.Adapter<PoiListAdapter.ViewHold
 
     private ArrayList<POI> items = new ArrayList<>();
     private GeoPoint location;
+    private AdapterOnClick<POI> adapterOnClick;
 
     public void setItems(ArrayList<POI> items) {
         this.items = items;
@@ -65,6 +66,23 @@ public class PoiListAdapter extends RecyclerView.Adapter<PoiListAdapter.ViewHold
             holder.distance.setText("N/A");
         }
 
+        holder.onClick = pos -> {
+            if (adapterOnClick != null) {
+                adapterOnClick.onClick(getItem(pos));
+            }
+        };
+    }
+
+    interface AdapterOnClick<T> {
+        void onClick(T item);
+    }
+
+    interface InternalOnClick {
+        void onClick(int position);
+    }
+
+    public void setOnClick(AdapterOnClick<POI> adapterOnClick) {
+        this.adapterOnClick = adapterOnClick;
     }
 
     @Override
@@ -74,6 +92,7 @@ public class PoiListAdapter extends RecyclerView.Adapter<PoiListAdapter.ViewHold
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView title, subtitle, distance;
+        private InternalOnClick onClick;
 
         public ViewHolder(View v) {
             super(v);
@@ -81,6 +100,9 @@ public class PoiListAdapter extends RecyclerView.Adapter<PoiListAdapter.ViewHold
                 @Override
                 public void onClick(View v) {
                     Log.d("ListAdapter", "Element " + getAdapterPosition() + " clicked.");
+                    if (onClick != null) {
+                        onClick.onClick(getAdapterPosition());
+                    }
                 }
             });
             title = v.findViewById(R.id.list_item_title);

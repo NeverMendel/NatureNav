@@ -20,6 +20,8 @@ import android.widget.ImageButton;
 
 import org.osmdroid.config.Configuration;
 
+import com.appocalypse.naturenav.bottomsheet.BottomSheetDialog;
+import com.appocalypse.naturenav.bottomsheet.BottomSheetDialogViewModel;
 import com.appocalypse.naturenav.map.MapFragment;
 import com.appocalypse.naturenav.map.MapViewModel;
 import com.appocalypse.naturenav.poilist.PoiListFragment;
@@ -27,6 +29,7 @@ import com.appocalypse.naturenav.poilist.PoiListViewModel;
 import com.appocalypse.naturenav.suggestionlist.SuggestionListFragment;
 import com.appocalypse.naturenav.suggestionlist.SuggestionListViewModel;
 import com.appocalypse.naturenav.utility.GeocoderSingleton;
+import com.appocalypse.naturenav.utility.PoiFinder;
 import com.appocalypse.naturenav.utility.Theme;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,11 +39,14 @@ public class MainActivity extends AppCompatActivity {
     private SuggestionListFragment suggestionListFragment;
     private MapViewModel mapViewModel;
     private SuggestionListViewModel suggestionListViewModel;
-    private PoiListFragment poiListFragment;
+    private BottomSheetDialog bottomSheetDialog;
+    private BottomSheetDialogViewModel bottomSheetDialogViewModel;
     private PoiListViewModel poiListViewModel;
 
-    EditText searchEditText;
-    ImageButton actionIcon;
+    private EditText searchEditText;
+    private ImageButton actionIcon;
+
+    private PoiFinder poiFinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         String theme = sharedPreferences.getString("app_theme", "auto");
         Theme.setTheme(theme);
         GeocoderSingleton.getInstance(getApplicationContext());
+        poiFinder = PoiFinder.getInstance(getApplicationContext());
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -66,21 +74,21 @@ public class MainActivity extends AppCompatActivity {
                 .hide(suggestionListFragment)
                 .commit();
 
-        poiListFragment = new PoiListFragment();
+        bottomSheetDialog = new BottomSheetDialog();
 
         mapViewModel = new ViewModelProvider(this).get(MapViewModel.class);
         suggestionListViewModel = new ViewModelProvider(this).get(SuggestionListViewModel.class);
         poiListViewModel = new ViewModelProvider(this).get(PoiListViewModel.class);
-
-        poiListViewModel.setContext(this);
+        bottomSheetDialogViewModel = new ViewModelProvider(this).get(BottomSheetDialogViewModel.class);
 
         searchEditText = findViewById(R.id.search_edit_text);
         actionIcon = findViewById(R.id.action_icon);
 
         suggestionListViewModel.setOnSuggestionClick(suggestion -> {
             hideKeyboard();
-            poiListViewModel.search(getApplicationContext(), suggestion);
-            poiListFragment.show(getSupportFragmentManager(), PoiListFragment.TAG);
+            poiFinder.search(getApplicationContext(), suggestion);
+            bottomSheetDialog.show(getSupportFragmentManager(), BottomSheetDialog.TAG);
+            bottomSheetDialog.setCancelable(false);
             searchEditText.setText(suggestion);
             showMap();
         });
@@ -100,12 +108,12 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if (s.toString().trim().isEmpty()) {
                     showMap();
-                    actionIcon.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_search_24));
-                    actionIcon.setClickable(false);
+                    if(!bottomSheetDialog.isVisible()) {
+                        showSearchIcon();
+                    }
                 } else {
                     showSuggestionList();
-                    actionIcon.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_arrow_back_24));
-                    actionIcon.setClickable(true);
+                    showArrowIcon();
                     suggestionListViewModel.setSearchString(s.toString());
                 }
             }
@@ -113,14 +121,22 @@ public class MainActivity extends AppCompatActivity {
 
         searchEditText.setOnFocusChangeListener((v, hasFocus) -> {
             if (hasFocus) {
-                if (poiListFragment.isVisible()) poiListFragment.dismiss();
+                if (bottomSheetDialog.isVisible()) bottomSheetDialog.dismiss();
                 showSuggestionList();
+                showArrowIcon();
             }
         });
 
         actionIcon.setOnClickListener(v -> {
-            searchEditText.getText().clear();
             searchEditText.clearFocus();
+            if(bottomSheetDialogViewModel.getDisplayingListLiveData().getValue() || !bottomSheetDialog.isVisible()){
+                if(bottomSheetDialog.isVisible()) bottomSheetDialog.dismiss();
+                searchEditText.getText().clear();
+                showSearchIcon();
+                showMap();
+            } else {
+                bottomSheetDialogViewModel.setDisplayingList(true);
+            }
             hideKeyboard();
         });
 
@@ -145,6 +161,16 @@ public class MainActivity extends AppCompatActivity {
                 .hide(mapFragment)
                 .show(suggestionListFragment)
                 .commit();
+    }
+
+    private void showSearchIcon(){
+        actionIcon.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_search_24));
+        actionIcon.setClickable(false);
+    }
+
+    private void showArrowIcon(){
+        actionIcon.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_arrow_back_24));
+        actionIcon.setClickable(true);
     }
 
     private void showAppIntroduction() {

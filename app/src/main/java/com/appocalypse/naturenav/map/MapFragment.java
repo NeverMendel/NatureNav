@@ -63,23 +63,23 @@ public class MapFragment extends Fragment {
         PoiFinder poiFinder = PoiFinder.getInstance();
 
         poiFinder.getPoisLiveData().observe(getViewLifecycleOwner(), nuoviPuntiDiInteresse -> {
-            // Rimuovi i marker esistenti
+            // Remove existing markers
             for (Marker marker : poiMarkers) {
                 mapView.getOverlays().remove(marker);
             }
-            poiMarkers.clear(); // Pulisci la lista
+            poiMarkers.clear(); // Clear the list of markers
 
-            // Aggiungi i nuovi punti di interesse
+            // Add new poi markers
             for (POI poi : nuoviPuntiDiInteresse) {
                 Marker marker = new Marker(mapView);
                 marker.setPosition(poi.getGeopoint());
                 marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-                marker.setTitle(poi.type); // Personalizza il titolo del marker con il tipo di POI o altre informazioni
+                marker.setTitle(poi.type); // Personalize the title of the marker with the type of POI and other info
                 mapView.getOverlays().add(marker);
                 poiMarkers.add(marker);
             }
 
-            // Aggiorna la mappa
+            // Refresh the map
             mapView.invalidate();
         });
 

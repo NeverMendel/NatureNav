@@ -1,19 +1,9 @@
 package com.appocalypse.naturenav.api;
 
-import android.content.Context;
-import android.location.Address;
-import android.location.Geocoder;
-import android.util.Log;
-
 import androidx.annotation.NonNull;
-
-import com.appocalypse.naturenav.R;
 
 import org.osmdroid.util.GeoPoint;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 public class POI {
@@ -23,8 +13,10 @@ public class POI {
     public double lon;
     public Map<String, String> tags;
     public String address;
+    public double airDistanceMeters;
+    public double roadDistanceMeters; // TODO: populate this field
 
-    public GeoPoint getGeopoint() {
+    public GeoPoint getGeoPoint() {
         return new GeoPoint(lat, lon);
     }
 

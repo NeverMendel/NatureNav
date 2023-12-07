@@ -4,6 +4,7 @@ package com.appocalypse.naturenav.api;
 import android.content.Context;
 import android.location.Address;
 
+import com.appocalypse.naturenav.DistanceFinder;
 import com.appocalypse.naturenav.utility.AddressFinder;
 import com.appocalypse.naturenav.utility.POITypes;
 import com.google.gson.Gson;
@@ -73,6 +74,7 @@ public class OverpassTurboPOIProvider {
                 JsonObject poiObject = element.getAsJsonObject();
                 POI poi = gson.fromJson(poiObject, POI.class);
                 poi.address = AddressFinder.getAddress(poi.lat, poi.lon);
+                poi.airDistanceMeters = DistanceFinder.calculateAirDistance(poi.getGeoPoint());
                 poiList.add(poi);
             }
         }

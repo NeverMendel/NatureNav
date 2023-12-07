@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.appocalypse.naturenav.DistanceFinder;
 import com.appocalypse.naturenav.R;
 import com.appocalypse.naturenav.api.POI;
 import com.appocalypse.naturenav.utility.POITypes;
@@ -60,7 +61,8 @@ public class PoiListAdapter extends RecyclerView.Adapter<PoiListAdapter.ViewHold
         holder.subtitle.setText(item.address != null ? item.address : context.getString(R.string.address_not_available));
 
         if (location != null) {
-            double distanceKm = location.distanceToAsDouble(item.getGeopoint()) / 1000;
+            double distanceKm = item.airDistanceMeters / 1000;
+            // TODO: display distance in meters if distance is less than 1000m
             holder.distance.setText(String.format(context.getString(R.string.distance_km_format), distanceKm));
         } else {
             holder.distance.setText("N/A");

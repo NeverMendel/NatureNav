@@ -9,17 +9,9 @@ import java.util.List;
 
 public class MapViewModel extends ViewModel {
 
-    private MutableLiveData<List<POI>> poiLiveData = new MutableLiveData<>();
 
     public MapViewModel() {
 
     }
 
-    public MutableLiveData<List<POI>> getPOILiveData() {
-        return poiLiveData;
-    }
-
-    public void setPoiLiveData(List<POI> poi) {
-        poiLiveData.setValue(poi);
-    }
 }

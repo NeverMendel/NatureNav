@@ -25,7 +25,9 @@ import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.IMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
+import com.appocalypse.naturenav.bottomsheet.BottomSheetDialogViewModel;
 import com.appocalypse.naturenav.databinding.FragmentMapBinding;
+import com.appocalypse.naturenav.poiinfo.PoiInfoViewModel;
 import com.appocalypse.naturenav.utility.POITypes;
 import com.appocalypse.naturenav.utility.PoiFinder;
 
@@ -48,6 +50,9 @@ public class MapFragment extends Fragment {
                 .inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        BottomSheetDialogViewModel bottomSheetDialogViewModel = new ViewModelProvider(requireActivity()).get(BottomSheetDialogViewModel.class);
+        PoiInfoViewModel poiInfoViewModel = new ViewModelProvider(requireActivity()).get(PoiInfoViewModel.class);
+
         MapView mapView = binding.osmmap;
         IMapController controller = mapView.getController();
 
@@ -64,7 +69,7 @@ public class MapFragment extends Fragment {
 
         PoiFinder poiFinder = PoiFinder.getInstance();
 
-        poiFinder.getPoisLiveData().observe(getViewLifecycleOwner(), nuoviPuntiDiInteresse -> {
+        poiFinder.getPoisLiveData().observe(getViewLifecycleOwner(), newPois -> {
             // Remove existing markers
             for (Marker marker : poiMarkers) {
                 mapView.getOverlays().remove(marker);
@@ -72,13 +77,17 @@ public class MapFragment extends Fragment {
             poiMarkers.clear(); // Clear the list of markers
 
             // Add new poi markers
-            for (POI poi : nuoviPuntiDiInteresse) {
+            for (POI poi : newPois) {
                 Marker marker = new Marker(mapView);
                 marker.setPosition(poi.getGeoPoint());
                 marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-                marker.setTitle(poi.type); // Personalize the title of the marker with the type of POI and other info
-
                 marker.setIcon(ContextCompat.getDrawable(requireContext(), R.drawable.ic_poi_location_24));
+                marker.setOnMarkerClickListener((marker1, mapView1) -> {
+                    controller.animateTo(marker1.getPosition());
+                    bottomSheetDialogViewModel.setDisplayingList(false);
+                    poiInfoViewModel.setDisplayedPoi(poi);
+                    return true;
+                });
 
                 mapView.getOverlays().add(marker);
                 poiMarkers.add(marker);

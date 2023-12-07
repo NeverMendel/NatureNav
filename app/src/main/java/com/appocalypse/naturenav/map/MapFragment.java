@@ -74,7 +74,7 @@ public class MapFragment extends Fragment {
             // Add new poi markers
             for (POI poi : nuoviPuntiDiInteresse) {
                 Marker marker = new Marker(mapView);
-                marker.setPosition(poi.getGeopoint());
+                marker.setPosition(poi.getGeoPoint());
                 marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
                 marker.setTitle(poi.type); // Personalize the title of the marker with the type of POI and other info
 

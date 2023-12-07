@@ -1,5 +1,7 @@
 package com.appocalypse.naturenav.map;
+import androidx.core.content.ContextCompat;
 
+import com.appocalypse.naturenav.R;
 import com.appocalypse.naturenav.api.POI;
 
 import android.graphics.Rect;
@@ -75,6 +77,9 @@ public class MapFragment extends Fragment {
                 marker.setPosition(poi.getGeopoint());
                 marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
                 marker.setTitle(poi.type); // Personalize the title of the marker with the type of POI and other info
+
+                marker.setIcon(ContextCompat.getDrawable(requireContext(), R.drawable.ic_poi_location_24));
+
                 mapView.getOverlays().add(marker);
                 poiMarkers.add(marker);
             }

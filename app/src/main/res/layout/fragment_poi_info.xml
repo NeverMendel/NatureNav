@@ -20,45 +20,46 @@
 
             <TextView
                 android:id="@+id/poi_title_text_view"
-                style="@style/TitleText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/poi_address_text_view"
-                style="@style/BodyText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/darker_gray"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/poi_title_text_view"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/poi_air_distance_text_view"
-                style="@style/BodyText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/darker_gray"
                 app:layout_constraintTop_toBottomOf="@id/poi_address_text_view"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/poi_road_distance_text_view"
-                style="@style/BodyText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/darker_gray"
                 app:layout_constraintTop_toBottomOf="@id/poi_air_distance_text_view"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/poi_duration_text_view"
-                style="@style/BodyText"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
+                android:textColor="@android:color/darker_gray"
                 app:layout_constraintTop_toBottomOf="@id/poi_road_distance_text_view"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +14,6 @@ import com.appocalypse.naturenav.R;
 import com.appocalypse.naturenav.databinding.FragmentPoiInfoBinding;
 import com.appocalypse.naturenav.utility.POITypes;
 
-import org.osmdroid.bonuspack.location.POI;
 
 public class PoiInfoFragment extends Fragment {
 
@@ -37,9 +36,6 @@ public class PoiInfoFragment extends Fragment {
                 binding.poiRoadDistanceTextView.setText(getString(R.string.road_distance_placeholder,  poi.roadDistanceMeters));
                 // convert seconds to minutes
                 binding.poiDurationTextView.setText(getString(R.string.duration_placeholder, poi.roadDistanceSeconds/60));
-
-
-
             }
         });
 

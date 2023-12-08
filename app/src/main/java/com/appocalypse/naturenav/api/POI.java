@@ -14,7 +14,9 @@ public class POI {
     public Map<String, String> tags;
     public String address;
     public double airDistanceMeters;
-    public double roadDistanceMeters; // TODO: populate this field
+    public double roadDistanceMeters;
+
+    public double roadDistanceSeconds; //
 
     public GeoPoint getGeoPoint() {
         return new GeoPoint(lat, lon);

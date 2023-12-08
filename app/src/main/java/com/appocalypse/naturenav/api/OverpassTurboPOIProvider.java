@@ -28,6 +28,7 @@ public class OverpassTurboPOIProvider {
     protected String mService;
     //protected String mUserAgent;
 
+
     private static String buildOverpassQuery(GeoPoint center, int maxResults, double maxDistance, String customQuery) {
         return String.format(Locale.US, "[out:json];\n" +
                         "node(around:%f,%f,%f)%s;\n" +
@@ -62,7 +63,7 @@ public class OverpassTurboPOIProvider {
         }
     }
 
-    private static ArrayList<POI> extractPOIsFromResult(String result) {
+    private static ArrayList<POI> extractPOIsFromResult(String result, Context context) {
         ArrayList<POI> poiList = new ArrayList<>();
 
         if (result != null) {
@@ -75,6 +76,8 @@ public class OverpassTurboPOIProvider {
                 POI poi = gson.fromJson(poiObject, POI.class);
                 poi.address = AddressFinder.getAddress(poi.lat, poi.lon);
                 poi.airDistanceMeters = DistanceFinder.calculateAirDistance(poi.getGeoPoint());
+                poi.roadDistanceMeters = DistanceFinder.calculateRoadDistance(context, poi.getGeoPoint()).mLength;
+                poi.roadDistanceSeconds = DistanceFinder.calculateRoadDistance(context, poi.getGeoPoint()).mDuration;
                 poiList.add(poi);
             }
         }
@@ -98,7 +101,7 @@ public class OverpassTurboPOIProvider {
         String customQuery = String.format("[amenity=%s]", facility);
         String overpassQuery = buildOverpassQuery(position, maxResults, maxDistance, customQuery);
         String result = executeOverpassQuery(overpassQuery);
-        return extractPOIsFromResult(result);
+        return extractPOIsFromResult(result, context);
     }
 
 }

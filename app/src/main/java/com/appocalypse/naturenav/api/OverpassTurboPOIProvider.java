@@ -2,7 +2,6 @@ package com.appocalypse.naturenav.api;
 
 
 import android.content.Context;
-import android.location.Address;
 
 import com.appocalypse.naturenav.DistanceFinder;
 import com.appocalypse.naturenav.utility.AddressFinder;
@@ -86,16 +85,29 @@ public class OverpassTurboPOIProvider {
         mService = serviceUrl;
     }
 
-    public ArrayList<POI> getPOICloseTo(Context context, GeoPoint position, String query, int maxResults, double maxDistance) {
-        String facility = query;
-        for(Map.Entry<String, Integer> entry : POITypes.amenityToStringId.entrySet()){
+    public ArrayList<POI> queryPOICloseTo(Context context, GeoPoint position, String query, int maxResults, double maxDistance) {
+        String amenity = query;
+        for (Map.Entry<String, Integer> entry : POITypes.amenityToStringId.entrySet()) {
             String value = context.getString(entry.getValue());
-            if(value.equalsIgnoreCase(query)){
-                facility = entry.getKey();
+            if (value.equalsIgnoreCase(query)) {
+                amenity = entry.getKey();
                 break;
             }
         }
-        String customQuery = String.format("[amenity=%s]", facility);
+        return getPOICloseTo(position, amenity, maxResults, maxDistance);
+    }
+
+    /**
+     * Retrieves Points of Interest (POIs) in close proximity to a specified geographical position.
+     *
+     * @param position,    center position for which POIs are sought, represented by a GeoPoint
+     * @param amenity,     Overpass amenity name used to filter POIs
+     * @param maxResults,  maximum number of POI results to retrieve
+     * @param maxDistance, maximum distance, in meters, within which POIs should be considered
+     * @return
+     */
+    public ArrayList<POI> getPOICloseTo(GeoPoint position, String amenity, int maxResults, double maxDistance) {
+        String customQuery = String.format("[amenity=%s]", amenity);
         String overpassQuery = buildOverpassQuery(position, maxResults, maxDistance, customQuery);
         String result = executeOverpassQuery(overpassQuery);
         return extractPOIsFromResult(result);

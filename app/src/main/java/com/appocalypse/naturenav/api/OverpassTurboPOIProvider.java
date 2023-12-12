@@ -12,6 +12,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import org.osmdroid.bonuspack.routing.Road;
 import org.osmdroid.util.GeoPoint;
 
 import java.io.IOException;
@@ -72,12 +73,14 @@ public class OverpassTurboPOIProvider {
             JsonArray elements = jsonObject.getAsJsonArray("elements");
 
             for (JsonElement element : elements) {
+                Road roadDistance;
                 JsonObject poiObject = element.getAsJsonObject();
                 POI poi = gson.fromJson(poiObject, POI.class);
                 poi.address = AddressFinder.getAddress(poi.lat, poi.lon);
                 poi.airDistanceMeters = DistanceFinder.calculateAirDistance(poi.getGeoPoint());
-                poi.roadDistanceMeters = DistanceFinder.calculateRoadDistance(context, poi.getGeoPoint()).mLength;
-                poi.roadDistanceSeconds = DistanceFinder.calculateRoadDistance(context, poi.getGeoPoint()).mDuration;
+                roadDistance = DistanceFinder.calculateRoadDistance(context, poi.getGeoPoint());
+                poi.roadDistanceMeters = roadDistance.mLength;
+                poi.roadDistanceSeconds = roadDistance.mDuration;
                 poiList.add(poi);
             }
         }

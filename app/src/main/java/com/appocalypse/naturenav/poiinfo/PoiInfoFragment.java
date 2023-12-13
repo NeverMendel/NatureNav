@@ -32,8 +32,8 @@ public class PoiInfoFragment extends Fragment {
             if (poi != null) {
                 binding.poiTitleTextView.setText(poi.tags.get("name") == null ? requireContext().getString(POITypes.amenityToStringId.get(poi.tags.get("amenity"))) : poi.tags.get("name"));
                 binding.poiAddressTextView.setText(getText( R.string.address ) +" "+ poi.address);
-                binding.poiAirDistanceTextView.setText(getString(R.string.air_distance_placeholder, (int) poi.airDistanceMeters ));
-                binding.poiRoadDistanceTextView.setText(getString(R.string.road_distance_placeholder,  poi.roadDistanceMeters));
+                binding.poiAirDistanceTextView.setText(getString(R.string.air_distance_placeholder, (int) poi.airDistanceMeters/1000 ));
+                binding.poiRoadDistanceTextView.setText(getString(R.string.road_distance_placeholder,  poi.roadDistanceMeters/1000 ));
                 // convert seconds to minutes
                 binding.poiDurationTextView.setText(getString(R.string.duration_placeholder, poi.roadDistanceSeconds/60));
             }

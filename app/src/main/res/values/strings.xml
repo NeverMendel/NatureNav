@@ -68,8 +68,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="address">Address:</string>
-    <string name="air_distance_placeholder">Air Distance: %d meters</string>
-    <string name="road_distance_placeholder">Road Distance: %f meters</string>
+    <string name="air_distance_placeholder">Air Distance: %d km</string>
+    <string name="road_distance_placeholder">Road Distance: %f km</string>
     <string name="duration_placeholder">Duration: %f min</string>
 
 

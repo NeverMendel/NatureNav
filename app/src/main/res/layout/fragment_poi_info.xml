@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/DurationIcon"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginEnd="16dp"
@@ -64,7 +64,7 @@
                     android:id="@+id/poi_duration_text_view"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/imageView"
+                    android:layout_below="@id/DurationIcon"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="8dp"
                     android:text="Tome Duration"
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/AirDistanceIcon"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginEnd="16dp"
@@ -87,7 +87,7 @@
                     android:id="@+id/poi_air_distance_text_view"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/imageView2"
+                    android:layout_below="@id/AirDistanceIcon"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="8dp"
                     android:text="Air Distance"
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/RoadDistanceIcon"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginEnd="16dp"
@@ -110,7 +110,7 @@
                     android:id="@+id/poi_road_distance_text_view"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/imageView3"
+                    android:layout_below="@id/RoadDistanceIcon"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="8dp"
                     android:text="Road Distance"

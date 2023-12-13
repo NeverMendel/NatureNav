@@ -31,7 +31,6 @@
             android:textColor="?subtitleColor"
             app:layout_constraintBottom_toTopOf="@id/icon_chain"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/poi_title_text_view" />
 

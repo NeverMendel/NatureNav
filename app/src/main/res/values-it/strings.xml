@@ -52,8 +52,8 @@
     <string name="cancel">Cancella</string>
     <string name="results">Risultati</string>
     <string name="address">Indirizzo:</string>
-    <string name="air_distance_placeholder">Distanza in linea d\'aria: %d km</string>
-    <string name="road_distance_placeholder">Distanza Stradale: %f km</string>
-    <string name="duration_placeholder">Durata: %f min</string>
+    <string name="air_distance_placeholder">Distanza in linea d\'aria: %s %s</string>
+    <string name="road_distance_placeholder">Distanza Stradale: %s %s</string>
+    <string name="duration_placeholder">Durata: %s min</string>
 
 </resources>

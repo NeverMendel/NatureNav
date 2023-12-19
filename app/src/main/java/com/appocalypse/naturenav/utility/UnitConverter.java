@@ -17,12 +17,15 @@ public class UnitConverter {
 
     public static String formatDuration(double durationSeconds){
         String duration, unit;
-        if(durationSeconds >= 60.0){
+        if(durationSeconds >= 3600.0){
+            duration = formatOneSignificantDigit(durationSeconds / 3600.0);
+            unit = "h";
+        } else if(durationSeconds >= 60.0){
             duration = formatOneSignificantDigit(durationSeconds / 60.0);
-            unit = "m";
+            unit = "min";
         } else {
             duration = formatOneSignificantDigit(durationSeconds);
-            unit = "s";
+            unit = "sec";
         }
         return duration + " " + unit;
     }

@@ -2,7 +2,6 @@ package com.appocalypse.naturenav.api;
 
 
 import android.content.Context;
-import android.location.Address;
 
 import com.appocalypse.naturenav.DistanceFinder;
 import com.appocalypse.naturenav.utility.AddressFinder;
@@ -12,6 +11,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import org.osmdroid.bonuspack.routing.Road;
 import org.osmdroid.util.GeoPoint;
 
 import java.io.IOException;
@@ -27,6 +27,7 @@ public class OverpassTurboPOIProvider {
     public static final String OVERPASS_POI_SERVICE = "https://overpass-api.de/api/interpreter";
     protected String mService;
     //protected String mUserAgent;
+
 
     private static String buildOverpassQuery(GeoPoint center, int maxResults, double maxDistance, String customQuery) {
         return String.format(Locale.US, "[out:json];\n" +
@@ -62,7 +63,7 @@ public class OverpassTurboPOIProvider {
         }
     }
 
-    private static ArrayList<POI> extractPOIsFromResult(String result) {
+    private static ArrayList<POI> extractPOIsFromResult(String result, Context context) {
         ArrayList<POI> poiList = new ArrayList<>();
 
         if (result != null) {
@@ -75,6 +76,7 @@ public class OverpassTurboPOIProvider {
                 POI poi = gson.fromJson(poiObject, POI.class);
                 poi.address = AddressFinder.getAddress(poi.lat, poi.lon);
                 poi.airDistanceMeters = DistanceFinder.calculateAirDistance(poi.getGeoPoint());
+                poi.road = DistanceFinder.getRoad(context, poi.getGeoPoint());
                 poiList.add(poi);
             }
         }
@@ -98,7 +100,7 @@ public class OverpassTurboPOIProvider {
         String customQuery = String.format("[amenity=%s]", facility);
         String overpassQuery = buildOverpassQuery(position, maxResults, maxDistance, customQuery);
         String result = executeOverpassQuery(overpassQuery);
-        return extractPOIsFromResult(result);
+        return extractPOIsFromResult(result, context);
     }
 
 }

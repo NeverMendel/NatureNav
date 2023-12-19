@@ -1,8 +1,16 @@
 package com.appocalypse.naturenav;
 
+import android.content.Context;
+import android.util.Log;
+
 import com.appocalypse.naturenav.utility.PoiFinder;
 
+import org.osmdroid.bonuspack.routing.OSRMRoadManager;
+import org.osmdroid.bonuspack.routing.Road;
+import org.osmdroid.bonuspack.routing.RoadManager;
 import org.osmdroid.util.GeoPoint;
+
+import java.util.ArrayList;
 
 public class DistanceFinder {
 
@@ -16,7 +24,17 @@ public class DistanceFinder {
         return PoiFinder.getInstance().getLocation().distanceToAsDouble(geoPoint);
     }
 
-    public static double calculateRoadDistance(GeoPoint geoPoint) {
-        return 0; // TODO
+    public static Road getRoad(Context context, GeoPoint geoPoint) {
+        GeoPoint currentLocation = PoiFinder.getInstance().getLocation();
+
+        Log.d("DistanceFinder", "Current Location: " + currentLocation);
+        Log.d("DistanceFinder", "Destination Location: " + geoPoint);
+
+        RoadManager roadManager = new OSRMRoadManager(context, "NatureNav");
+        ArrayList<GeoPoint> waypoints = new ArrayList<>();
+        waypoints.add(currentLocation);
+        waypoints.add(geoPoint);
+
+        return roadManager.getRoad(waypoints);
     }
 }

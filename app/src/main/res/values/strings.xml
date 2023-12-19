@@ -65,7 +65,12 @@
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
     <string name="results">Results</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="address_placeholder">Address: %s</string>
+    <string name="air_distance">Air Distance</string>
+    <string name="road_distance">Road Distance</string>
+    <string name="duration">Duration</string>
+
+
 
 </resources>

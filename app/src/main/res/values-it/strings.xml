@@ -51,4 +51,10 @@
     <string name="confirm">Conferma</string>
     <string name="cancel">Cancella</string>
     <string name="results">Risultati</string>
+
+    <string name="address_placeholder">Indirizzo: %s</string>
+    <string name="air_distance">Distanza in linea d\'aria</string>
+    <string name="road_distance">Distanza Stradale</string>
+    <string name="duration">Durata</string>
+
 </resources>

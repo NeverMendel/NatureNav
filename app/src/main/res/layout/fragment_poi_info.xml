@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/windowBackground"
     tools:context=".poiinfo.PoiInfoFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,106 +13,164 @@
 
         <TextView
             android:id="@+id/poi_title_text_view"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:text="POI title"
             android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/poi_address_text_view"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:text="@string/address_placeholder"
             android:textColor="?subtitleColor"
-            app:layout_constraintBottom_toTopOf="@id/icon_chain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/poi_title_text_view" />
 
+        <View
+            android:id="@+id/dotted_line_separator"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/horizontal_dotted_line"
+            app:layout_constraintTop_toBottomOf="@id/poi_address_text_view"
+            android:layout_marginTop="16dp"
+            />
+
+
         <LinearLayout
             android:id="@+id/icon_chain"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:gravity="center"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/poi_address_text_view">
+            app:layout_constraintTop_toBottomOf="@id/dotted_line_separator">
 
             <!-- First Icon -->
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
 
                 <ImageView
-                    android:id="@+id/DurationIcon"
+                    android:id="@+id/duration_icon"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_marginEnd="16dp"
-                    android:src="@drawable/baseline_access_time_24" />
+                    android:src="@drawable/baseline_access_time_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="?colorOnBackground" />
 
                 <TextView
                     android:id="@+id/poi_duration_text_view"
-                    android:layout_width="120dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/DurationIcon"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="8dp"
-                    android:text="Tome Duration"
-                    android:textColor="@android:color/darker_gray" />
-            </RelativeLayout>
+                    android:layout_marginTop="10dp"
+                    android:text="10 m"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/duration_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Duration"
+                    android:textColor="?subtitleColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/poi_duration_text_view" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- Second Icon -->
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
 
                 <ImageView
-                    android:id="@+id/AirDistanceIcon"
+                    android:id="@+id/air_distance_icon"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_marginEnd="16dp"
-                    android:src="@drawable/baseline_arrow_outward_24" />
+                    android:src="@drawable/baseline_arrow_outward_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="?colorOnBackground" />
 
                 <TextView
                     android:id="@+id/poi_air_distance_text_view"
-                    android:layout_width="120dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/AirDistanceIcon"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
+                    android:text="10 m"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/air_distance_icon"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
                     android:text="Air Distance"
-                    android:textColor="@android:color/darker_gray" />
-            </RelativeLayout>
+                    android:textColor="?subtitleColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/poi_air_distance_text_view" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- Third Icon -->
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
 
                 <ImageView
-                    android:id="@+id/RoadDistanceIcon"
+                    android:id="@+id/road_distance_icon"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_marginEnd="16dp"
-                    android:src="@drawable/baseline_route_24" />
+                    android:src="@drawable/baseline_route_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="?colorOnBackground" />
 
                 <TextView
                     android:id="@+id/poi_road_distance_text_view"
-                    android:layout_width="120dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/RoadDistanceIcon"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
+                    android:text="10 m"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/road_distance_icon"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
                     android:text="Road Distance"
-                    android:textColor="@android:color/darker_gray" />
-            </RelativeLayout>
+                    android:textColor="?subtitleColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/poi_road_distance_text_view" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

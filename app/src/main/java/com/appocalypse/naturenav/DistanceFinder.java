@@ -35,7 +35,6 @@ public class DistanceFinder {
         Log.d("DistanceFinder", "Current Location: " + currentLocation);
         Log.d("DistanceFinder", "Destination Location: " + geoPoint);
 
-
         RoadManager roadManager = new OSRMRoadManager(context, "NatureNav");
         ArrayList<GeoPoint> waypoints = new ArrayList<>();
         waypoints.add(currentLocation);

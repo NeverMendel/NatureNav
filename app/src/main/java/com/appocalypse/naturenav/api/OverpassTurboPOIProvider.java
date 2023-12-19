@@ -78,7 +78,7 @@ public class OverpassTurboPOIProvider {
                 poi.address = AddressFinder.getAddress(poi.lat, poi.lon);
                 poi.airDistanceMeters = DistanceFinder.calculateAirDistance(poi.getGeoPoint());
                 Road roadDistance = DistanceFinder.calculateRoadDistance(context, poi.getGeoPoint());
-                poi.roadDistanceMeters = roadDistance.mLength;
+                poi.roadDistanceMeters = roadDistance.mLength * 1000.0;
                 poi.roadDistanceSeconds = roadDistance.mDuration;
                 poiList.add(poi);
             }

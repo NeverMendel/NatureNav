@@ -2,6 +2,7 @@ package com.appocalypse.naturenav.api;
 
 import androidx.annotation.NonNull;
 
+import org.osmdroid.bonuspack.routing.Road;
 import org.osmdroid.util.GeoPoint;
 
 import java.util.Map;
@@ -14,9 +15,7 @@ public class POI {
     public Map<String, String> tags;
     public String address;
     public double airDistanceMeters;
-    public double roadDistanceMeters;
-
-    public double roadDistanceSeconds; //
+    public Road road;
 
     public GeoPoint getGeoPoint() {
         return new GeoPoint(lat, lon);

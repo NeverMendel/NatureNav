@@ -1,12 +1,8 @@
 package com.appocalypse.naturenav;
 
 import android.content.Context;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
 import android.util.Log;
 
-import com.appocalypse.naturenav.utility.GeocoderSingleton;
 import com.appocalypse.naturenav.utility.PoiFinder;
 
 import org.osmdroid.bonuspack.routing.OSRMRoadManager;
@@ -14,7 +10,6 @@ import org.osmdroid.bonuspack.routing.Road;
 import org.osmdroid.bonuspack.routing.RoadManager;
 import org.osmdroid.util.GeoPoint;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class DistanceFinder {
@@ -29,7 +24,7 @@ public class DistanceFinder {
         return PoiFinder.getInstance().getLocation().distanceToAsDouble(geoPoint);
     }
 
-    public static Road calculateRoadDistance(Context context, GeoPoint geoPoint) {
+    public static Road getRoad(Context context, GeoPoint geoPoint) {
         GeoPoint currentLocation = PoiFinder.getInstance().getLocation();
 
         Log.d("DistanceFinder", "Current Location: " + currentLocation);
@@ -42,13 +37,10 @@ public class DistanceFinder {
 
         Road road = roadManager.getRoad(waypoints);
 
-        if (road.mStatus == Road.STATUS_OK) {
-            // the distance is in meters
-            Log.d("DistanceFinder", "Road distance: " + road.mLength);
-            return road;
-        } else {
-            Log.d("DistanceFinder", "Road distance: " + road.mStatus);
-            return null;
+        Log.d("DistanceFinder", "Road status: " + road.mStatus);
+        if (road.mStatus != Road.STATUS_OK) {
+            return new Road();
         }
+        return road;
     }
 }

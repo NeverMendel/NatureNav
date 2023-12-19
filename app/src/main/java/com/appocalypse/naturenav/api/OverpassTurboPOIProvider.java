@@ -2,7 +2,6 @@ package com.appocalypse.naturenav.api;
 
 
 import android.content.Context;
-import android.location.Address;
 
 import com.appocalypse.naturenav.DistanceFinder;
 import com.appocalypse.naturenav.utility.AddressFinder;
@@ -77,9 +76,7 @@ public class OverpassTurboPOIProvider {
                 POI poi = gson.fromJson(poiObject, POI.class);
                 poi.address = AddressFinder.getAddress(poi.lat, poi.lon);
                 poi.airDistanceMeters = DistanceFinder.calculateAirDistance(poi.getGeoPoint());
-                Road roadDistance = DistanceFinder.calculateRoadDistance(context, poi.getGeoPoint());
-                poi.roadDistanceMeters = roadDistance.mLength * 1000.0;
-                poi.roadDistanceSeconds = roadDistance.mDuration;
+                poi.road = DistanceFinder.getRoad(context, poi.getGeoPoint());
                 poiList.add(poi);
             }
         }

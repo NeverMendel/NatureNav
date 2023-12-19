@@ -35,12 +35,6 @@ public class DistanceFinder {
         waypoints.add(currentLocation);
         waypoints.add(geoPoint);
 
-        Road road = roadManager.getRoad(waypoints);
-
-        Log.d("DistanceFinder", "Road status: " + road.mStatus);
-        if (road.mStatus != Road.STATUS_OK) {
-            return new Road();
-        }
-        return road;
+        return roadManager.getRoad(waypoints);
     }
 }

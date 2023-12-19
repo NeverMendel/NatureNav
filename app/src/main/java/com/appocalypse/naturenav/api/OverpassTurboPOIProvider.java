@@ -97,19 +97,20 @@ public class OverpassTurboPOIProvider {
                 break;
             }
         }
-        return getPOICloseTo(position, amenity, maxResults, maxDistance);
+        return getPOICloseTo(context, position, amenity, maxResults, maxDistance);
     }
 
     /**
      * Retrieves Points of Interest (POIs) in close proximity to a specified geographical position.
      *
+     * @param context,     context
      * @param position,    center position for which POIs are sought, represented by a GeoPoint
      * @param amenity,     Overpass amenity name used to filter POIs
      * @param maxResults,  maximum number of POI results to retrieve
      * @param maxDistance, maximum distance, in meters, within which POIs should be considered
      * @return
      */
-    public ArrayList<POI> getPOICloseTo(GeoPoint position, String amenity, int maxResults, double maxDistance) {
+    public ArrayList<POI> getPOICloseTo(Context context, GeoPoint position, String amenity, int maxResults, double maxDistance) {
         String customQuery = String.format("[amenity=%s]", amenity);
         String overpassQuery = buildOverpassQuery(position, maxResults, maxDistance, customQuery);
         String result = executeOverpassQuery(overpassQuery);

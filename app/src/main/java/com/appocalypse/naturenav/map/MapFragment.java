@@ -1,8 +1,4 @@
 package com.appocalypse.naturenav.map;
-import androidx.core.content.ContextCompat;
-
-import com.appocalypse.naturenav.R;
-import com.appocalypse.naturenav.api.POI;
 
 import android.graphics.Color;
 import android.graphics.Rect;
@@ -13,8 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.appocalypse.naturenav.R;
+import com.appocalypse.naturenav.api.POI;
+import com.appocalypse.naturenav.bottomsheet.BottomSheetDialogViewModel;
+import com.appocalypse.naturenav.databinding.FragmentMapBinding;
+import com.appocalypse.naturenav.poiinfo.PoiInfoViewModel;
+import com.appocalypse.naturenav.utility.PoiFinder;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.bonuspack.routing.Road;
@@ -26,18 +30,10 @@ import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.Polyline;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
-import org.osmdroid.views.overlay.mylocation.IMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
-
-import com.appocalypse.naturenav.bottomsheet.BottomSheetDialogViewModel;
-import com.appocalypse.naturenav.databinding.FragmentMapBinding;
-import com.appocalypse.naturenav.poiinfo.PoiInfoViewModel;
-import com.appocalypse.naturenav.utility.POITypes;
-import com.appocalypse.naturenav.utility.PoiFinder;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class MapFragment extends Fragment {
     private static final String TAG = "MapFragment";
@@ -46,7 +42,12 @@ public class MapFragment extends Fragment {
     private GeoPoint myLocation;
     private MapView mapView;
 
-    private  List<Marker> poiMarkers = new ArrayList<>();
+    private List<Marker> poiMarkers = new ArrayList<>();
+
+    public static String getTAG() {
+        return TAG;
+    }
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -109,14 +110,13 @@ public class MapFragment extends Fragment {
             }
         });
 
-
         if (savedInstanceState != null) {
             myLocation = (GeoPoint) savedInstanceState.getSerializable("location");
             Log.i(TAG, "loaded location from savedInstanceState");
         } else {
             myLocation = mMyLocationOverlay.getMyLocation();
             Log.i(TAG, "not loaded location from savedInstanceState");
-            if(myLocation != null) {
+            if (myLocation != null) {
                 Log.i(TAG, "location latitude: " + myLocation.getLatitude() + ", location longitude: " + myLocation.getLongitude());
             }
         }
@@ -149,6 +149,7 @@ public class MapFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
     public void highlightRouteToPoi(POI destinationPoi) {
         if (destinationPoi.road != null && destinationPoi.road.mStatus == Road.STATUS_OK) {
             // Remove existing PolylineOverlays
@@ -172,9 +173,5 @@ public class MapFragment extends Fragment {
             // Refresh the map
             mapView.invalidate();
         }
-    }
-
-    public static String getTAG() {
-        return TAG;
     }
 }

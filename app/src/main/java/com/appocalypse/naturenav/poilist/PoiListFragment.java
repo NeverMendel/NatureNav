@@ -19,10 +19,8 @@ import com.appocalypse.naturenav.utility.PoiFinder;
 
 public class PoiListFragment extends Fragment {
     public static final String TAG = "PoiListFragment";
-
-    private FragmentPoiListBinding binding;
-
     private final PoiListAdapter adapter = new PoiListAdapter();
+    private FragmentPoiListBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

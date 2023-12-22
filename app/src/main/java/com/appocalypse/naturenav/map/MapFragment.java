@@ -57,7 +57,6 @@ public class MapFragment extends Fragment {
 
         BottomSheetDialogViewModel bottomSheetDialogViewModel = new ViewModelProvider(requireActivity()).get(BottomSheetDialogViewModel.class);
         PoiInfoViewModel poiInfoViewModel = new ViewModelProvider(requireActivity()).get(PoiInfoViewModel.class);
-        MapViewModel mapViewModel = new ViewModelProvider(requireActivity()).get(MapViewModel.class);
 
         mapView = binding.osmmap;
         IMapController controller = mapView.getController();
@@ -104,10 +103,17 @@ public class MapFragment extends Fragment {
             mapView.invalidate();
         });
 
-        mapViewModel.getHighlightRouteRequest().observe(getViewLifecycleOwner(), poi -> {
+        poiInfoViewModel.getDisplayedPoiLiveData().observe(getViewLifecycleOwner(), poi -> {
             if (poi != null) {
                 highlightRouteToPoi(poi);
             }
+        });
+
+        bottomSheetDialogViewModel.getDisplayingListLiveData().observe(getViewLifecycleOwner(), isNotSelected -> {
+            if (isNotSelected) {
+                removeRouteHighlight();
+            }
+
         });
 
         if (savedInstanceState != null) {
@@ -173,5 +179,9 @@ public class MapFragment extends Fragment {
             // Refresh the map
             mapView.invalidate();
         }
+    }
+    public void removeRouteHighlight() {
+        mapView.getOverlays().removeIf(overlay -> overlay instanceof Polyline);
+        mapView.invalidate();
     }
 }

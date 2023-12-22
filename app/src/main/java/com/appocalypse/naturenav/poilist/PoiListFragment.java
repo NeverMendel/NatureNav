@@ -49,8 +49,6 @@ public class PoiListFragment extends Fragment {
         adapter.setOnClick(item -> {
             poiInfoViewModel.setDisplayedPoi(item);
             bottomSheetDialogViewModel.setDisplayingList(false);
-            mapViewModel.requestHighlightRoute(item);
-
         });
 
         binding.poiListView.setAdapter(adapter);

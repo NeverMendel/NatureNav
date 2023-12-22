@@ -4,6 +4,7 @@ import androidx.core.content.ContextCompat;
 import com.appocalypse.naturenav.R;
 import com.appocalypse.naturenav.api.POI;
 
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,11 +17,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import org.osmdroid.api.IMapController;
+import org.osmdroid.bonuspack.routing.Road;
+import org.osmdroid.bonuspack.routing.RoadNode;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.CustomZoomButtonsController;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
+import org.osmdroid.views.overlay.Polyline;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.IMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
@@ -33,18 +37,18 @@ import com.appocalypse.naturenav.utility.PoiFinder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class MapFragment extends Fragment {
     private static final String TAG = "MapFragment";
 
     private FragmentMapBinding binding;
     private GeoPoint myLocation;
+    private MapView mapView;
 
     private  List<Marker> poiMarkers = new ArrayList<>();
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        MapViewModel mapViewModel =
-                new ViewModelProvider(this).get(MapViewModel.class);
 
         binding = FragmentMapBinding
                 .inflate(inflater, container, false);
@@ -52,8 +56,9 @@ public class MapFragment extends Fragment {
 
         BottomSheetDialogViewModel bottomSheetDialogViewModel = new ViewModelProvider(requireActivity()).get(BottomSheetDialogViewModel.class);
         PoiInfoViewModel poiInfoViewModel = new ViewModelProvider(requireActivity()).get(PoiInfoViewModel.class);
+        MapViewModel mapViewModel = new ViewModelProvider(requireActivity()).get(MapViewModel.class);
 
-        MapView mapView = binding.osmmap;
+        mapView = binding.osmmap;
         IMapController controller = mapView.getController();
 
         mapView.getZoomController().setVisibility(CustomZoomButtonsController.Visibility.NEVER);
@@ -64,6 +69,7 @@ public class MapFragment extends Fragment {
         mapView.setMaxZoomLevel(20.0);
         controller.setZoom(10.0);
         controller.setCenter(new GeoPoint(45.440845, 12.315515)); // Venice
+
 
         MyLocationNewOverlay mMyLocationOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(requireContext()), mapView);
 
@@ -95,6 +101,12 @@ public class MapFragment extends Fragment {
 
             // Refresh the map
             mapView.invalidate();
+        });
+
+        mapViewModel.getHighlightRouteRequest().observe(getViewLifecycleOwner(), poi -> {
+            if (poi != null) {
+                highlightRouteToPoi(poi);
+            }
         });
 
 
@@ -136,5 +148,33 @@ public class MapFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+    public void highlightRouteToPoi(POI destinationPoi) {
+        if (destinationPoi.road != null && destinationPoi.road.mStatus == Road.STATUS_OK) {
+            // Remove existing PolylineOverlays
+            mapView.getOverlays().removeIf(overlay -> overlay instanceof Polyline);
+
+            // Extract the waypoints from the Road object
+            ArrayList<GeoPoint> waypoints = new ArrayList<>();
+            for (RoadNode node : destinationPoi.road.mNodes) {
+                waypoints.add(node.mLocation);
+            }
+
+            // Create a PolylineOverlay
+            Polyline polyline = new Polyline();
+            polyline.setPoints(waypoints);
+            // Change the color of the line to my_blue
+            polyline.setColor(Color.parseColor("#2196F3"));
+
+            // Add the PolylineOverlay to the map
+            mapView.getOverlays().add(polyline);
+
+            // Refresh the map
+            mapView.invalidate();
+        }
+    }
+
+    public static String getTAG() {
+        return TAG;
     }
 }

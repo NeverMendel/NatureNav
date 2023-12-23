@@ -13,15 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.appocalypse.naturenav.bottomsheet.BottomSheetDialogViewModel;
 import com.appocalypse.naturenav.databinding.FragmentPoiListBinding;
+import com.appocalypse.naturenav.map.MapViewModel;
 import com.appocalypse.naturenav.poiinfo.PoiInfoViewModel;
 import com.appocalypse.naturenav.utility.PoiFinder;
 
 public class PoiListFragment extends Fragment {
     public static final String TAG = "PoiListFragment";
-
-    private FragmentPoiListBinding binding;
-
     private final PoiListAdapter adapter = new PoiListAdapter();
+    private FragmentPoiListBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

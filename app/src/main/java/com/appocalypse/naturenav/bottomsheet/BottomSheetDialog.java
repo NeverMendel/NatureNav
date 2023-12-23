@@ -70,6 +70,8 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
             }
         });
 
+        bottomSheetDialogViewModel.setVisible(true);
+
         return root;
     }
 
@@ -93,5 +95,6 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
     @Override
     public void onDismiss(@NonNull DialogInterface dialog) {
         super.onDismiss(dialog);
+        bottomSheetDialogViewModel.setVisible(false);
     }
 }

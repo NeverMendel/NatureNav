@@ -28,7 +28,6 @@ public class PoiListFragment extends Fragment {
                 new ViewModelProvider(requireActivity()).get(PoiListViewModel.class);
         BottomSheetDialogViewModel bottomSheetDialogViewModel = new ViewModelProvider(requireActivity()).get(BottomSheetDialogViewModel.class);
         PoiInfoViewModel poiInfoViewModel = new ViewModelProvider(requireActivity()).get(PoiInfoViewModel.class);
-        MapViewModel mapViewModel = new ViewModelProvider(requireActivity()).get(MapViewModel.class);
 
         binding = FragmentPoiListBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

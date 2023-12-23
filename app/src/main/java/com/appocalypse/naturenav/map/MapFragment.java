@@ -44,10 +44,6 @@ public class MapFragment extends Fragment {
 
     private List<Marker> poiMarkers = new ArrayList<>();
 
-    public static String getTAG() {
-        return TAG;
-    }
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 

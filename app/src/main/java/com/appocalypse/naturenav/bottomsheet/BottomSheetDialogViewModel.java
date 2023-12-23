@@ -10,7 +10,9 @@ import java.util.List;
 
 public class BottomSheetDialogViewModel extends ViewModel {
 
-    MutableLiveData<Boolean> displayingListMutableLiveData = new MutableLiveData<>(true);
+    private final MutableLiveData<Boolean> displayingListMutableLiveData = new MutableLiveData<>(true);
+
+    private final MutableLiveData<Boolean> visibleMutableLiveData = new MutableLiveData<>(false);
 
     BottomSheetDialogViewModel() {
 
@@ -22,5 +24,13 @@ public class BottomSheetDialogViewModel extends ViewModel {
 
     public LiveData<Boolean> getDisplayingListLiveData() {
         return displayingListMutableLiveData;
+    }
+
+    public LiveData<Boolean> getVisibleLiveData() {
+        return visibleMutableLiveData;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visibleMutableLiveData.setValue(visible);
     }
 }

@@ -44,7 +44,7 @@ public class MapFragment extends Fragment {
     private GeoPoint myLocation;
     private MapView mapView;
 
-    private List<Marker> poiMarkers = new ArrayList<>();
+    private final List<Marker> poiMarkers = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -67,7 +67,6 @@ public class MapFragment extends Fragment {
         mapView.setMaxZoomLevel(20.0);
         controller.setZoom(10.0);
         controller.setCenter(new GeoPoint(45.440845, 12.315515)); // Venice
-
 
         MyLocationNewOverlay mMyLocationOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(requireContext()), mapView);
 
@@ -112,7 +111,12 @@ public class MapFragment extends Fragment {
                 removeRouteHighlight();
                 restoreAllMarkers();
             }
+        });
 
+        bottomSheetDialogViewModel.getVisibleLiveData().observe(getViewLifecycleOwner(), visible -> {
+            if (!visible) {
+                removeAllMarkers();
+            }
         });
 
         if (savedInstanceState != null) {
@@ -182,14 +186,14 @@ public class MapFragment extends Fragment {
             mapView.invalidate();
         }
     }
+
     public void removeRouteHighlight() {
         mapView.getOverlays().removeIf(overlay -> overlay instanceof Polyline);
         mapView.invalidate();
     }
+
     private void removeMarkersIf(Predicate<Marker> condition) {
-        Iterator<Marker> iterator = poiMarkers.iterator();
-        while (iterator.hasNext()) {
-            Marker marker = iterator.next();
+        for (Marker marker : poiMarkers) {
             if (condition.test(marker)) {
                 mapView.getOverlays().remove(marker);
             }
@@ -204,7 +208,8 @@ public class MapFragment extends Fragment {
     private void removeAllMarkersExceptSelected(POI selectedPoi) {
         removeMarkersIf(marker -> !marker.getPosition().equals(selectedPoi.getGeoPoint()));
     }
-    private void restoreAllMarkers(){
+
+    private void restoreAllMarkers() {
         removeAllMarkers();  // Remove all markers
         mapView.getOverlays().addAll(poiMarkers);  // Add all markers
         mapView.invalidate(); // Refresh the map

@@ -33,7 +33,9 @@ import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class MapFragment extends Fragment {
     private static final String TAG = "MapFragment";
@@ -72,11 +74,11 @@ public class MapFragment extends Fragment {
         PoiFinder poiFinder = PoiFinder.getInstance();
 
         poiFinder.getPoisLiveData().observe(getViewLifecycleOwner(), newPois -> {
-            // Remove existing markers
-            for (Marker marker : poiMarkers) {
-                mapView.getOverlays().remove(marker);
-            }
-            poiMarkers.clear(); // Clear the list of markers
+
+            // Remove old poi markers
+            removeAllMarkers();
+            // Clear the list of poi markers
+            poiMarkers.clear();
 
             // Add new poi markers
             for (POI poi : newPois) {
@@ -108,6 +110,7 @@ public class MapFragment extends Fragment {
         bottomSheetDialogViewModel.getDisplayingListLiveData().observe(getViewLifecycleOwner(), isNotSelected -> {
             if (isNotSelected) {
                 removeRouteHighlight();
+                restoreAllMarkers();
             }
 
         });
@@ -153,6 +156,9 @@ public class MapFragment extends Fragment {
     }
 
     public void highlightRouteToPoi(POI destinationPoi) {
+        // Remove all markers except the selected one
+        removeAllMarkersExceptSelected(destinationPoi);
+
         if (destinationPoi.road != null && destinationPoi.road.mStatus == Road.STATUS_OK) {
             // Remove existing PolylineOverlays
             mapView.getOverlays().removeIf(overlay -> overlay instanceof Polyline);
@@ -179,5 +185,28 @@ public class MapFragment extends Fragment {
     public void removeRouteHighlight() {
         mapView.getOverlays().removeIf(overlay -> overlay instanceof Polyline);
         mapView.invalidate();
+    }
+    private void removeMarkersIf(Predicate<Marker> condition) {
+        Iterator<Marker> iterator = poiMarkers.iterator();
+        while (iterator.hasNext()) {
+            Marker marker = iterator.next();
+            if (condition.test(marker)) {
+                mapView.getOverlays().remove(marker);
+            }
+        }
+        mapView.invalidate();
+    }
+
+    private void removeAllMarkers() {
+        removeMarkersIf(marker -> true);
+    }
+
+    private void removeAllMarkersExceptSelected(POI selectedPoi) {
+        removeMarkersIf(marker -> !marker.getPosition().equals(selectedPoi.getGeoPoint()));
+    }
+    private void restoreAllMarkers(){
+        removeAllMarkers();  // Remove all markers
+        mapView.getOverlays().addAll(poiMarkers);  // Add all markers
+        mapView.invalidate(); // Refresh the map
     }
 }

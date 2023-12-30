@@ -128,10 +128,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         actionIcon.setOnClickListener(v -> {
+            actionIcon.clearFocus();
             searchEditText.clearFocus();
             if(bottomSheetDialogViewModel.getDisplayingListLiveData().getValue() || !bottomSheetDialog.isVisible()){
                 if(bottomSheetDialog.isVisible()) bottomSheetDialog.dismiss();
                 searchEditText.getText().clear();
+//                poiFinder.clearPois();
                 showSearchIcon();
                 showMap();
             } else {

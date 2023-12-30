@@ -60,6 +60,10 @@ public class PoiFinder implements IMyLocationConsumer {
         });
     }
 
+    public void clearPois(){
+        pois.postValue(new ArrayList<>());
+    }
+
     public LiveData<ArrayList<POI>> getPoisLiveData() {
         return pois;
     }

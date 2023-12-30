@@ -12,7 +12,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -20,11 +19,11 @@ import android.widget.ImageButton;
 
 import org.osmdroid.config.Configuration;
 
+import com.appocalypse.naturenav.auth.Users;
 import com.appocalypse.naturenav.bottomsheet.BottomSheetDialog;
 import com.appocalypse.naturenav.bottomsheet.BottomSheetDialogViewModel;
 import com.appocalypse.naturenav.map.MapFragment;
 import com.appocalypse.naturenav.map.MapViewModel;
-import com.appocalypse.naturenav.poilist.PoiListFragment;
 import com.appocalypse.naturenav.poilist.PoiListViewModel;
 import com.appocalypse.naturenav.suggestionlist.SuggestionListFragment;
 import com.appocalypse.naturenav.suggestionlist.SuggestionListViewModel;
@@ -56,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         String theme = sharedPreferences.getString("app_theme", "auto");
         Theme.setTheme(theme);
         GeocoderSingleton.getInstance(getApplicationContext());
+        Users.getInstance();
         poiFinder = PoiFinder.getInstance(getApplicationContext());
 
 

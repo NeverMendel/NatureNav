@@ -9,6 +9,7 @@
         android:layout_height="match_parent">
 
         <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/poi_progress_bar"
             android:layout_width="200dp"
             android:layout_height="200dp"
             app:layout_constraintEnd_toEndOf="parent"

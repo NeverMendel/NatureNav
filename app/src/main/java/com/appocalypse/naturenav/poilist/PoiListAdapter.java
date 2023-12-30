@@ -10,14 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.appocalypse.naturenav.DistanceFinder;
 import com.appocalypse.naturenav.R;
 import com.appocalypse.naturenav.api.POI;
 import com.appocalypse.naturenav.utility.POITypes;
 import com.appocalypse.naturenav.utility.UnitConverter;
-
-
-import org.osmdroid.util.GeoPoint;
 
 import java.util.ArrayList;
 
@@ -52,7 +48,14 @@ public class PoiListAdapter extends RecyclerView.Adapter<PoiListAdapter.ViewHold
         String amenity = item.tags.get("amenity");
         int amenityStringId = POITypes.amenityToStringId.getOrDefault(amenity, -1);
 
-        holder.title.setText(amenityStringId != -1 ? context.getString(amenityStringId) : amenity);
+        String title;
+        if(item.tags.get("name") != null){
+            title = item.tags.get("name");
+        } else {
+            title = amenityStringId != -1 ? context.getString(amenityStringId) : amenity;
+        }
+
+        holder.title.setText(title);
         holder.subtitle.setText(item.address != null ? item.address : context.getString(R.string.address_not_available));
         holder.distance.setText(UnitConverter.formatDistance(item.airDistanceMeters));
 

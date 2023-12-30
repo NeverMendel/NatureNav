@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import org.osmdroid.bonuspack.routing.Road;
 import org.osmdroid.util.GeoPoint;
 
+import java.util.Comparator;
 import java.util.Map;
 
 public class POI {
@@ -31,5 +32,12 @@ public class POI {
                 ", lon=" + lon +
                 ", tags=" + tags +
                 '}';
+    }
+
+    public static class AirDistanceComparator implements Comparator<POI> {
+        @Override
+        public int compare(POI o1, POI o2) {
+            return Double.compare(o1.airDistanceMeters, o2.airDistanceMeters);
+        }
     }
 }

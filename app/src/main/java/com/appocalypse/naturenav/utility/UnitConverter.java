@@ -31,7 +31,7 @@ public class UnitConverter {
     }
 
     public static String formatOneSignificantDigit(double number) {
-        DecimalFormat decimalFormat = new DecimalFormat("#.#");
+        DecimalFormat decimalFormat = new DecimalFormat("#.0");
         return decimalFormat.format(number);
     }
 }

@@ -14,6 +14,7 @@ import com.appocalypse.naturenav.DistanceFinder;
 import com.appocalypse.naturenav.R;
 import com.appocalypse.naturenav.api.POI;
 import com.appocalypse.naturenav.utility.POITypes;
+import com.appocalypse.naturenav.utility.UnitConverter;
 
 
 import org.osmdroid.util.GeoPoint;
@@ -23,16 +24,10 @@ import java.util.ArrayList;
 public class PoiListAdapter extends RecyclerView.Adapter<PoiListAdapter.ViewHolder> {
 
     private ArrayList<POI> items = new ArrayList<>();
-    private GeoPoint location;
     private AdapterOnClick<POI> adapterOnClick;
 
     public void setItems(ArrayList<POI> items) {
         this.items = items;
-        notifyDataSetChanged();
-    }
-
-    public void setCurrentLocation(GeoPoint location) {
-        this.location = location;
         notifyDataSetChanged();
     }
 
@@ -59,14 +54,7 @@ public class PoiListAdapter extends RecyclerView.Adapter<PoiListAdapter.ViewHold
 
         holder.title.setText(amenityStringId != -1 ? context.getString(amenityStringId) : amenity);
         holder.subtitle.setText(item.address != null ? item.address : context.getString(R.string.address_not_available));
-
-        if (location != null) {
-            double distanceKm = item.airDistanceMeters / 1000;
-            // TODO: display distance in meters if distance is less than 1000m
-            holder.distance.setText(String.format(context.getString(R.string.distance_km_format), distanceKm));
-        } else {
-            holder.distance.setText("N/A");
-        }
+        holder.distance.setText(UnitConverter.formatDistance(item.airDistanceMeters));
 
         holder.onClick = pos -> {
             if (adapterOnClick != null) {

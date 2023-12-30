@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.appocalypse.naturenav.api.POI;
 import com.appocalypse.naturenav.bottomsheet.BottomSheetDialogViewModel;
 import com.appocalypse.naturenav.databinding.FragmentPoiListBinding;
 import com.appocalypse.naturenav.map.MapViewModel;
@@ -39,8 +40,8 @@ public class PoiListFragment extends Fragment {
 
         poiFinder.getPoisLiveData().observe(getViewLifecycleOwner(), data -> {
             if (data != null) {
+                data.sort(new POI.AirDistanceComparator());
                 adapter.setItems(data);
-                adapter.setCurrentLocation(poiFinder.getLocation());
                 Log.i(TAG, "onCreateView: " + data.toString());
             }
         });

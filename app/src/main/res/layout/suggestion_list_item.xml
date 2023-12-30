@@ -14,7 +14,8 @@
         android:src="@drawable/ic_search_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="?subtitleColor" />
 
     <TextView
         android:id="@+id/suggestion_text_view"
@@ -22,10 +23,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:maxLines="1"
+        android:text="Suggestion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/suggestion_search_image_view"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Suggestion"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/suggestion_arrow_image_view"
@@ -35,7 +36,8 @@
         android:src="@drawable/ic_arrow_insert_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="?subtitleColor" />
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/list_item_bottom_separator"
@@ -44,7 +46,6 @@
         android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/suggestion_text_view"
-        app:layout_constraintTop_toBottomOf="@id/suggestion_text_view"
-        />
+        app:layout_constraintTop_toBottomOf="@id/suggestion_text_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

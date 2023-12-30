@@ -1,8 +1,11 @@
 package com.appocalypse.naturenav.map;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +44,6 @@ public class MapFragment extends Fragment {
     private static final String TAG = "MapFragment";
 
     private FragmentMapBinding binding;
-    private GeoPoint myLocation;
     private MapView mapView;
 
     private final List<Marker> poiMarkers = new ArrayList<>();
@@ -65,15 +67,15 @@ public class MapFragment extends Fragment {
         mapView.getLocalVisibleRect(new Rect());
         mapView.setMinZoomLevel(4.0);
         mapView.setMaxZoomLevel(20.0);
-        controller.setZoom(10.0);
-        controller.setCenter(new GeoPoint(45.440845, 12.315515)); // Venice
+        controller.setZoom(14.0);
+        controller.setCenter(getStoredLocation());
 
-        MyLocationNewOverlay mMyLocationOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(requireContext()), mapView);
+        // Save current location after 10 seconds
+        Handler handler = new Handler();
+        handler.postDelayed(() -> storeLocation(PoiFinder.getInstance().getLocation()), 10000);
 
         PoiFinder poiFinder = PoiFinder.getInstance();
-
         poiFinder.getPoisLiveData().observe(getViewLifecycleOwner(), newPois -> {
-
             // Remove old poi markers
             removeAllMarkers();
             // Clear the list of poi markers
@@ -119,29 +121,10 @@ public class MapFragment extends Fragment {
             }
         });
 
-        if (savedInstanceState != null) {
-            myLocation = (GeoPoint) savedInstanceState.getSerializable("location");
-            Log.i(TAG, "loaded location from savedInstanceState");
-        } else {
-            myLocation = mMyLocationOverlay.getMyLocation();
-            Log.i(TAG, "not loaded location from savedInstanceState");
-            if (myLocation != null) {
-                Log.i(TAG, "location latitude: " + myLocation.getLatitude() + ", location longitude: " + myLocation.getLongitude());
-            }
-        }
-
-        mapView.setExpectedCenter(myLocation);
-
+        MyLocationNewOverlay mMyLocationOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(requireContext()), mapView);
         mMyLocationOverlay.enableMyLocation();
         mMyLocationOverlay.enableFollowLocation();
         mMyLocationOverlay.setDrawAccuracyEnabled(true);
-        mMyLocationOverlay.runOnFirstFix(() -> {
-            requireActivity().runOnUiThread(() -> {
-                controller.setCenter(myLocation);
-                controller.animateTo(myLocation);
-            });
-        });
-
         mapView.getOverlays().add(mMyLocationOverlay);
 
         return root;
@@ -150,7 +133,6 @@ public class MapFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putSerializable("location", myLocation);
     }
 
     @Override
@@ -213,5 +195,21 @@ public class MapFragment extends Fragment {
         removeAllMarkers();  // Remove all markers
         mapView.getOverlays().addAll(poiMarkers);  // Add all markers
         mapView.invalidate(); // Refresh the map
+    }
+
+    private void storeLocation(GeoPoint location){
+        Log.i(TAG, "storeLocation: saving location: " + location);
+        if(location == null) return;
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("location", location.toDoubleString());
+        editor.apply();
+    }
+
+    private GeoPoint getStoredLocation(){
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        String stringLocation = sharedPref.getString("location", "45.47859,12.2556"); // Venice
+        Log.i(TAG, "getStoredLocation: retrieved location: " + stringLocation);
+        return GeoPoint.fromDoubleString(stringLocation, ',');
     }
 }

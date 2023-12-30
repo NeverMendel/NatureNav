@@ -56,5 +56,7 @@
     <string name="air_distance">Distanza in linea d\'aria</string>
     <string name="road_distance">Distanza Stradale</string>
     <string name="duration">Durata</string>
+    <string name="username_placeholder">Username: %s</string>
+    <string name="member_since_placeholder">Membro dal: %s</string>
 
 </resources>

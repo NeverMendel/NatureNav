@@ -12,6 +12,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Map;
+
 public class Users {
     private final static String TAG = "Users";
 
@@ -22,7 +24,7 @@ public class Users {
     private final MutableLiveData<User> userMutableLiveData = new MutableLiveData<>();
 
     private Users() {
-        database = FirebaseDatabase.getInstance().getReference();
+        database = FirebaseDatabase.getInstance().getReference("users");
     }
 
     public static Users getInstance() {
@@ -44,21 +46,37 @@ public class Users {
         authenticationUserMutableLiveData.setValue(authenticationUser);
         if(authenticationUser == null) return;
 
-        database.child("users").child(authenticationUser.uid).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        database.child(authenticationUser.uid).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
-                    Log.e(TAG, "Error getting data", task.getException());
+                    Log.e(TAG, "Error getting user from firebase", task.getException());
                 }
                 else {
-                    Log.d(TAG, String.valueOf(task.getResult().getValue()));
-                    userMutableLiveData.setValue((User) task.getResult().getValue());
+                    User user;
+                    // if new user
+                    if(task.getResult().getValue() == null){
+                        Log.i(TAG, "New user");
+                         user = new User(authenticationUser.uid, authenticationUser.name);
+                         user.newUser = true;
+                    } else {
+                        Log.i(TAG, "Retrieved user from firebase: " + String.valueOf(task.getResult().getValue()));
+                        user = task.getResult().getValue(User.class);
+                        Log.i(TAG, "Built user from firebase: " + user);
+                    }
+                    userMutableLiveData.postValue(user);
                 }
             }
         });
     }
 
+    public User getUser(){
+        return userMutableLiveData.getValue();
+    }
+
     public void updateUser(User user){
-        database.child("users").child(user.uid).setValue(user);
+        user.newUser = false;
+        database.child(user.uid).setValue(user);
+        userMutableLiveData.postValue(user);
     }
 }

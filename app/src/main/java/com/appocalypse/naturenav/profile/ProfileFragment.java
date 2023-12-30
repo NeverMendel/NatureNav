@@ -24,6 +24,8 @@ import com.appocalypse.naturenav.auth.Users;
 import com.appocalypse.naturenav.databinding.FragmentProfileBinding;
 import com.google.android.material.imageview.ShapeableImageView;
 
+import java.time.format.DateTimeFormatter;
+
 public class ProfileFragment extends Fragment {
     private static final String TAG = "ProfileFragment";
 
@@ -31,8 +33,7 @@ public class ProfileFragment extends Fragment {
 
     private AuthViewModel authViewModel;
 
-    private TextView nameTextView, usernameTextView;
-    private ShapeableImageView profilePictureImageView;
+    private Users users;
 
     @Nullable
     @Override
@@ -44,26 +45,28 @@ public class ProfileFragment extends Fragment {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        nameTextView = root.findViewById(R.id.profile_name_text_view);
-        usernameTextView = root.findViewById(R.id.profile_username_text_view);
-        profilePictureImageView = root.findViewById(R.id.profile_picture_image_view);
+        users = Users.getInstance();
+        onUserChange(users.getUser());
 
-        Users.getInstance().getUserLiveData().observe(getViewLifecycleOwner(), this::onUserChange);
-
-        onUserChange(Users.getInstance().getUserLiveData().getValue());
+        users.getUserLiveData().observe(getViewLifecycleOwner(), this::onUserChange);
 
         return root;
     }
 
     private void onUserChange(User user) {
-        if (user != null) {
-            Log.i(TAG, "onUserChange: " + user.toString());
-            nameTextView.setText(user.name);
-            usernameTextView.setText(user.username);
-        } else {
-            Log.i(TAG, "onUserChange: user is null");
-            new UsernameDialogFragment().show(getChildFragmentManager(), UsernameDialogFragment.TAG);
+        if(user == null){
+            Log.e(TAG, "onUserChange: user is null");
+            return;
         }
+
+        binding.profileNameTextView.setText(user.name);
+        if(user.username != null) {
+            binding.profileUsernameTextView.setText(getString(R.string.username_placeholder, user.username));
+        } else {
+            Log.i(TAG, "onUserChange: username is null");
+            showUsernameDialog();
+        }
+        binding.memberSinceTextView.setText(getString(R.string.member_since_placeholder, user.memberSince));
     }
 
     @Override
@@ -79,6 +82,15 @@ public class ProfileFragment extends Fragment {
             authViewModel.signOut();
             return true;
         }
+        if(id == R.id.modify_profile){
+            showUsernameDialog();
+        }
         return false;
+    }
+
+    private void showUsernameDialog(){
+        UsernameDialogFragment fragment = new UsernameDialogFragment();
+        fragment.setUsername(users.getUser().username);
+        fragment.show(getChildFragmentManager(), UsernameDialogFragment.TAG);
     }
 }

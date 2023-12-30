@@ -70,7 +70,8 @@
     <string name="air_distance">Air Distance</string>
     <string name="road_distance">Road Distance</string>
     <string name="duration">Duration</string>
-
+    <string name="username_placeholder">Username: %s</string>
+    <string name="member_since_placeholder">Member since: %s</string>
 
 
 </resources>

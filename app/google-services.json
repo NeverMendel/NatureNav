@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "709356760756",
+    "firebase_url": "https://naturenav-61e4c-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "naturenav-61e4c",
     "storage_bucket": "naturenav-61e4c.appspot.com"
   },
@@ -14,7 +15,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "709356760756-ils02o79ecd3i6orib0993a2qhhuusiv.apps.googleusercontent.com",
+          "client_id": "709356760756-btthv265hogsuled2n5q5t3otcjbfd1i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.appocalypse.naturenav",
+            "certificate_hash": "c4ca00148ae043443c3e627d5d9db97afa3b5374"
+          }
+        },
+        {
+          "client_id": "709356760756-lf0bkvfl181l7ut5ujrs6rh3m4502d80.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

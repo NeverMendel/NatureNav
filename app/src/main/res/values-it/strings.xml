@@ -58,5 +58,8 @@
     <string name="duration">Durata</string>
     <string name="username_placeholder">Username: %s</string>
     <string name="member_since_placeholder">Membro dal: %s</string>
+    <string name="delete">Cancella</string>
+    <string name="confirm_profile_deletion">Conferma Cancellazione Profilo</string>
+    <string name="profile_deletion_warning">Sei sicuro di voler cancellare il tuo profilo? Questa azione è irreversibile.</string>
 
 </resources>

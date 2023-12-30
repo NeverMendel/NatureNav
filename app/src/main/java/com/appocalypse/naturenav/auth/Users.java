@@ -79,4 +79,8 @@ public class Users {
         database.child(user.uid).setValue(user);
         userMutableLiveData.postValue(user);
     }
+
+    public void deleteUser(User user){
+        database.child(user.uid).removeValue();
+    }
 }

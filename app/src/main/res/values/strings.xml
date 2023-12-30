@@ -72,6 +72,9 @@
     <string name="duration">Duration</string>
     <string name="username_placeholder">Username: %s</string>
     <string name="member_since_placeholder">Member since: %s</string>
+    <string name="delete">Delete</string>
+    <string name="confirm_profile_deletion">Confirm Profile Deletion</string>
+    <string name="profile_deletion_warning">Are you sure you want to delete your profile? This action is irreversible.</string>
 
 
 </resources>

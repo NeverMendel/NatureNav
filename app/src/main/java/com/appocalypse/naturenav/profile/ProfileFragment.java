@@ -1,5 +1,6 @@
 package com.appocalypse.naturenav.profile;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,7 +9,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,13 +18,9 @@ import androidx.lifecycle.ViewModelProvider;
 import com.appocalypse.naturenav.R;
 import com.appocalypse.naturenav.UsernameDialogFragment;
 import com.appocalypse.naturenav.auth.AuthViewModel;
-import com.appocalypse.naturenav.auth.AuthenticationUser;
 import com.appocalypse.naturenav.auth.User;
 import com.appocalypse.naturenav.auth.Users;
 import com.appocalypse.naturenav.databinding.FragmentProfileBinding;
-import com.google.android.material.imageview.ShapeableImageView;
-
-import java.time.format.DateTimeFormatter;
 
 public class ProfileFragment extends Fragment {
     private static final String TAG = "ProfileFragment";
@@ -79,18 +75,34 @@ public class ProfileFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.logout) {
-            authViewModel.signOut();
+            signOut();
             return true;
         }
         if(id == R.id.modify_profile){
             showUsernameDialog();
         }
+        if(id == R.id.delete_profile){
+            showDeleteDialog();
+        }
         return false;
+    }
+
+    private void signOut(){
+        authViewModel.signOut();
     }
 
     private void showUsernameDialog(){
         UsernameDialogFragment fragment = new UsernameDialogFragment();
         fragment.setUsername(users.getUser().username);
         fragment.show(getChildFragmentManager(), UsernameDialogFragment.TAG);
+    }
+
+    private void showDeleteDialog(){
+        new AlertDialog.Builder(getContext())
+                .setTitle(R.string.confirm_profile_deletion)
+                .setMessage(R.string.profile_deletion_warning)
+//                .setIcon(R.drawable.ic_warning_24)
+                .setPositiveButton(R.string.delete, (dialog, whichButton) -> {users.deleteUser(users.getUser()); signOut();})
+                .setNegativeButton(R.string.cancel, null).show();
     }
 }

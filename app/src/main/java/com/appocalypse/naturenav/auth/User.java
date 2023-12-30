@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class User {
@@ -14,6 +15,8 @@ public class User {
     public String username;
     public String memberSince;
     public boolean newUser;
+    public List<Long> likedPoi;
+    public List<Long> dislikedPoi;
 
     public User() {
     }
@@ -31,36 +34,16 @@ public class User {
         this.memberSince = memberSince;
     }
 
-    @NonNull
     @Override
     public String toString() {
         return "User{" +
                 "uid='" + uid + '\'' +
                 ", name='" + name + '\'' +
                 ", username='" + username + '\'' +
-                ", memberSince=" + memberSince +
+                ", memberSince='" + memberSince + '\'' +
+                ", newUser=" + newUser +
+                ", likedPoi=" + likedPoi +
+                ", dislikedPoi=" + dislikedPoi +
                 '}';
     }
-
-    public Map<String, Object> toMap() {
-        HashMap<String, Object> result = new HashMap<>();
-        result.put("uid", uid);
-        result.put("name", name);
-        result.put("username", username);
-        result.put("memberSince", memberSince);
-
-        return result;
-    }
-
-    public static User fromMap(Map<String, Object> map) {
-        User result = new User();
-        if(map.containsKey("uid")) result.uid = (String) map.get("uid");
-        if(map.containsKey("name")) result.uid = (String) map.get("name");
-        if(map.containsKey("username")) result.uid = (String) map.get("username");
-        if(map.containsKey("memberSince")) result.uid = (String) map.get("memberSince");
-
-        return result;
-    }
-
-
 }

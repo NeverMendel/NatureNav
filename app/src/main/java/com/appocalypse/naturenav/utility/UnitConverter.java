@@ -3,15 +3,27 @@ package com.appocalypse.naturenav.utility;
 import java.text.DecimalFormat;
 
 public class UnitConverter {
-    public static String formatDistance(double distanceMeters){
+    public static String formatDistance(double distanceMeters, boolean metricSystem){
         String distance, unit;
-        if(distanceMeters >= 1000.0){
-            distance = formatOneSignificantDigit(distanceMeters / 1000.0);
-            unit = "km";
+
+        if (metricSystem) {
+            if (distanceMeters >= 1000.0) {
+                distance = formatOneSignificantDigit(distanceMeters / 1000.0);
+                unit = "km";
+            } else {
+                distance = formatOneSignificantDigit(distanceMeters);
+                unit = "m";
+            }
         } else {
-            distance = formatOneSignificantDigit(distanceMeters);
-            unit = "m";
+            if (distanceMeters >= 600) {
+                distance = formatOneSignificantDigit(distanceMeters / 1609.34);
+                unit = "mi";
+            } else {
+                distance = formatOneSignificantDigit(distanceMeters * 3.28084);
+                unit = "ft";
+            }
         }
+
         return distance + " " + unit;
     }
 
@@ -31,7 +43,7 @@ public class UnitConverter {
     }
 
     public static String formatOneSignificantDigit(double number) {
-        DecimalFormat decimalFormat = new DecimalFormat("#.0");
+        DecimalFormat decimalFormat = new DecimalFormat("0.0");
         return decimalFormat.format(number);
     }
 }

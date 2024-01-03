@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appocalypse.naturenav.R;
+import com.appocalypse.naturenav.SettingsActivity;
 import com.appocalypse.naturenav.api.POI;
 import com.appocalypse.naturenav.utility.POITypes;
 import com.appocalypse.naturenav.utility.UnitConverter;
@@ -57,7 +58,9 @@ public class PoiListAdapter extends RecyclerView.Adapter<PoiListAdapter.ViewHold
 
         holder.title.setText(title);
         holder.subtitle.setText(item.address != null ? item.address : context.getString(R.string.address_not_available));
-        holder.distance.setText(UnitConverter.formatDistance(item.airDistanceMeters));
+
+        boolean metricSystem = !SettingsActivity.getSetting(context, "unit_system_key").equals("imperial");
+        holder.distance.setText(UnitConverter.formatDistance(item.airDistanceMeters, metricSystem));
 
         holder.onClick = pos -> {
             if (adapterOnClick != null) {

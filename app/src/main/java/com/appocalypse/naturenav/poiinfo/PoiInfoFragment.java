@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.appocalypse.naturenav.R;
+import com.appocalypse.naturenav.SettingsActivity;
 import com.appocalypse.naturenav.api.POI;
 import com.appocalypse.naturenav.databinding.FragmentPoiInfoBinding;
 import com.appocalypse.naturenav.utility.POITypes;
@@ -59,8 +60,9 @@ public class PoiInfoFragment extends Fragment {
 
         binding.poiAddressTextView.setText(getString(R.string.address_placeholder, poi.address));
 
-        binding.poiAirDistanceTextView.setText(formatDistance(poi.airDistanceMeters));
-        binding.poiRoadDistanceTextView.setText(formatDistance(poi.road.mLength * 1000.0));
+        boolean metricSystem = !SettingsActivity.getSetting(requireContext(), "unit_system_key").equals("imperial");
+        binding.poiAirDistanceTextView.setText(formatDistance(poi.airDistanceMeters, metricSystem));
+        binding.poiRoadDistanceTextView.setText(formatDistance(poi.road.mLength * 1000.0, metricSystem));
 
         binding.poiDurationTextView.setText(formatDuration(poi.road.mLength * 1000.0 / 100.0 * 60.0));
     }

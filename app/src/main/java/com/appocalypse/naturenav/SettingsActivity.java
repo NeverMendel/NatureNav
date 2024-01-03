@@ -1,16 +1,20 @@
 package com.appocalypse.naturenav;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceManager;
 
 import com.appocalypse.naturenav.utility.Theme;
 
 public class SettingsActivity extends AppCompatActivity {
+    public final static String TAG = "SettingsActivity";
+    public final static String SETTINGS_SHARED_PREFERENCES = TAG + ".SETTINGS_SHARED_PREFERENCES";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,5 +54,11 @@ public class SettingsActivity extends AppCompatActivity {
                 return true;
             }));
         }
+    }
+
+    public static String getSetting(Context context, String name){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        Log.i(TAG, "getSetting: preference retrieved: " + preferences.getString(name, ""));
+        return preferences.getString(name, "");
     }
 }

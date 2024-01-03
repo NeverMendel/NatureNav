@@ -35,7 +35,7 @@
     <string name="drinking_water_amenity">Fontanella</string>
     <string name="restaurant_amenity">Ristorante</string>
     <string name="cycleway_amenity">Pista ciclabile</string>
-    <string name="bicycle_parking_amenity">Parchieggio Bici</string>
+    <string name="bicycle_parking_amenity">Parcheggio bici</string>
     <string name="hospital_amenity">Ospedale</string>
     <string name="car_wash_amenity">Lavaggio auto</string>
     <string name="bicycle_repair_station_amenity">Stazione di riparazione bici</string>
@@ -61,5 +61,16 @@
     <string name="delete">Cancella</string>
     <string name="confirm_profile_deletion">Conferma Cancellazione Profilo</string>
     <string name="profile_deletion_warning">Sei sicuro di voler cancellare il tuo profilo? Questa azione è irreversibile.</string>
+    <string name="library_amenity">Libreria</string>
+    <string name="school_amenity">Scuola</string>
+    <string name="university_string">Università</string>
+    <string name="bus_station_amenity">Fermata bus</string>
+    <string name="gas_station_amenity">Stazione di rifornimento</string>
+    <string name="bank_amenity">Banca</string>
+    <string name="cinema_amenity">Cinema</string>
+    <string name="police_station_amenity">Stazione di polizia</string>
+    <string name="toilet_amenity">Bagno pubblico</string>
+    <string name="shower_amenity">Doccia pubblica</string>
+    <string name="parking_amenity">Parcheggio auto</string>
 
 </resources>

@@ -75,6 +75,17 @@
     <string name="delete">Delete</string>
     <string name="confirm_profile_deletion">Confirm Profile Deletion</string>
     <string name="profile_deletion_warning">Are you sure you want to delete your profile? This action is irreversible.</string>
+    <string name="library_amenity">Library</string>
+    <string name="school_amenity">School</string>
+    <string name="university_string">University</string>
+    <string name="bus_station_amenity">Bus station</string>
+    <string name="gas_station_amenity">Gas station</string>
+    <string name="bank_amenity">Bank</string>
+    <string name="cinema_amenity">Cinema</string>
+    <string name="police_station_amenity">Police station</string>
+    <string name="toilet_amenity">Toilet</string>
+    <string name="shower_amenity">Public shower</string>
+    <string name="parking_amenity">Car parking</string>
 
 
 </resources>

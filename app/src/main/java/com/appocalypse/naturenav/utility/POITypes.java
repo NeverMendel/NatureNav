@@ -31,7 +31,9 @@ public class POITypes {
                     Map.entry("police", R.string.police_station_amenity),
                     Map.entry("toilets", R.string.toilet_amenity),
                     Map.entry("shower", R.string.shower_amenity),
-                    Map.entry("parking", R.string.parking_amenity)
+                    Map.entry("parking", R.string.parking_amenity),
+                    Map.entry("pharmacy", R.string.pharmacy_amenity),
+                    Map.entry("charging_station", R.string.charging_station_amenity)
             ));
 
     public static List<String> getAmenityStrings(Context context) {

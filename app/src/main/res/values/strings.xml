@@ -87,6 +87,8 @@
     <string name="shower_amenity">Public shower</string>
     <string name="parking_amenity">Car parking</string>
     <string name="travel_time">Travel time</string>
+    <string name="pharmacy_amenity">Pharmacy</string>
+    <string name="charging_station_amenity">Charging station</string>
 
 
 </resources>

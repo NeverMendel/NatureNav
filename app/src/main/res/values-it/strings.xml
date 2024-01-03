@@ -73,5 +73,7 @@
     <string name="shower_amenity">Doccia pubblica</string>
     <string name="parking_amenity">Parcheggio auto</string>
     <string name="travel_time">Tempo viaggio</string>
+    <string name="pharmacy_amenity">Farmacia</string>
+    <string name="charging_station_amenity">Stazione di caricamento auto</string>
 
 </resources>

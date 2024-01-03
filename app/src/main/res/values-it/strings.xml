@@ -72,5 +72,6 @@
     <string name="toilet_amenity">Bagno pubblico</string>
     <string name="shower_amenity">Doccia pubblica</string>
     <string name="parking_amenity">Parcheggio auto</string>
+    <string name="travel_time">Tempo viaggio</string>
 
 </resources>

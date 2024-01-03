@@ -62,6 +62,6 @@ public class PoiInfoFragment extends Fragment {
         binding.poiAirDistanceTextView.setText(formatDistance(poi.airDistanceMeters));
         binding.poiRoadDistanceTextView.setText(formatDistance(poi.road.mLength * 1000.0));
 
-        binding.poiDurationTextView.setText(formatDuration(poi.road.mDuration));
+        binding.poiDurationTextView.setText(formatDuration(poi.road.mLength * 1000.0 / 100.0 * 60.0));
     }
 }

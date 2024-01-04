@@ -1,13 +1,12 @@
 package com.appocalypse.naturenav.auth;
 
-import androidx.annotation.NonNull;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class User {
     public String uid;
@@ -15,13 +14,13 @@ public class User {
     public String username;
     public String memberSince;
     public boolean newUser;
-    public List<Long> likedPoi;
-    public List<Long> dislikedPoi;
+    public List<Long> likedPoi = new ArrayList<>();
+    public List<Long> dislikedPoi = new ArrayList<>();
 
     public User() {
     }
 
-    public User(String uid, String name){
+    public User(String uid, String name) {
         this.uid = uid;
         this.name = name;
         memberSince = LocalDate.now().format(DateTimeFormatter.ofPattern("d/M/y"));
@@ -45,5 +44,10 @@ public class User {
                 ", likedPoi=" + likedPoi +
                 ", dislikedPoi=" + dislikedPoi +
                 '}';
+    }
+
+    public String toJson() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(this);
     }
 }

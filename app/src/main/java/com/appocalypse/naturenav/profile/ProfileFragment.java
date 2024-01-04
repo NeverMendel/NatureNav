@@ -1,7 +1,10 @@
 package com.appocalypse.naturenav.profile;
 
 import android.app.AlertDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,6 +15,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ShareCompat;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -21,6 +26,10 @@ import com.appocalypse.naturenav.auth.AuthViewModel;
 import com.appocalypse.naturenav.auth.User;
 import com.appocalypse.naturenav.auth.Users;
 import com.appocalypse.naturenav.databinding.FragmentProfileBinding;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class ProfileFragment extends Fragment {
     private static final String TAG = "ProfileFragment";
@@ -80,9 +89,15 @@ public class ProfileFragment extends Fragment {
         }
         if(id == R.id.modify_profile){
             showUsernameDialog();
+            return true;
         }
         if(id == R.id.delete_profile){
             showDeleteDialog();
+            return true;
+        }
+        if(id == R.id.export_profile_data){
+            exportProfileData();
+            return true;
         }
         return false;
     }
@@ -104,5 +119,23 @@ public class ProfileFragment extends Fragment {
 //                .setIcon(R.drawable.ic_warning_24)
                 .setPositiveButton(R.string.delete, (dialog, whichButton) -> {users.deleteUser(users.getUser()); signOut();})
                 .setNegativeButton(R.string.cancel, null).show();
+    }
+
+    private void exportProfileData() {
+        File file = new File(requireActivity().getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "exported_data.txt");
+        try {
+            FileWriter writer = new FileWriter(file);
+            writer.write(users.getUser().toJson());
+            writer.close();
+        } catch (IOException e){
+            Log.e(TAG, "exportProfileData: error writing exported data", e);
+        }
+
+        Uri uri = FileProvider.getUriForFile(requireContext(), requireContext().getPackageName() + ".provider", file.getAbsoluteFile());
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        intent.setData(uri);
+        startActivity(intent);
     }
 }

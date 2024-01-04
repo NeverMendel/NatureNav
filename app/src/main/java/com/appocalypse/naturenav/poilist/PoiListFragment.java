@@ -33,15 +33,15 @@ public class PoiListFragment extends Fragment {
         binding = FragmentPoiListBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-//        binding.poiProgressBar.show();
+        binding.poiProgressBar.show();
 
-        PoiFinder poiFinder = PoiFinder.getInstance();
-
-        poiFinder.getPoisLiveData().observe(getViewLifecycleOwner(), data -> {
+        listViewModel.getPoiLiveData().observe(getViewLifecycleOwner(), data -> {
             if (data != null && data.size() > 0) {
                 data.sort(new POI.AirDistanceComparator());
                 adapter.setItems(data);
-                Log.i(TAG, "poi finder items: " + data);
+                binding.poiProgressBar.hide();
+            } else {
+                binding.poiProgressBar.show();
             }
         });
 

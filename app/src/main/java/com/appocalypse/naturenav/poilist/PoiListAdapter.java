@@ -17,13 +17,14 @@ import com.appocalypse.naturenav.utility.POITypes;
 import com.appocalypse.naturenav.utility.UnitConverter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PoiListAdapter extends RecyclerView.Adapter<PoiListAdapter.ViewHolder> {
 
-    private ArrayList<POI> items = new ArrayList<>();
+    private List<POI> items = new ArrayList<>();
     private AdapterOnClick<POI> adapterOnClick;
 
-    public void setItems(ArrayList<POI> items) {
+    public void setItems(List<POI> items) {
         this.items = items;
         notifyDataSetChanged();
     }

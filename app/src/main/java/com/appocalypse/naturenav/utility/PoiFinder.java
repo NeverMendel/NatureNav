@@ -51,7 +51,7 @@ public class PoiFinder implements IMyLocationConsumer {
             OverpassTurboPOIProvider poiProvider = new OverpassTurboPOIProvider();
             Log.i(TAG, "location latitude: " + location.getLatitude() + ", location longitude: " + location.getLongitude());
             try {
-                ArrayList<POI> poiArrayList = poiProvider.queryPOICloseTo(context, location, query, 25, 5000);
+                ArrayList<POI> poiArrayList = poiProvider.queryPOICloseTo(context, location, query, 15, 5000);
                 pois.postValue(poiArrayList);
                 Log.i(TAG, "search: " + poiArrayList.toString());
             } catch (Exception e) {

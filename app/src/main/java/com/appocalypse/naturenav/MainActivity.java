@@ -87,10 +87,16 @@ public class MainActivity extends AppCompatActivity {
         suggestionListViewModel.setOnSuggestionClick(suggestion -> {
             hideKeyboard();
             poiFinder.search(getApplicationContext(), suggestion);
+            poiListViewModel.clearPoi();
+            bottomSheetDialogViewModel.setDisplayingList(true);
             bottomSheetDialog.show(getSupportFragmentManager(), BottomSheetDialog.TAG);
             bottomSheetDialog.setCancelable(false);
             searchEditText.setText(suggestion);
             showMap();
+        });
+
+        poiFinder.getPoisLiveData().observe(this, data -> {
+            poiListViewModel.setPoi(data);
         });
 
         searchEditText.addTextChangedListener(new TextWatcher() {
